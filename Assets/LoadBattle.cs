@@ -15,9 +15,9 @@ public class LoadBattle : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    public void LoadNewBattle()
+    public void LoadNewBattle(float newTurnLength)
     {
-        GameObject.Find("PassedObject").GetComponent<PassedAI>().StoreValues(useOldAI, turnLength);
+        GameObject.Find("PassedObject").GetComponent<PassedAI>().StoreValues(useOldAI, newTurnLength);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

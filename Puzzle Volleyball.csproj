@@ -84,6 +84,7 @@
     <Compile Include="Assets\Block.cs" />
     <Compile Include="Assets\Board.cs" />
     <Compile Include="Assets\BoardsInPlay.cs" />
+    <Compile Include="Assets\ButtonLogic.cs" />
     <Compile Include="Assets\ChainInfo.cs" />
     <Compile Include="Assets\ColorStrip.cs" />
     <Compile Include="Assets\DebugBoard.cs" />

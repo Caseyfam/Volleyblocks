@@ -7,15 +7,8 @@ public class RunningGame : MonoBehaviour {
     public bool runningGame = true;
 
     bool matchComplete = false;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
 
     public void SetMatchComplete(bool flag)
     {
