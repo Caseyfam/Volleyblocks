@@ -8,17 +8,15 @@ public class ButtonLogic : MonoBehaviour {
     private string cpuDifficulty = "Easy";
     private float turnLength = 0.3f;
 
-    public UnityEngine.UI.Text playersText, cpuText;
+    private int gamesCount = 3;
+    private int setsCount = 3;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
+    public UnityEngine.UI.Text playersText, cpuText, gamesText, setsText;
+
     public void StartButton()
     {
         // Need to pass AI params here
-        GetComponent<LoadBattle>().LoadNewBattle(turnLength);
+        GetComponent<LoadBattle>().LoadNewBattle(players, turnLength, gamesCount, setsCount);
     }
 
     public void PlayersButton()
@@ -62,5 +60,27 @@ public class ButtonLogic : MonoBehaviour {
                 break;
         }
         cpuText.text = cpuDifficulty;
+    }
+
+    public void GamesButton()
+    {
+        gamesCount++;
+        if (gamesCount > 15)
+        {
+            gamesCount = 1;
+        }
+
+        gamesText.text = "Games: First to " + gamesCount;
+    }
+
+    public void SetsButton()
+    {
+        setsCount++;
+        if (setsCount > 5)
+        {
+            setsCount = 1;
+        }
+
+        setsText.text = "Sets: First to " + setsCount;
     }
 }

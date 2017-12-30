@@ -90,7 +90,7 @@
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\LoadBattle.cs" />
-    <Compile Include="Assets\Scripts\PassedAI.cs" />
+    <Compile Include="Assets\Scripts\Passed.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
   </ItemGroup>

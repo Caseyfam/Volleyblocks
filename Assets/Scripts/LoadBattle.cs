@@ -7,16 +7,9 @@ public class LoadBattle : MonoBehaviour
     public bool useOldAI = false;
     public float turnLength = 1f;
 
-    public void LoadNewBattle(GameObject player)
+    public void LoadNewBattle(string playerCase, float newTurnLength, int gamesCount, int setsCount)
     {
-        GameObject.Find("PassedObject").GetComponent<PassedAI>().StoreValues(useOldAI, turnLength);
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-    }
-
-    public void LoadNewBattle(float newTurnLength)
-    {
-        GameObject.Find("PassedObject").GetComponent<PassedAI>().StoreValues(useOldAI, newTurnLength);
+        GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, useOldAI, newTurnLength, gamesCount, setsCount);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

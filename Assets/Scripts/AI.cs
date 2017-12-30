@@ -38,8 +38,8 @@ public class AI : MonoBehaviour {
     {
         try
         {
-            useOldAI = GameObject.Find("PassedObject").GetComponent<PassedAI>().useOldAI;
-            turnWaitTime = GameObject.Find("PassedObject").GetComponent<PassedAI>().turnLength;
+            useOldAI = GameObject.Find("PassedObject").GetComponent<Passed>().useOldAI;
+            turnWaitTime = GameObject.Find("PassedObject").GetComponent<Passed>().turnLength;
         }
         catch
         {

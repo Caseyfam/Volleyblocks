@@ -11,6 +11,19 @@ public class Scoring : MonoBehaviour {
 
     bool matchComplete = false;
 
+    private void Start()
+    {
+        try
+        {
+            pointsToGame = GameObject.Find("PassedObject").GetComponent<Passed>().gamesCount;
+            gamesToWin = GameObject.Find("PassedObject").GetComponent<Passed>().setCount;
+        }
+        catch
+        {
+            Debug.Log("ERROR: Game and / or set count not initialized properly.");
+        }
+    }
+
     public void PlayerLost (Board board)
     {
         if (board.Equals(GetComponent<BoardsInPlay>().rightBoard))
@@ -80,25 +93,6 @@ public class Scoring : MonoBehaviour {
                 matchComplete = true;
                 ReturnToOverworld();
             }
-        }
-    }
-
-    private void Update()
-    {
-        // Debug winner decider
-        if (Input.GetKeyDown(KeyCode.Insert))
-        {
-            Debug.Log("LEFT BOARD WON THE SET");
-            playerWon = "won";
-            matchComplete = true;
-            ReturnToOverworld();
-        }
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            Debug.Log("RIGHT BOARD WON THE SET");
-            playerWon = "lost";
-            matchComplete = true;
-            ReturnToOverworld();
         }
     }
 

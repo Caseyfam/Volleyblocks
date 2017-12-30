@@ -75,13 +75,13 @@ public class Board : MonoBehaviour {
 
     private int comboLength = 1;
 
-    public void CleanBoard()
+    void CleanBoardAlgorithm()
     {
         for (int i = rows - 1; i >= 0; i--) // Start from bottom row
         {
             for (int j = 0; j < columns; j++) // Columns
             {
-                if (boardBlocks[i,j] != null)
+                if (boardBlocks[i, j] != null)
                 {
                     boardBlocks[i, j].GetComponent<Block>().CalculateNeighbors();
                 }
@@ -117,6 +117,12 @@ public class Board : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void CleanBoard()
+    {
+        CleanBoardAlgorithm();
+        CleanBoardAlgorithm(); // Second pass
 
         StartCoroutine(ComboPause(0.1f));
     }
