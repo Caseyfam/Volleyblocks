@@ -78,26 +78,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ActiveSet.cs" />
-    <Compile Include="Assets\AI.cs" />
-    <Compile Include="Assets\Ball.cs" />
-    <Compile Include="Assets\Block.cs" />
-    <Compile Include="Assets\Board.cs" />
-    <Compile Include="Assets\BoardsInPlay.cs" />
-    <Compile Include="Assets\ButtonLogic.cs" />
-    <Compile Include="Assets\ChainInfo.cs" />
-    <Compile Include="Assets\ColorStrip.cs" />
-    <Compile Include="Assets\DebugBoard.cs" />
-    <Compile Include="Assets\DebugControls.cs" />
-    <Compile Include="Assets\Dialogue.cs" />
-    <Compile Include="Assets\GameOver.cs" />
-    <Compile Include="Assets\LoadBattle.cs" />
-    <Compile Include="Assets\OverworldMovement.cs" />
-    <Compile Include="Assets\PassedAI.cs" />
-    <Compile Include="Assets\PassedDefeatedAI.cs" />
-    <Compile Include="Assets\PassedOverworld.cs" />
-    <Compile Include="Assets\RunningGame.cs" />
-    <Compile Include="Assets\Scoring.cs" />
+    <Compile Include="Assets\Scripts\ActiveSet.cs" />
+    <Compile Include="Assets\Scripts\AI.cs" />
+    <Compile Include="Assets\Scripts\Ball.cs" />
+    <Compile Include="Assets\Scripts\Block.cs" />
+    <Compile Include="Assets\Scripts\Board.cs" />
+    <Compile Include="Assets\Scripts\BoardsInPlay.cs" />
+    <Compile Include="Assets\Scripts\ButtonLogic.cs" />
+    <Compile Include="Assets\Scripts\ChainInfo.cs" />
+    <Compile Include="Assets\Scripts\ColorStrip.cs" />
+    <Compile Include="Assets\Scripts\DebugBoard.cs" />
+    <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\LoadBattle.cs" />
+    <Compile Include="Assets\Scripts\PassedAI.cs" />
+    <Compile Include="Assets\Scripts\RunningGame.cs" />
+    <Compile Include="Assets\Scripts\Scoring.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

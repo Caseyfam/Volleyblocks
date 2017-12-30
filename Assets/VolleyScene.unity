@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useOldAI: 0
-  turnWaitTime: 0.3
+  turnWaitTime: 0
   aiCanMove: 0
   localChainLength: 0
 --- !u!114 &358213215
@@ -1196,7 +1196,6 @@ GameObject:
   - component: {fileID: 1133255540}
   - component: {fileID: 1133255542}
   - component: {fileID: 1133255543}
-  - component: {fileID: 1133255544}
   - component: {fileID: 1133255545}
   m_Layer: 0
   m_Name: GameLogic
@@ -1260,17 +1259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBoard: {fileID: 358213216}
   rightBoard: {fileID: 2063762319}
---- !u!114 &1133255544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1133255539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70b31030a299e34c93ce0a810536696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1133255545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1847,7 +1835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useOldAI: 0
-  turnWaitTime: 0.3
+  turnWaitTime: 0
   aiCanMove: 0
   localChainLength: 0
 --- !u!114 &2063762322

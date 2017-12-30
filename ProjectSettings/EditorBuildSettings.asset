@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/3DScene.unity
-    guid: 32b43070d6efced47bba63de870777c3
+    path: Assets/Menu.unity
+    guid: 3bad583616b9f914088bab82a25eae59
   - enabled: 1
     path: Assets/VolleyScene.unity
     guid: d9d3ad0bc75b4844caa1edc26b9ebc40
+  - enabled: 0
+    path: Assets/3DScene.unity
+    guid: 32b43070d6efced47bba63de870777c3
