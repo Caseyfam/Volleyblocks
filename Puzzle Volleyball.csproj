@@ -95,6 +95,7 @@
     <Compile Include="Assets\OverworldMovement.cs" />
     <Compile Include="Assets\PassedAI.cs" />
     <Compile Include="Assets\PassedDefeatedAI.cs" />
+    <Compile Include="Assets\PassedMenu.cs" />
     <Compile Include="Assets\PassedOverworld.cs" />
     <Compile Include="Assets\RunningGame.cs" />
     <Compile Include="Assets\Scoring.cs" />

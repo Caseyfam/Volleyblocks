@@ -79,7 +79,6 @@ public class Ball : MonoBehaviour {
                 }
             }
         }
-       
     }
 
     void SetBallPoints(Board attackedBoard)

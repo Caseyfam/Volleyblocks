@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class ButtonLogic : MonoBehaviour {
 
-    private string players = "Player VS CPU";
+    private string players = "Player VS Player";
     private string cpuDifficulty = "Easy";
     private float turnLength = 0.3f;
 
     public UnityEngine.UI.Text playersText, cpuText;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
     public void StartButton()
     {
         // Need to pass AI params here
+        GameObject.Find("PassedObject").GetComponent<PassedMenu>().versus = players;
         GetComponent<LoadBattle>().LoadNewBattle(turnLength);
     }
 

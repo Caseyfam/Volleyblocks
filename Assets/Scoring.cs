@@ -68,7 +68,7 @@ public class Scoring : MonoBehaviour {
                 Debug.Log("LEFT BOARD WON THE SET");
                 playerWon = "won";
                 matchComplete = true;
-                ReturnToOverworld();
+                ReturnToMenu();
             }
         }
         else
@@ -78,7 +78,7 @@ public class Scoring : MonoBehaviour {
                 Debug.Log("RIGHT BOARD WON THE SET");
                 playerWon = "lost";
                 matchComplete = true;
-                ReturnToOverworld();
+                ReturnToMenu();
             }
         }
     }
@@ -91,27 +91,26 @@ public class Scoring : MonoBehaviour {
             Debug.Log("LEFT BOARD WON THE SET");
             playerWon = "won";
             matchComplete = true;
-            ReturnToOverworld();
+            ReturnToMenu();
         }
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             Debug.Log("RIGHT BOARD WON THE SET");
             playerWon = "lost";
             matchComplete = true;
-            ReturnToOverworld();
+            ReturnToMenu();
         }
     }
 
-    void ReturnToOverworld()
+    void ReturnToMenu()
     {
         try
         {
-            GameObject.Find("PassedObject").GetComponent<PassedAI>().playerWon = playerWon;
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
         catch
         {
-            Debug.Log("Should exit to overworld if PassedObject exists");
+            Debug.Log("Should exit to menu");
         }
     }
 }
