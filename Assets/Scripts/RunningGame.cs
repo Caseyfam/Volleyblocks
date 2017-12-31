@@ -33,6 +33,7 @@ public class RunningGame : MonoBehaviour {
             GetComponent<BoardsInPlay>().rightBoard.Reset();
             GetComponent<BoardsInPlay>().leftBoard.Reset();
             GameObject.Find("Ball").GetComponent<Ball>().Start();
+            GameObject.Find("Main Camera").GetComponent<CameraTilt>().Reset();
         }
         else
         {

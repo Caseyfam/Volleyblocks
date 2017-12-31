@@ -8,6 +8,11 @@ public class Ball : MonoBehaviour {
     Board leftBoard, rightBoard;
     int currentPointLead;
 
+    private string currentDirection = "NONE";
+
+    public float maxHeight = 3.33f;
+    public float minHeight = -2.33f;
+
     void Awake()
     {
         leftBoard = GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().leftBoard;
@@ -19,16 +24,14 @@ public class Ball : MonoBehaviour {
         currentPointLead = 0;
         GetComponentInChildren<TextMesh>().text = currentPointLead.ToString();
         determinedFirstMove = false;
-        GetComponent<Animator>().Play("Sit");
-        GetComponent<Animator>().SetBool("LeftHitFirst", false);
-        GetComponent<Animator>().SetBool("RightHitFirst", false);
+        transform.position = new Vector3(0f, 0.5f, 10f);
+        currentDirection = "NONE";
     }
 
 	// Use this for initialization
 	public void Start ()
     {
         Reset();
-        GetComponent<Animator>().speed = 0.5f;
 	}
 	
 	public void SetRightBallPoints()
@@ -63,7 +66,6 @@ public class Ball : MonoBehaviour {
                     if (rightBoard.GetPoints() < currentPointLead)
                     {
                         rightBoard.GetComponent<GameOver>().SetGameOver(false);
-                        GetComponent<Animator>().speed = 0;
                     }
                 }
             }
@@ -74,7 +76,6 @@ public class Ball : MonoBehaviour {
                     if (leftBoard.GetPoints() < currentPointLead)
                     {
                         leftBoard.GetComponent<GameOver>().SetGameOver(false);
-                        GetComponent<Animator>().speed = 0;
                     }
                 }
             }
@@ -101,10 +102,6 @@ public class Ball : MonoBehaviour {
                     // anim.Play other volley
                 }
             }
-            else
-            {
-                GetComponent<Animator>().speed = 0;
-            }
         }
     }
 
@@ -116,13 +113,52 @@ public class Ball : MonoBehaviour {
             switch (direction)
             {
                 case "LEFT": // Aim to the left
-                    GetComponent<Animator>().SetBool("RightHitFirst", true);
+                    currentDirection = "RIGHT";
+                    transform.position = new Vector3(6f, 0.5f, 10f);
+                    // set ball starting position here
                     break;
                 case "RIGHT": // Aim to the right
-                    GetComponent<Animator>().SetBool("LeftHitFirst", true);
+                    currentDirection = "LEFT";
+                    transform.position = new Vector3(-6f, 0.5f, 10f);
+                    // set ball starting position here
                     break;
             }
+
             determinedFirstMove = true;
+        }
+    }
+
+    void Update()
+    {
+        transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
+
+        if (currentDirection.Equals("RIGHT"))
+        {
+            if (transform.position.x >= 6f)
+            {
+                SetRightBallPoints();
+                currentDirection = "LEFT";
+            }
+            else
+            {
+                transform.position += Vector3.right * Time.deltaTime * 2f;
+            }
+        }
+        else if (currentDirection.Equals("LEFT"))
+        {
+            if (transform.position.x <= -6f)
+            {
+                SetLeftBallPoints();
+                currentDirection = "RIGHT";
+            }
+            else
+            {
+                transform.position += Vector3.left * Time.deltaTime * 2f;
+            }
+        }
+        else
+        {
+
         }
     }
 }
