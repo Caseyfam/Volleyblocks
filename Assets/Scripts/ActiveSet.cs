@@ -52,6 +52,7 @@ public class ActiveSet : MonoBehaviour
 
         modifiedRandomizer = new List<GameObject> { redPrefab, redPrefab, redPrefab, bluePrefab, bluePrefab, bluePrefab, greenPrefab, greenPrefab, greenPrefab, yellowPrefab, yellowPrefab, yellowPrefab, redDrivePrefab, blueDrivePrefab, greenDrivePrefab, yellowDrivePrefab };
         CreateActiveSet();
+        // Throw in start whistle function here
     }
 
     void Awake()
