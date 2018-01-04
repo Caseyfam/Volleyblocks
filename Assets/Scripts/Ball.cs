@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour {
         determinedFirstMove = false;
         transform.position = new Vector3(0f, 0.5f, 10f);
         currentDirection = "NONE";
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
 	// Use this for initialization
@@ -123,7 +124,7 @@ public class Ball : MonoBehaviour {
                     // set ball starting position here
                     break;
             }
-
+            transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
             determinedFirstMove = true;
         }
     }
@@ -132,33 +133,36 @@ public class Ball : MonoBehaviour {
     {
         transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
 
-        if (currentDirection.Equals("RIGHT"))
+        if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
         {
-            if (transform.position.x >= 6f)
+            if (currentDirection.Equals("RIGHT"))
             {
-                SetRightBallPoints();
-                currentDirection = "LEFT";
+                if (transform.position.x >= 6f)
+                {
+                    SetRightBallPoints();
+                    currentDirection = "LEFT";
+                }
+                else
+                {
+                    transform.position += Vector3.right * Time.deltaTime * 2f;
+                }
+            }
+            else if (currentDirection.Equals("LEFT"))
+            {
+                if (transform.position.x <= -6f)
+                {
+                    SetLeftBallPoints();
+                    currentDirection = "RIGHT";
+                }
+                else
+                {
+                    transform.position += Vector3.left * Time.deltaTime * 2f;
+                }
             }
             else
             {
-                transform.position += Vector3.right * Time.deltaTime * 2f;
-            }
-        }
-        else if (currentDirection.Equals("LEFT"))
-        {
-            if (transform.position.x <= -6f)
-            {
-                SetLeftBallPoints();
-                currentDirection = "RIGHT";
-            }
-            else
-            {
-                transform.position += Vector3.left * Time.deltaTime * 2f;
-            }
-        }
-        else
-        {
 
+            }
         }
     }
 }

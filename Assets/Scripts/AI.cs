@@ -47,6 +47,8 @@ public class AI : MonoBehaviour {
         }
     }
 
+    bool locking = false;
+
     // Update is called once per frame
     void Update ()
     {
@@ -76,7 +78,10 @@ public class AI : MonoBehaviour {
             
             else //Crappy quickDrop code that bugs out
             {
-                activeSet.LockBlocks(true);
+                if (!locking)
+                {
+                    StartCoroutine(WaitToLock(turnWaitTime));
+                }
             }
             
             
@@ -429,6 +434,14 @@ public class AI : MonoBehaviour {
                 moves.Add("RIGHT");
             }
         }
+    }
+
+    IEnumerator WaitToLock(float time)
+    {
+        locking = true;
+        yield return new WaitForSeconds(time);
+        activeSet.LockBlocks(true);
+        locking = false;
     }
 
     IEnumerator TurnWait(float time)

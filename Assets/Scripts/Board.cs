@@ -41,7 +41,7 @@ public class Board : MonoBehaviour {
         */
         foreach (Transform child in transform)
         {
-            if (!child.name.Equals("LeftWall") && !child.name.Equals("RightWall") && !child.name.Equals("ComboText"))
+            if (!child.name.Equals("LeftWall") && !child.name.Equals("RightWall") && !child.name.Equals("ComboText") && !child.name.Equals("Backing"))
             {
                 Destroy(child.gameObject);
             }
