@@ -16,6 +16,7 @@ public class Block : MonoBehaviour {
     private Vector3 storedOriginal;
     private Vector3 target;
     private bool isMoving = false;
+    private bool isDestroying = false;
 
     public Board board;
 
@@ -60,7 +61,12 @@ public class Block : MonoBehaviour {
 
             try
             {
-                if (instant)
+                if (instant && gravityActive)
+                {
+                    isMoving = false;
+                    StartCoroutine(WaitToInstantFall(addition, 0.1f));
+                }
+                else if (instant)
                 {
                     isMoving = false;
                     transform.position += addition;
@@ -92,6 +98,13 @@ public class Block : MonoBehaviour {
         }
     }
 
+    IEnumerator WaitToInstantFall(Vector3 addition, float time)
+    {
+        yield return new WaitForSeconds(time);
+        transform.position += addition;
+        gravityActive = false;
+    }
+
     public void SetBlockPosition(int row, int column, Vector3 addition)
     {
         SetBlockPosition(row, column, addition, true);
@@ -99,16 +112,14 @@ public class Block : MonoBehaviour {
 
     void Update()
     {
-        /*
-        if (isBusy)
+        if (isDestroying)
         {
-            GetComponent<SpriteRenderer>().color = Color.black;
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, 0.5f);
+            if (transform.localScale == Vector3.zero)
+            {
+                Destroy(gameObject);
+            }
         }
-        else
-        {
-            GetComponent<SpriteRenderer>().color = Color.white;
-        }
-        */
 
         if (isMoving)
         {
@@ -188,8 +199,11 @@ public class Block : MonoBehaviour {
         }
     }
 
+    private bool gravityActive = false;
+
     public void GravityOnBlock() // Used in Board.Clean
     {
+        gravityActive = true;
         int gravRow = row;
         for (int i = row; i < 12; i++)
         {
@@ -219,7 +233,7 @@ public class Block : MonoBehaviour {
         board.boardBools[row, column] = false;
         board.boardBlocks[row, column] = null;
         board.blocksDestroyedCount++;
-        Destroy(gameObject);
+        isDestroying = true;
         //Debug.Log("Added " + row + " " + column);
     }
 }
