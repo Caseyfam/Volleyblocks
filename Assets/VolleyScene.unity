@@ -355,6 +355,7 @@ MonoBehaviour:
     type: 2}
   yellowDrivePrefab: {fileID: 1040772961952240, guid: 1de54841ff5e99c48aff20981b3d002b,
     type: 2}
+  blockFallSpeed: 0.8
   isCPU: 0
   canMovePieces: 0
   bottomTile: {fileID: 0}
@@ -706,7 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useOldAI: 0
-  turnWaitTime: 0
+  turnWaitTime: 100
   aiCanMove: 0
   localChainLength: 0
 --- !u!114 &358213215
@@ -734,6 +735,7 @@ MonoBehaviour:
     type: 2}
   yellowDrivePrefab: {fileID: 1040772961952240, guid: 1de54841ff5e99c48aff20981b3d002b,
     type: 2}
+  blockFallSpeed: 0.8
   isCPU: 1
   canMovePieces: 0
   bottomTile: {fileID: 0}
@@ -2204,6 +2206,7 @@ MonoBehaviour:
     type: 2}
   yellowDrivePrefab: {fileID: 1040772961952240, guid: 1de54841ff5e99c48aff20981b3d002b,
     type: 2}
+  blockFallSpeed: 0.8
   isCPU: 0
   canMovePieces: 0
   bottomTile: {fileID: 0}
@@ -2940,6 +2943,7 @@ MonoBehaviour:
     type: 2}
   yellowDrivePrefab: {fileID: 1040772961952240, guid: 1de54841ff5e99c48aff20981b3d002b,
     type: 2}
+  blockFallSpeed: 0.8
   isCPU: 1
   canMovePieces: 0
   bottomTile: {fileID: 0}
@@ -3002,7 +3006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useOldAI: 0
-  turnWaitTime: 0
+  turnWaitTime: 100
   aiCanMove: 0
   localChainLength: 0
 --- !u!114 &2063762322

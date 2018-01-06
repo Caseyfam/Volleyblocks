@@ -20,7 +20,9 @@ public class Scoring : MonoBehaviour {
         }
         catch
         {
-            Debug.Log("ERROR: Game and / or set count not initialized properly.");
+            //Debug.LogError("ERROR: Game and / or set count not initialized properly.");
+            pointsToGame = 1;
+            gamesToWin = 1;
         }
     }
 

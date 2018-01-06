@@ -52,6 +52,7 @@ public class Board : MonoBehaviour {
         calculatedFirstHit = false;
         GetComponent<GameOver>().gameOver = false;
         GetComponent<ActiveSet>().Reset();
+        currentColor = Color.white;
     }
 
     // Use this for initialization
@@ -122,7 +123,7 @@ public class Board : MonoBehaviour {
     public void CleanBoard()
     {
         CleanBoardAlgorithm();
-        CleanBoardAlgorithm(); // Second pass
+        CleanBoardAlgorithm(); // second pass
 
         StartCoroutine(ComboPause(0.1f));
     }
@@ -190,6 +191,8 @@ public class Board : MonoBehaviour {
             }
         }
 
+
+
         if (redo)
         {
             yield return new WaitForSeconds(time);
@@ -216,6 +219,36 @@ public class Board : MonoBehaviour {
                 }
             }
             blocksDestroyedCount = 0;
+
+            StartCoroutine(CheckToCreateActiveSet());
+            // Need to move this so that this only spawns when
+            // all moving blocks are done
+        }
+    }
+
+    IEnumerator CheckToCreateActiveSet()
+    {
+        bool busy = false;
+        for (int i = rows - 1; i >= 0; i--) // Start from bottom row
+        {
+            for (int j = 0; j < columns; j++) // Columns
+            {
+                if (boardBlocks[i, j] != null)
+                {
+                    if (boardBlocks[i, j].GetComponent<Block>().isBusy)
+                    {
+                        busy = true;
+                    }
+                }
+            }
+        }
+        yield return new WaitForSeconds(0.01f);
+        if (busy)
+        {
+            StartCoroutine(CheckToCreateActiveSet());
+        }
+        else
+        {
             activeSet.CreateActiveSet();
         }
     }

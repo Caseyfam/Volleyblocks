@@ -5,6 +5,7 @@ using UnityEngine;
 public class ActiveSet : MonoBehaviour
 {
     public GameObject redPrefab, bluePrefab, greenPrefab, yellowPrefab, redDrivePrefab, blueDrivePrefab, greenDrivePrefab, yellowDrivePrefab;
+    public float blockFallSpeed = 0.8f; // Should get this from some global object maybe
 
     public bool isCPU = false;
 
@@ -123,7 +124,7 @@ public class ActiveSet : MonoBehaviour
             }
 
             StopAllCoroutines();
-            StartCoroutine(BlockFall(0.8f));
+            StartCoroutine(BlockFall(blockFallSpeed));
         }
     }
 
@@ -486,8 +487,15 @@ public class ActiveSet : MonoBehaviour
         {
             if (!isCPU)
             {
-                QuickDrop();
-                ManualLock();
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    LockBlocks(true);
+                }
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    ManualLock();
+                }
+
                 if (Input.GetMouseButtonDown(0))
                 {
                     RotateActiveSet("COUNTERCLOCKWISE");
@@ -496,7 +504,6 @@ public class ActiveSet : MonoBehaviour
                 {
                     RotateActiveSet("CLOCKWISE");
                 }
-
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     MoveActiveSet("RIGHT");
@@ -510,59 +517,6 @@ public class ActiveSet : MonoBehaviour
                     MoveActiveSet("DOWN");
                 }
             }
-        }
-    }
-
-    IEnumerator BlockFall(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        switch (orientation)
-        {
-            case "UP":
-                if (!CheckIfOverlapping(bottomRow + 1, bottomColumn))
-                {
-                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
-                }
-                else // Target block is overlapping
-                {
-                    yield return new WaitForSeconds(1f);
-                    LockBlocks(true);
-                }
-                break;
-            case "DOWN":
-                if (!CheckIfOverlapping(topRow + 1, topColumn))
-                {
-                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
-                }
-                else // Target block is overlapping
-                {
-                    yield return new WaitForSeconds(1f);
-                    LockBlocks(true);
-                }
-                break;
-            case "LEFT":
-            case "RIGHT":
-                if (!CheckIfOverlapping(topRow + 1, topColumn) && !CheckIfOverlapping(bottomRow + 1, bottomColumn))
-                {
-                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
-                }
-                else // Target block is overllaping
-                {
-                    yield return new WaitForSeconds(1f);
-                    LockBlocks(true);
-                }
-                break;
-        }
-        StopAllCoroutines();
-        StartCoroutine(BlockFall(0.8f));
-    }
-
-    void QuickDrop()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            LockBlocks(true);
         }
     }
 
@@ -602,18 +556,73 @@ public class ActiveSet : MonoBehaviour
                 }
                 break;
         }
-        if (canManualLock && Input.GetKeyDown(KeyCode.S))
+        if (canManualLock)
         {
             LockBlocks(true);
         }
     }
 
+    IEnumerator BlockFall(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        // DEBUG STATEMENT
+        if (gameObject.name.Equals("playerBoard"))
+        {
+            //Debug.Log(orientation);
+        }
+
+        switch (orientation)
+        {
+            case "UP":
+                if (!CheckIfOverlapping(bottomRow + 1, bottomColumn))
+                {
+                    //Debug.Log("FALLING");
+                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
+                }
+                else // Target block is overlapping
+                {
+                    //Debug.Log("LOCKING NOW");
+                    yield return new WaitForSeconds(1f);
+                    LockBlocks(true);
+                }
+                break;
+            case "DOWN":
+                if (!CheckIfOverlapping(topRow + 1, topColumn))
+                {
+                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
+                }
+                else // Target block is overlapping
+                {
+                    yield return new WaitForSeconds(1f);
+                    LockBlocks(true);
+                }
+                break;
+            case "LEFT":
+            case "RIGHT":
+                if (!CheckIfOverlapping(topRow + 1, topColumn) && !CheckIfOverlapping(bottomRow + 1, bottomColumn))
+                {
+                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
+                }
+                else // Target block is overllaping
+                {
+                    yield return new WaitForSeconds(1f);
+                    LockBlocks(true);
+                }
+                break;
+        }
+        StopAllCoroutines();
+        StartCoroutine(BlockFall(blockFallSpeed));
+    }
+
     public void LockBlocks(bool instant)
     {
+        // Bug: LockBlocks during mid-gravity fall causes glitched block placement
+        //      Really more of a GravityOnBlocks bug
+
         canMovePieces = false;
         GravityOnBlocks(instant);
         StopAllCoroutines();
-
 
         board.CleanBoard();
         if (isCPU)
@@ -633,6 +642,7 @@ public class ActiveSet : MonoBehaviour
     {
         int gravTopRow = topRow;
         int gravBottomRow = bottomRow;
+        //Debug.Log("topRow: " + topRow + " bottomRow: " + bottomRow);
         switch (orientation)
         {
             case "UP":

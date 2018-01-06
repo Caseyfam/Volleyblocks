@@ -9,9 +9,11 @@ public class Block : MonoBehaviour {
     public string blockColor;
     public bool isDrive = false;
     public bool willBeDestroyed = false;
+    public bool isBusy = false;
 
     public GameObject above, right, below, left;
 
+    private Vector3 storedOriginal;
     private Vector3 target;
     private bool isMoving = false;
 
@@ -41,48 +43,53 @@ public class Block : MonoBehaviour {
 
    public void SetBlockPosition(int row, int column, Vector3 addition, bool instant)
     {
-        try
+        if (!isBusy)
         {
-            board.boardBlocks[this.row, this.column] = null;
-            board.boardBools[this.row, this.column] = false;
-        }
-        catch
-        {
-
-        }
-
-        this.row = row;
-        this.column = column;
-
-        try
-        {
-            if (instant)
+            try
             {
-                isMoving = false;
-                transform.position += addition;
+                board.boardBlocks[this.row, this.column] = null;
+                board.boardBools[this.row, this.column] = false;
             }
-            else
+            catch
             {
-                target = transform.position + addition;
-                isMoving = true;
+
             }
-        }
-        catch
-        {
 
-        }
-        
-        try
-        {
-            board.boardBlocks[row, column] = gameObject;
-            board.boardBools[row, column] = true;
-        }
-        catch
-        {
+            this.row = row;
+            this.column = column;
 
-        }
+            try
+            {
+                if (instant)
+                {
+                    isMoving = false;
+                    transform.position += addition;
+                }
+                else
+                {
+                    target = transform.position + addition;
+                    storedOriginal = transform.position;
+                    isMoving = true;
+                    isBusy = true;
+                }
+            }
+            catch
+            {
 
-        CalculateNeighbors();
+            }
+
+            try
+            {
+                board.boardBlocks[row, column] = gameObject;
+                board.boardBools[row, column] = true;
+            }
+            catch
+            {
+
+            }
+
+            CalculateNeighbors();
+        }
     }
 
     public void SetBlockPosition(int row, int column, Vector3 addition)
@@ -92,12 +99,27 @@ public class Block : MonoBehaviour {
 
     void Update()
     {
+        /*
+        if (isBusy)
+        {
+            GetComponent<SpriteRenderer>().color = Color.black;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        */
+
         if (isMoving)
         {
+            //transform.position = Vector3.MoveTowards(transform.position, target, (storedOriginal.y - target.y)/8f);
             transform.position = Vector3.MoveTowards(transform.position, target, 0.1f);
+            //Debug.Log("Block: " + gameObject.name + "transform.position: " + transform.position + " target: " + target);
+            // Need to make steps associated with how big of a jump the target is.
             if (transform.position == target)
             {
                 isMoving = false;
+                isBusy = false;
             }
         }
     }
@@ -166,7 +188,7 @@ public class Block : MonoBehaviour {
         }
     }
 
-    public void GravityOnBlock() // Remember, need to update from bottom to top
+    public void GravityOnBlock() // Used in Board.Clean
     {
         int gravRow = row;
         for (int i = row; i < 12; i++)
@@ -176,9 +198,9 @@ public class Block : MonoBehaviour {
                 gravRow = i;
             }
         }
-        //SetBlockPosition(gravRow, column, new Vector3(0f, -0.8f * (gravRow - row)), false);
-        // Non-instant blockFall vs. instant
         SetBlockPosition(gravRow, column, new Vector3(0f, -0.8f * (gravRow - row)), true);
+        // Non-instant blockFall vs. instant
+        //SetBlockPosition(gravRow, column, new Vector3(0f, -0.8f * (gravRow - row)), true);
     }
 
 

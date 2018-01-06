@@ -45,7 +45,11 @@ public class BoardsInPlay : MonoBehaviour {
         }
         catch
         {
-            Debug.LogError("ERROR: Could not set up which players are in play.");
+            // Debug.LogError("ERROR: Could not set up which players are in play.");
+            leftPlayer.SetActive(true);
+            leftBoard = leftPlayer.GetComponent<Board>();
+            rightCPU.SetActive(true);
+            rightBoard = rightCPU.GetComponent<Board>();
         }
     }
 }
