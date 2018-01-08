@@ -13,6 +13,11 @@ public class Ball : MonoBehaviour {
     public float maxHeight = 3.33f;
     public float minHeight = -2.33f;
 
+    [HideInInspector]
+    public bool serveDone = false;
+
+    private bool servePause = false;
+
     void Awake()
     {
         leftBoard = GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().leftBoard;
@@ -24,9 +29,20 @@ public class Ball : MonoBehaviour {
         currentPointLead = 0;
         GetComponentInChildren<TextMesh>().text = currentPointLead.ToString();
         determinedFirstMove = false;
-        transform.position = new Vector3(0f, 0.5f, 10f);
+        transform.position = new Vector3(0f, -2.64f, 10f);
+        transform.localScale = new Vector3(6.197968f, 6.197968f, 6.197968f);
         currentDirection = "NONE";
         GetComponent<SpriteRenderer>().color = Color.white;
+        servePause = false;
+        serveDone = false;
+        GameObject.Find("ReadySign").GetComponent<ReadySign>().Reset();
+        StartCoroutine(ServePause(0.7f));
+    }
+
+    IEnumerator ServePause(float time)
+    {
+        yield return new WaitForSeconds(time);
+        servePause = true;
     }
 
 	// Use this for initialization
@@ -131,7 +147,22 @@ public class Ball : MonoBehaviour {
 
     void Update()
     {
-        transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
+        if (serveDone)
+        {
+            transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
+        }
+        else
+        {
+            if (servePause)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0f, 0.63f, 10f), 0.07f);
+                transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f), 0.2f);
+                if (transform.position == new Vector3(0f, 0.63f, 10f))
+                {
+                    serveDone = true;
+                }
+            }
+        }
 
         if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
         {

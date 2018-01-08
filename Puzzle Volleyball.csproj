@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\LoadBattle.cs" />
     <Compile Include="Assets\Scripts\LogoRotate.cs" />
     <Compile Include="Assets\Scripts\Passed.cs" />
+    <Compile Include="Assets\Scripts\ReadySign.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
     <Compile Include="Assets\Scripts\TideAnimation.cs" />
