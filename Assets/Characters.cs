@@ -6,15 +6,15 @@ public class Characters : MonoBehaviour
 {
     public Sprite[] buffRawSprites;
     public Sprite[] hattyRawSprites;
+    public List<Character> storedCharacters;
 
     // Want to change this later so each match doesn't re-store characters
-    private void Awake()
+    public void Awake()
     {
+        storedCharacters = new List<Character>();
         Character hattyRaw = new Character("hattyRaw", hattyRawSprites[0], hattyRawSprites[1], hattyRawSprites[2], hattyRawSprites[3], hattyRawSprites[4]);
-        Character buffRaw = new Character("buffRaw", buffRawSprites[0], buffRawSprites[1], buffRawSprites[2], buffRawSprites[3], buffRawSprites[4]);
+        AddCharacter(hattyRaw);
     }
-
-    public List<Character> storedCharacters = new List<Character>();
 
     public void AddCharacter(Character newEntry)
     {
@@ -23,35 +23,24 @@ public class Characters : MonoBehaviour
 
     public Character RetrieveCharacter(string name)
     {
+        bool found = false;
+        Character returnChar = new Character();
         foreach (Character character in storedCharacters)
         {
-            if (character.name == name)
+            if (character.name.Equals(name))
             {
-                return character;
+                returnChar = character;
+                found = true;
             }
         }
-        return null;
+        if (found)
+        {
+            return returnChar;
+        }
+        else
+        {
+            Debug.LogError("Null Character returned");
+            return null;
+        }
     }
 }
-
-public class Character : MonoBehaviour
-{
-    public new string name;
-    public Sprite forwardFace, sideFace, sideWinning, sideLosing, sideDefeated;
-
-
-
-    public Character(string name, Sprite forwardFace, Sprite sideFace, Sprite sideWinning, Sprite sideLosing, Sprite sideDefeated)
-    {
-        this.name = name;
-        this.forwardFace = forwardFace;
-        this.sideWinning = sideWinning;
-        this.sideLosing = sideLosing;
-        this.sideDefeated = sideDefeated;
-
-        GetComponent<Characters>().AddCharacter(this);
-    }
-}
-
-
-
