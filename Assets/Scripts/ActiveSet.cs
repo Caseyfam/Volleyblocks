@@ -95,6 +95,7 @@ public class ActiveSet : MonoBehaviour
         tileNames = SelectRandomBlock();
 
         CreateActiveSet(tileNames[0], tileNames[1]);
+        updateHighlight = true;
     }
 
     public void CreateActiveSet(string block1, string block2)
@@ -492,6 +493,7 @@ public class ActiveSet : MonoBehaviour
         }
     }
     // Update is called once per frame
+    private bool updateHighlight = false;
     void Update()
     {
         if (canMovePieces)
@@ -501,6 +503,7 @@ public class ActiveSet : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.W))
                 {
                     LockBlocks(true);
+                    updateHighlight = true;
                 }
                 if (Input.GetKeyDown(KeyCode.S))
                 {
@@ -510,24 +513,33 @@ public class ActiveSet : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     RotateActiveSet("COUNTERCLOCKWISE");
+                    updateHighlight = true;
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
                     RotateActiveSet("CLOCKWISE");
+                    updateHighlight = true;
                 }
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     MoveActiveSet("RIGHT");
+                    updateHighlight = true;
                 }
                 else if (Input.GetKeyDown(KeyCode.A))
                 {
                     MoveActiveSet("LEFT");
+                    updateHighlight = true;
                 }
                 else if (Input.GetKeyDown(KeyCode.S))
                 {
                     MoveActiveSet("DOWN");
                 }
             }
+        }
+        if (updateHighlight)
+        {
+            GetComponent<FallHighlight>().UpdateHighlight(topTile, bottomTile, orientation);
+            updateHighlight = false;
         }
     }
 

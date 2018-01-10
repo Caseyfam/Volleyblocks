@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Characters.cs" />
+    <Compile Include="Assets\FallHighlight.cs" />
     <Compile Include="Assets\PortraitEmote.cs" />
     <Compile Include="Assets\Scripts\ActiveSet.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
