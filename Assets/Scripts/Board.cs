@@ -23,6 +23,46 @@ public class Board : MonoBehaviour {
     public SpriteRenderer leftWall, rightWall;
 
     public TextMesh comboText;
+    public PortraitEmote portrait;
+
+    public Sprite frontIdle, sideIdle, sideWin, sideLose, sideDefeat;
+
+    public void SetBoardSprites(Sprite frontIdle, Sprite sideIdle, Sprite sideWin, Sprite sideLose, Sprite sideDefeat)
+    {
+        this.frontIdle = frontIdle;
+        this.sideIdle = sideIdle;
+        this.sideWin = sideWin;
+        this.sideLose = sideLose;
+        this.sideDefeat = sideDefeat;
+    }
+
+    public void EmoteBoard(string state)
+    {
+        Sprite selectedSprite;
+        switch (state)
+        {
+            case "frontIdle":
+                selectedSprite = frontIdle;
+                break;
+            case "sideIdle":
+                selectedSprite = sideIdle;
+                break;
+            case "sideWin":
+                selectedSprite = sideWin;
+                break;
+            case "sideLose":
+                selectedSprite = sideLose;
+                break;
+            case "sideDefeat":
+                selectedSprite = sideDefeat;
+                break;
+            default:
+                Debug.LogError("EmoteBoard in Board.CS defaulted");
+                selectedSprite = sideIdle;
+                break;
+        }
+        portrait.Emote(selectedSprite, 0.8f, 1f);
+    }
 
     public void Reset()
     {

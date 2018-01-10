@@ -29,6 +29,5 @@ public class FallHighlight : MonoBehaviour {
                 highlight.transform.localScale = multiCol;
                 break;
         }
-        //highlight.transform.position = new Vector3(bottomBlock.transform.position.x, highlight.transform.position.y, highlight.transform.position.z);
     }
 }

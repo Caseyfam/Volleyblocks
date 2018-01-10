@@ -38,10 +38,6 @@ public class ActiveSet : MonoBehaviour
 
     UnityEngine.Random random = new UnityEngine.Random();
 
-    public PortraitEmote portrait;
-    public string characterName;
-    private Character boardCharacter;
-
     public void Reset()
     {
         canMovePieces = false;
@@ -64,13 +60,6 @@ public class ActiveSet : MonoBehaviour
     {
         board = GetComponent<Board>();
     }
-
-    private void Start()
-    {
-        boardCharacter = GameObject.Find("GameLogic").GetComponent<Characters>().RetrieveCharacter(characterName);
-    }
-
-
 
     public string[] SelectRandomBlock()
     {
@@ -655,7 +644,6 @@ public class ActiveSet : MonoBehaviour
 
         GetComponent<GameOver>().CheckForGameOver();
 
-        portrait.Emote(boardCharacter.sideFace, 0.8f, 1f);
         // Ideally, we would have board clean the board
         // and time it appropriately so that all drives are cleared
         // in a delayed avalanche. Once that's all done, 

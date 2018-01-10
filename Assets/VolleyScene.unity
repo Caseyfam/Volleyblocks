@@ -219,7 +219,7 @@ Transform:
   m_LocalScale: {x: 1.06, y: 1.06, z: 1.06}
   m_Children: []
   m_Father: {fileID: 1272212085}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &141379641
 SpriteRenderer:
@@ -411,6 +411,12 @@ MonoBehaviour:
   leftWall: {fileID: 1249009967}
   rightWall: {fileID: 655533298}
   comboText: {fileID: 1265161878}
+  portrait: {fileID: 141379642}
+  frontIdle: {fileID: 21300000, guid: b3a61323af2d13d469a25d7f49523ac8, type: 3}
+  sideIdle: {fileID: 21300000, guid: 8f226a7fcc27e72409ae314159097826, type: 3}
+  sideWin: {fileID: 21300000, guid: 7636682d580ef02428922b23cc91140f, type: 3}
+  sideLose: {fileID: 21300000, guid: 724152346a0627f4bb9747fc2c8a7d9c, type: 3}
+  sideDefeat: {fileID: 21300000, guid: 562f379b3e6d8a5489a3df8d07636a03, type: 3}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -454,8 +460,6 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
-  portrait: {fileID: 141379642}
-  characterName: hattyRaw
 --- !u!114 &152511244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +578,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 205971348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6030998, y: -4.7511997, z: 0}
+  m_LocalPosition: {x: 1.6030998, y: -4.79, z: 0}
   m_LocalScale: {x: 3.9470298, y: 44.368347, z: 4.31216}
   m_Children: []
   m_Father: {fileID: 152511241}
@@ -649,7 +653,7 @@ Transform:
   m_LocalScale: {x: 24.21937, y: 43.91618, z: 23.866499}
   m_Children: []
   m_Father: {fileID: 1272212085}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &236321761
 SpriteMask:
@@ -990,8 +994,6 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
-  portrait: {fileID: 141379642}
-  characterName: hattyRaw
 --- !u!114 &358213216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,6 +1010,12 @@ MonoBehaviour:
   leftWall: {fileID: 244498949}
   rightWall: {fileID: 165137912}
   comboText: {fileID: 117431973}
+  portrait: {fileID: 141379642}
+  frontIdle: {fileID: 21300000, guid: b3a61323af2d13d469a25d7f49523ac8, type: 3}
+  sideIdle: {fileID: 21300000, guid: 8f226a7fcc27e72409ae314159097826, type: 3}
+  sideWin: {fileID: 21300000, guid: 7636682d580ef02428922b23cc91140f, type: 3}
+  sideLose: {fileID: 21300000, guid: 724152346a0627f4bb9747fc2c8a7d9c, type: 3}
+  sideDefeat: {fileID: 21300000, guid: 562f379b3e6d8a5489a3df8d07636a03, type: 3}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -1020,7 +1028,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 358213212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.02, y: 4.97, z: 10.89}
+  m_LocalPosition: {x: -8.11, y: 5.12, z: 10.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 988638738}
@@ -1656,7 +1664,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 737830061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8799999, y: -4.7511997, z: 0}
+  m_LocalPosition: {x: 0.8799999, y: -9.5412, z: 0}
   m_LocalScale: {x: 3.9470298, y: 44.368347, z: 4.31216}
   m_Children: []
   m_Father: {fileID: 1325199826}
@@ -1941,7 +1949,7 @@ Transform:
   m_LocalScale: {x: 24.21937, y: 43.916172, z: 23.866497}
   m_Children: []
   m_Father: {fileID: 1272212085}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &848455302
 SpriteMask:
@@ -2149,7 +2157,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 988638737}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5131006, y: -4.6011996, z: 0}
+  m_LocalPosition: {x: 1.5131006, y: -4.79, z: 0}
   m_LocalScale: {x: 3.9470298, y: 44.368347, z: 4.31216}
   m_Children: []
   m_Father: {fileID: 358213217}
@@ -2220,7 +2228,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1122349528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8299999, y: -4.6011996, z: 0}
+  m_LocalPosition: {x: 0.8299999, y: -4.79, z: 0}
   m_LocalScale: {x: 3.9470298, y: 44.368347, z: 4.31216}
   m_Children: []
   m_Father: {fileID: 2063762320}
@@ -2280,7 +2288,6 @@ GameObject:
   - component: {fileID: 1133255542}
   - component: {fileID: 1133255543}
   - component: {fileID: 1133255545}
-  - component: {fileID: 1133255544}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -2347,29 +2354,6 @@ MonoBehaviour:
   rightCPU: {fileID: 2063762317}
   leftPlayer: {fileID: 152511240}
   rightPlayer: {fileID: 1325199822}
---- !u!114 &1133255544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1133255539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a9fa250eef2d844a3992c092b26966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buffRawSprites:
-  - {fileID: 21300000, guid: 7788a8445364d7f4ca78380f8ac5995b, type: 3}
-  - {fileID: 21300000, guid: de5187a77f1059845ae97b2cf3e8cb4b, type: 3}
-  - {fileID: 21300000, guid: 9eaacb4b79c94394cb435fe248d2a433, type: 3}
-  - {fileID: 21300000, guid: 2a6af553e50ad5248b864546937e379a, type: 3}
-  - {fileID: 21300000, guid: 5b6dd846cf6f7654099d9fc94993086e, type: 3}
-  hattyRawSprites:
-  - {fileID: 21300000, guid: b3a61323af2d13d469a25d7f49523ac8, type: 3}
-  - {fileID: 21300000, guid: 8f226a7fcc27e72409ae314159097826, type: 3}
-  - {fileID: 21300000, guid: 7636682d580ef02428922b23cc91140f, type: 3}
-  - {fileID: 21300000, guid: 724152346a0627f4bb9747fc2c8a7d9c, type: 3}
-  - {fileID: 21300000, guid: 562f379b3e6d8a5489a3df8d07636a03, type: 3}
 --- !u!114 &1133255545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2796,14 +2780,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 848455301}
   - {fileID: 236321760}
-  - {fileID: 1853437632}
+  - {fileID: 848455301}
   - {fileID: 141379640}
+  - {fileID: 1853437632}
   - {fileID: 152511241}
   - {fileID: 358213217}
-  - {fileID: 2063762320}
   - {fileID: 1325199826}
+  - {fileID: 2063762320}
   - {fileID: 2085579306}
   - {fileID: 1626061757}
   - {fileID: 1330235192}
@@ -2891,8 +2875,6 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
-  portrait: {fileID: 1853437634}
-  characterName: hattyRaw
 --- !u!114 &1325199825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2905,10 +2887,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksDestroyedCount: 0
-  thisBoardPosition: 0
+  thisBoardPosition: 1
   leftWall: {fileID: 978175793}
   rightWall: {fileID: 1855277185}
   comboText: {fileID: 151264734}
+  portrait: {fileID: 1853437634}
+  frontIdle: {fileID: 21300000, guid: 7788a8445364d7f4ca78380f8ac5995b, type: 3}
+  sideIdle: {fileID: 21300000, guid: de5187a77f1059845ae97b2cf3e8cb4b, type: 3}
+  sideWin: {fileID: 21300000, guid: 9eaacb4b79c94394cb435fe248d2a433, type: 3}
+  sideLose: {fileID: 21300000, guid: 2a6af553e50ad5248b864546937e379a, type: 3}
+  sideDefeat: {fileID: 21300000, guid: 5b6dd846cf6f7654099d9fc94993086e, type: 3}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -2930,7 +2918,7 @@ Transform:
   - {fileID: 1855277186}
   - {fileID: 151264736}
   m_Father: {fileID: 1272212085}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1325199827
 MonoBehaviour:
@@ -3402,7 +3390,7 @@ Transform:
   m_LocalScale: {x: 1.06, y: 1.06, z: 1.06}
   m_Children: []
   m_Father: {fileID: 1272212085}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &1853437633
 SpriteRenderer:
@@ -3457,7 +3445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1361281aaa44c47977643929c45ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onRight: 0
+  onRight: 1
 --- !u!1 &1855277184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,8 +3717,6 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
-  portrait: {fileID: 1853437634}
-  characterName: hattyRaw
 --- !u!114 &2063762319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3747,6 +3733,12 @@ MonoBehaviour:
   leftWall: {fileID: 445231370}
   rightWall: {fileID: 861412621}
   comboText: {fileID: 816970139}
+  portrait: {fileID: 1853437634}
+  frontIdle: {fileID: 21300000, guid: 7788a8445364d7f4ca78380f8ac5995b, type: 3}
+  sideIdle: {fileID: 21300000, guid: de5187a77f1059845ae97b2cf3e8cb4b, type: 3}
+  sideWin: {fileID: 21300000, guid: 9eaacb4b79c94394cb435fe248d2a433, type: 3}
+  sideLose: {fileID: 21300000, guid: 2a6af553e50ad5248b864546937e379a, type: 3}
+  sideDefeat: {fileID: 21300000, guid: 5b6dd846cf6f7654099d9fc94993086e, type: 3}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -3759,7 +3751,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2063762317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 4.97, z: 10.89}
+  m_LocalPosition: {x: 4, y: 5.12, z: 10.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122349529}
@@ -3768,7 +3760,7 @@ Transform:
   - {fileID: 861412620}
   - {fileID: 816970138}
   m_Father: {fileID: 1272212085}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2063762321
 MonoBehaviour:
@@ -3782,7 +3774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useOldAI: 0
-  turnWaitTime: 100
+  turnWaitTime: 1
   aiCanMove: 0
   localChainLength: 0
 --- !u!114 &2063762322

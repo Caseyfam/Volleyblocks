@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour {
     bool determinedFirstMove = false;
     Board leftBoard, rightBoard;
     int currentPointLead;
+    int previousPointLead = 0;
 
     private string currentDirection = "NONE";
 
@@ -109,7 +110,20 @@ public class Ball : MonoBehaviour {
                 if (attackedBoard.GetPoints() >= currentPointLead)
                 {
                     //Debug.Log(attackedBoard.GetPoints());
+                    previousPointLead = currentPointLead;
                     currentPointLead = attackedBoard.GetPoints();
+
+                    if (currentPointLead >= previousPointLead + 20)
+                    {
+                        // Super emote
+                        attackedBoard.EmoteBoard("sideWin");
+                    }
+                    else
+                    {
+                        // Normal emote
+                        attackedBoard.EmoteBoard("sideIdle");
+                    }
+
                     GetComponentInChildren<TextMesh>().text = currentPointLead.ToString();
 
                     // Call color change here
