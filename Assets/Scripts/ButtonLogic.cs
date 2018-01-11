@@ -51,7 +51,7 @@ public class ButtonLogic : MonoBehaviour {
                 break;
             case "Hard":
                 cpuDifficulty = "Impossible";
-                turnLength = 0.05f;
+                turnLength = 0.0f;
                 break;
             case "Impossible":
             default:

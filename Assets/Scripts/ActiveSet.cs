@@ -51,9 +51,16 @@ public class ActiveSet : MonoBehaviour
             GetComponent<AI>().Reset();
         }
 
-        modifiedRandomizer = new List<GameObject> { redPrefab, redPrefab, redPrefab, bluePrefab, bluePrefab, bluePrefab, greenPrefab, greenPrefab, greenPrefab, yellowPrefab, yellowPrefab, yellowPrefab, redDrivePrefab, blueDrivePrefab, greenDrivePrefab, yellowDrivePrefab };
+        ResetRandomizer();
         CreateActiveSet();
         // Throw in start whistle function here
+    }
+
+    private int randomCounter = 0;
+    void ResetRandomizer()
+    {
+        modifiedRandomizer = new List<GameObject> { redPrefab, redPrefab, redPrefab, bluePrefab, bluePrefab, bluePrefab, greenPrefab, greenPrefab, greenPrefab, yellowPrefab, yellowPrefab, yellowPrefab, redDrivePrefab, blueDrivePrefab, greenDrivePrefab, yellowDrivePrefab };
+        randomCounter = 0;
     }
 
     void Awake()
@@ -72,11 +79,84 @@ public class ActiveSet : MonoBehaviour
         int firstIndex = Random.Range(0, modifiedRandomizer.Count);
         returnTileNames[0] = modifiedRandomizer[firstIndex].name;
         modifiedRandomizer.RemoveAt(firstIndex);
-        int secondIndex = Random.Range(0, modifiedRandomizer.Count);
-        returnTileNames[1] = modifiedRandomizer[secondIndex].name;
-        modifiedRandomizer.RemoveAt(secondIndex);
+
+        returnTileNames = DetermineSecondBlock(returnTileNames);
 
         return returnTileNames;
+    }
+
+    string[] DetermineSecondBlock(string[] returnTileNames)
+    {
+        bool shouldLoop = false;
+        randomCounter++;
+        if (randomCounter >= 5)
+        {
+            ResetRandomizer();
+        }
+        int secondIndex = Random.Range(0, modifiedRandomizer.Count);
+        switch (returnTileNames[0])
+        {
+            default:
+            case "Red":
+                if (modifiedRandomizer[secondIndex].name == "RedDrive")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "Yellow":
+                if (modifiedRandomizer[secondIndex].name == "YellowDrive")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "Green":
+                if (modifiedRandomizer[secondIndex].name == "GreenDrive")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "Blue":
+                if (modifiedRandomizer[secondIndex].name == "BlueDrive")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "RedDrive":
+                if (modifiedRandomizer[secondIndex].name == "Red")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "YellowDrive":
+                if (modifiedRandomizer[secondIndex].name == "Yellow")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "GreenDrive":
+                if (modifiedRandomizer[secondIndex].name == "Green")
+                {
+                    shouldLoop = true;
+                }
+                break;
+            case "BlueDrive":
+                if (modifiedRandomizer[secondIndex].name == "Blue")
+                {
+                    shouldLoop = true;
+                }
+                break;
+        }
+        if (shouldLoop)
+        {
+            return DetermineSecondBlock(returnTileNames);
+        }
+        else
+        {
+            returnTileNames[1] = modifiedRandomizer[secondIndex].name;
+            modifiedRandomizer.RemoveAt(secondIndex);
+
+            return returnTileNames;
+        }
     }
 
     public void CreateActiveSet()
@@ -482,7 +562,8 @@ public class ActiveSet : MonoBehaviour
         }
     }
     // Update is called once per frame
-    private bool updateHighlight = false;
+    [HideInInspector]
+    public bool updateHighlight = false;
     void Update()
     {
         if (canMovePieces)

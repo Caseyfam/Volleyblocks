@@ -60,15 +60,19 @@ public class AI : MonoBehaviour {
                 {
                     case "COUNTERCLOCKWISE":
                         activeSet.RotateActiveSet("COUNTERCLOCKWISE");
+                        activeSet.updateHighlight = true;
                         break;
                     case "CLOCKWISE":
                         activeSet.RotateActiveSet("CLOCKWISE");
+                        activeSet.updateHighlight = true;
                         break;
                     case "RIGHT":
                         activeSet.MoveActiveSet("RIGHT");
+                        activeSet.updateHighlight = true;
                         break;
                     case "LEFT":
                         activeSet.MoveActiveSet("LEFT");
+                        activeSet.updateHighlight = true;
                         break;
                     default:
                         break;
@@ -81,6 +85,7 @@ public class AI : MonoBehaviour {
                 if (!locking)
                 {
                     StartCoroutine(WaitToLock(turnWaitTime));
+                    activeSet.updateHighlight = true;
                 }
             }
             
@@ -313,7 +318,14 @@ public class AI : MonoBehaviour {
                             currentOrientation = "UP";
                             break;
                         case 1: // DOWN
-                            tempBoardBlocks[blockPos[0] - 1, blockPos[1]] = activeSet.bottomBlock.gameObject;
+                            try
+                            {
+                                tempBoardBlocks[blockPos[0] - 1, blockPos[1]] = activeSet.bottomBlock.gameObject;
+                            }
+                            catch
+                            {
+
+                            }
                             tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.topBlock.gameObject;
                             currentOrientation = "DOWN";
                             break;
