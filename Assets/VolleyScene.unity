@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 152511243}
   - component: {fileID: 152511244}
   - component: {fileID: 152511245}
+  - component: {fileID: 152511246}
   m_Layer: 0
   m_Name: playerBoard
   m_TagString: Untagged
@@ -460,6 +461,7 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
+  updateHighlight: 0
 --- !u!114 &152511244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,6 +486,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlight: {fileID: 205971348}
+--- !u!114 &152511246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152511240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47971c0c1a5d3f4e8fb914ab9934f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextBlocks:
+  - topBlock: 3
+    bottomBlock: 3
+    topIsDrive: 0
+    bottomIsDrive: 0
+  - topBlock: 3
+    bottomBlock: 3
+    topIsDrive: 0
+    bottomIsDrive: 0
+  - topBlock: 3
+    bottomBlock: 3
+    topIsDrive: 0
+    bottomIsDrive: 0
 --- !u!1 &165137910
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1020,7 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
+  updateHighlight: 0
 --- !u!114 &358213216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2875,6 +2902,7 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
+  updateHighlight: 0
 --- !u!114 &1325199825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,6 +3745,7 @@ MonoBehaviour:
   topRow: 0
   topColumn: 0
   canManualLock: 0
+  updateHighlight: 0
 --- !u!114 &2063762319
 MonoBehaviour:
   m_ObjectHideFlags: 0

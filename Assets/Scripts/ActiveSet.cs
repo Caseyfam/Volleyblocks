@@ -70,19 +70,26 @@ public class ActiveSet : MonoBehaviour
 
     public string[] SelectRandomBlock()
     {
-        if (modifiedRandomizer.Count <= 0)
+        if (GetComponent<PredeterminedBlocks>())
         {
-            modifiedRandomizer = new List<GameObject> { redPrefab, redPrefab, redPrefab, bluePrefab, bluePrefab, bluePrefab, greenPrefab, greenPrefab, greenPrefab, yellowPrefab, yellowPrefab, yellowPrefab, redDrivePrefab, blueDrivePrefab, greenDrivePrefab, yellowDrivePrefab };
+            return GetComponent<PredeterminedBlocks>().GetNextBlock();
         }
+        else
+        {
+            if (modifiedRandomizer.Count <= 0)
+            {
+                modifiedRandomizer = new List<GameObject> { redPrefab, redPrefab, redPrefab, bluePrefab, bluePrefab, bluePrefab, greenPrefab, greenPrefab, greenPrefab, yellowPrefab, yellowPrefab, yellowPrefab, redDrivePrefab, blueDrivePrefab, greenDrivePrefab, yellowDrivePrefab };
+            }
 
-        string[] returnTileNames = new string[2];
-        int firstIndex = Random.Range(0, modifiedRandomizer.Count);
-        returnTileNames[0] = modifiedRandomizer[firstIndex].name;
-        modifiedRandomizer.RemoveAt(firstIndex);
+            string[] returnTileNames = new string[2];
+            int firstIndex = Random.Range(0, modifiedRandomizer.Count);
+            returnTileNames[0] = modifiedRandomizer[firstIndex].name;
+            modifiedRandomizer.RemoveAt(firstIndex);
 
-        returnTileNames = DetermineSecondBlock(returnTileNames);
+            returnTileNames = DetermineSecondBlock(returnTileNames);
 
-        return returnTileNames;
+            return returnTileNames;
+        }
     }
 
     string[] DetermineSecondBlock(string[] returnTileNames)
@@ -98,52 +105,22 @@ public class ActiveSet : MonoBehaviour
         {
             default:
             case "Red":
-                if (modifiedRandomizer[secondIndex].name == "RedDrive")
-                {
-                    shouldLoop = true;
-                }
-                break;
             case "Yellow":
-                if (modifiedRandomizer[secondIndex].name == "YellowDrive")
-                {
-                    shouldLoop = true;
-                }
-                break;
             case "Green":
-                if (modifiedRandomizer[secondIndex].name == "GreenDrive")
-                {
-                    shouldLoop = true;
-                }
-                break;
             case "Blue":
-                if (modifiedRandomizer[secondIndex].name == "BlueDrive")
-                {
-                    shouldLoop = true;
-                }
+                ShouldLoopReturn(returnTileNames[0] + "Drive", secondIndex);
                 break;
             case "RedDrive":
-                if (modifiedRandomizer[secondIndex].name == "Red")
-                {
-                    shouldLoop = true;
-                }
+                ShouldLoopReturn("Red", secondIndex);
                 break;
             case "YellowDrive":
-                if (modifiedRandomizer[secondIndex].name == "Yellow")
-                {
-                    shouldLoop = true;
-                }
+                ShouldLoopReturn("Yellow", secondIndex);
                 break;
             case "GreenDrive":
-                if (modifiedRandomizer[secondIndex].name == "Green")
-                {
-                    shouldLoop = true;
-                }
+                ShouldLoopReturn("Green", secondIndex);
                 break;
             case "BlueDrive":
-                if (modifiedRandomizer[secondIndex].name == "Blue")
-                {
-                    shouldLoop = true;
-                }
+                ShouldLoopReturn("Blue", secondIndex);
                 break;
         }
         if (shouldLoop)
@@ -157,6 +134,11 @@ public class ActiveSet : MonoBehaviour
 
             return returnTileNames;
         }
+    }
+
+    private bool ShouldLoopReturn (string compare, int secondIndex)
+    {
+        return modifiedRandomizer[secondIndex].name == compare;
     }
 
     public void CreateActiveSet()
