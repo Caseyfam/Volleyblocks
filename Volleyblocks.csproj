@@ -78,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\PredeterminedBlocks.cs" />
     <Compile Include="Assets\Scripts\ActiveSet.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
@@ -96,6 +95,7 @@
     <Compile Include="Assets\Scripts\LogoRotate.cs" />
     <Compile Include="Assets\Scripts\Passed.cs" />
     <Compile Include="Assets\Scripts\PortraitEmote.cs" />
+    <Compile Include="Assets\Scripts\PredeterminedBlocks.cs" />
     <Compile Include="Assets\Scripts\ReadySign.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />

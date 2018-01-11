@@ -105,24 +105,31 @@ public class ActiveSet : MonoBehaviour
         {
             default:
             case "Red":
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "RedDrive");
+                break;
             case "Yellow":
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "YellowDrive");
+                break;
             case "Green":
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "GreenDrive");
+                break;
             case "Blue":
-                ShouldLoopReturn(returnTileNames[0] + "Drive", secondIndex);
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "BlueDrive");
                 break;
             case "RedDrive":
-                ShouldLoopReturn("Red", secondIndex);
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "Red");
                 break;
             case "YellowDrive":
-                ShouldLoopReturn("Yellow", secondIndex);
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "Yellow");
                 break;
             case "GreenDrive":
-                ShouldLoopReturn("Green", secondIndex);
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "Green");
                 break;
             case "BlueDrive":
-                ShouldLoopReturn("Blue", secondIndex);
+                shouldLoop = (modifiedRandomizer[secondIndex].name == "Blue");
                 break;
         }
+
         if (shouldLoop)
         {
             return DetermineSecondBlock(returnTileNames);
@@ -134,11 +141,6 @@ public class ActiveSet : MonoBehaviour
 
             return returnTileNames;
         }
-    }
-
-    private bool ShouldLoopReturn (string compare, int secondIndex)
-    {
-        return modifiedRandomizer[secondIndex].name == compare;
     }
 
     public void CreateActiveSet()

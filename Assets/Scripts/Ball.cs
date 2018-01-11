@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour {
 
     bool determinedFirstMove = false;
     Board leftBoard, rightBoard;
-    int currentPointLead;
+    int currentPointLead = 0;
     int previousPointLead = 0;
 
     private string currentDirection = "NONE";
@@ -109,9 +109,10 @@ public class Ball : MonoBehaviour {
             {
                 if (attackedBoard.GetPoints() >= currentPointLead)
                 {
-                    //Debug.Log(attackedBoard.GetPoints());
+                    Debug.Log(attackedBoard.name + " " + attackedBoard.GetPoints() + " CurrentPointLead: " + currentPointLead);
                     previousPointLead = currentPointLead;
                     currentPointLead = attackedBoard.GetPoints();
+
 
                     if (currentPointLead >= previousPointLead + 20)
                     {
@@ -144,17 +145,18 @@ public class Ball : MonoBehaviour {
             switch (direction)
             {
                 case "LEFT": // Aim to the left
-                    currentDirection = "RIGHT";
+                    currentDirection = "LEFT";
                     transform.position = new Vector3(6f, 0.5f, 10f);
                     // set ball starting position here
                     break;
                 case "RIGHT": // Aim to the right
-                    currentDirection = "LEFT";
+                    currentDirection = "RIGHT";
                     transform.position = new Vector3(-6f, 0.5f, 10f);
                     // set ball starting position here
                     break;
             }
             transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
+            currentPointLead += 1;
             determinedFirstMove = true;
         }
     }

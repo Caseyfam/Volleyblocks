@@ -11,21 +11,26 @@ public class PredeterminedBlocks : MonoBehaviour {
 
     public string[] GetNextBlock()
     {
-        string[] set = new string[2];
-        set[0] = nextBlocks[currentIndex].bottomBlock.ToString();
-        set[1] = nextBlocks[currentIndex].topBlock.ToString();
-        if (nextBlocks[currentIndex].bottomIsDrive)
-        {
-            set[0] += "Drive";
-        }
-        if (nextBlocks[currentIndex].topIsDrive)
-        {
-            set[1] += "Drive";
-        }
         currentIndex++;
+        string[] set = new string[2];
         if (currentIndex >= nextBlocks.Length)
         {
             Destroy(this);
+            set[0] = "Red";
+            set[1] = "Yellow";
+        }
+        else
+        {
+            set[0] = nextBlocks[currentIndex].bottomBlock.ToString();
+            set[1] = nextBlocks[currentIndex].topBlock.ToString();
+            if (nextBlocks[currentIndex].bottomIsDrive)
+            {
+                set[0] += "Drive";
+            }
+            if (nextBlocks[currentIndex].topIsDrive)
+            {
+                set[1] += "Drive";
+            }
         }
         return set;
     }
