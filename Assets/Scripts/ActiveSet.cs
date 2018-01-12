@@ -52,7 +52,8 @@ public class ActiveSet : MonoBehaviour
         }
 
         ResetRandomizer();
-        CreateActiveSet();
+        //CreateActiveSet();
+
         // Throw in start whistle function here
     }
 

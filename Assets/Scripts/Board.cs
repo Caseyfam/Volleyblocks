@@ -370,7 +370,8 @@ public class Board : MonoBehaviour {
 
     public int GetPoints()
     {
-        return Mathf.RoundToInt(points / 10) * 10;
+        //return Mathf.RoundToInt(points / 10) * 10;
+        return points;
     }
 
     public void ResetPoints()

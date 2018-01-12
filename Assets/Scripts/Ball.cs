@@ -19,6 +19,11 @@ public class Ball : MonoBehaviour {
 
     private bool servePause = false;
 
+    private float rotationSpeed = 1f;
+
+    float ballSpeed = 1f;
+    private int randomServeRotation = 0;
+
     void Awake()
     {
         leftBoard = GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().leftBoard;
@@ -27,8 +32,8 @@ public class Ball : MonoBehaviour {
 
     void Reset()
     {
+        randomServeRotation = Random.Range(0, 2);
         currentPointLead = 0;
-        GetComponentInChildren<TextMesh>().text = currentPointLead.ToString();
         determinedFirstMove = false;
         transform.position = new Vector3(0f, -2.64f, 10f);
         transform.localScale = new Vector3(6.197968f, 6.197968f, 6.197968f);
@@ -37,7 +42,10 @@ public class Ball : MonoBehaviour {
         servePause = false;
         serveDone = false;
         GameObject.Find("ReadySign").GetComponent<ReadySign>().Reset();
-        StartCoroutine(ServePause(0.7f));
+        ballSpeed = 1f;
+        rotationSpeed = 1f;
+        transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+        StartCoroutine(ServePause(0.2f));
     }
 
     IEnumerator ServePause(float time)
@@ -81,9 +89,16 @@ public class Ball : MonoBehaviour {
                 // If points less than ball points, you lose
                 if (rightBoard)
                 {
-                    if (rightBoard.GetPoints() < currentPointLead)
+                    if (!rightBoard.currentColor.Equals(GetComponent<SpriteRenderer>().color))
                     {
-                        rightBoard.GetComponent<GameOver>().SetGameOver(false);
+                        if (rightBoard.GetPoints() < currentPointLead)
+                        {
+                            rightBoard.GetComponent<GameOver>().SetGameOver(false);
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Colors were same");
                     }
                 }
             }
@@ -125,8 +140,6 @@ public class Ball : MonoBehaviour {
                         attackedBoard.EmoteBoard("sideIdle");
                     }
 
-                    GetComponentInChildren<TextMesh>().text = currentPointLead.ToString();
-
                     // Call color change here
                     GetComponent<SpriteRenderer>().color = attackedBoard.GetComponent<Board>().currentColor;
 
@@ -146,12 +159,12 @@ public class Ball : MonoBehaviour {
             {
                 case "LEFT": // Aim to the left
                     currentDirection = "LEFT";
-                    transform.position = new Vector3(6f, 0.5f, 10f);
+                    //transform.position = new Vector3(6f, 0.5f, 10f);
                     // set ball starting position here
                     break;
                 case "RIGHT": // Aim to the right
                     currentDirection = "RIGHT";
-                    transform.position = new Vector3(-6f, 0.5f, 10f);
+                    //transform.position = new Vector3(-6f, 0.5f, 10f);
                     // set ball starting position here
                     break;
             }
@@ -165,16 +178,50 @@ public class Ball : MonoBehaviour {
     {
         if (serveDone)
         {
+            if (currentDirection == "NONE")
+            {
+                if (randomServeRotation == 1)
+                {
+                    rotationSpeed = 10f;
+                }
+                else
+                {
+                    rotationSpeed = -10f;
+                }
+            }
+            else
+            {
+                if (currentDirection == "LEFT")
+                {
+                    rotationSpeed = currentPointLead * 1.2f;
+                }
+                else
+                {
+                    rotationSpeed = currentPointLead * -1.2f;
+                }
+            }
             transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
+            transform.Rotate(0f, 0f, 20f * rotationSpeed * Time.deltaTime);
         }
         else
         {
             if (servePause)
             {
+                if (randomServeRotation == 1)
+                {
+                    rotationSpeed = 10f;
+                }
+                else
+                {
+                    rotationSpeed = -10f;
+                }
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(0f, 0.63f, 10f), 0.07f);
+                transform.Rotate(0f, 0f, 20f * rotationSpeed * Time.deltaTime);
                 transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f), 0.2f);
                 if (transform.position == new Vector3(0f, 0.63f, 10f))
                 {
+                    leftBoard.gameObject.GetComponent<ActiveSet>().CreateActiveSet();
+                    rightBoard.gameObject.GetComponent<ActiveSet>().CreateActiveSet();
                     serveDone = true;
                 }
             }
@@ -186,24 +233,26 @@ public class Ball : MonoBehaviour {
             {
                 if (transform.position.x >= 6f)
                 {
+                    ballSpeed = 2f;
                     SetRightBallPoints();
                     currentDirection = "LEFT";
                 }
                 else
                 {
-                    transform.position += Vector3.right * Time.deltaTime * 2f;
+                    transform.position += Vector3.right * Time.deltaTime * ballSpeed;
                 }
             }
             else if (currentDirection.Equals("LEFT"))
             {
                 if (transform.position.x <= -6f)
                 {
+                    ballSpeed = 2f;
                     SetLeftBallPoints();
                     currentDirection = "RIGHT";
                 }
                 else
                 {
-                    transform.position += Vector3.left * Time.deltaTime * 2f;
+                    transform.position += Vector3.left * Time.deltaTime * ballSpeed;
                 }
             }
             else
