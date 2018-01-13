@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 30
+  controlID: 18
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 31
+  controlID: 19
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 32
+  controlID: 20
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -204,8 +204,8 @@ MonoBehaviour:
     y: 0
     width: 413
     height: 483
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 111
+  controlID: 76
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -569,14 +569,14 @@ MonoBehaviour:
     width: 944
     height: 462
   m_SceneLighting: 1
-  lastFramingTime: 980.1927894124265
-  m_2DMode: 1
+  lastFramingTime: 832.1921319166528
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 6.3899136, y: -6.300583, z: 47.669758}
+    m_Target: {x: 425, y: 185.22343, z: 0}
     speed: 2
-    m_Value: {x: 6.3899136, y: -6.300583, z: 47.669758}
+    m_Value: {x: 425, y: 185.22343, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -591,26 +591,26 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-    zGrid:
       m_Target: 1
       speed: 2
       m_Value: 1
+    zGrid:
+      m_Target: 0
+      speed: 2
+      m_Value: 0
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.15538841, y: -0.059821945, z: 0.009427698, w: 0.9859954}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: 0.15538841, y: -0.059821945, z: 0.009427698, w: 0.9859954}
   m_Size:
-    m_Target: 52.708607
+    m_Target: 435.89923
     speed: 2
-    m_Value: 52.708607
+    m_Value: 435.89923
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Value: 0
+  m_LastSceneViewRotation: {x: 0.08717229, y: -0.89959055, z: 0.21045254, w: 0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -766,7 +766,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 827efdfff689fdff3cb6fdff1450feff6a81feffa05dffff585effff2e89ffffdcaeffff3eb4ffff2af7ffff000000005c4700001c4a0000de6b00005e7a0000887a000046860000
+    m_ExpandedIDs: 0e6dfcff227afcff683bfdff3e66ffff3cf9ffff1afcffff0000000050290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -927,19 +927,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Sprites
   m_ViewMode: 1
   m_StartGridSize: 66
   m_LastFolders:
-  - Assets
+  - Assets/Sprites
   m_LastFoldersGridSize: 66
   m_LastProjectPath: E:\Unity Projects\Puzzle Volleyball
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c8280000
-    m_LastClickedID: 10440
-    m_ExpandedIDs: 00000000c8280000242900002a2900002c29000000ca9a3bffffff7f
+    m_SelectedIDs: c0260000
+    m_LastClickedID: 9920
+    m_ExpandedIDs: 000000001e260000ae260000b8260000c026000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -967,7 +967,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c8280000242900002a2900002c290000
+    m_ExpandedIDs: 000000001e260000ae260000b8260000c0260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

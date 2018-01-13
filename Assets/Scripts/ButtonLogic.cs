@@ -12,6 +12,19 @@ public class ButtonLogic : MonoBehaviour {
     private int setsCount = 3;
 
     public UnityEngine.UI.Text playersText, cpuText, gamesText, setsText;
+    public GameObject mainMenu, arcadeMenu, versusMenu;
+
+    public void Arcade()
+    {
+        mainMenu.SetActive(false);
+        arcadeMenu.SetActive(true);
+    }
+
+    public void Versus()
+    {
+        mainMenu.SetActive(false);
+        versusMenu.SetActive(true);
+    }
 
     public void StartButton()
     {
