@@ -46,6 +46,7 @@ public class GameOver : MonoBehaviour {
                 GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().rightBoard.GetComponent<GameOver>().SetGameOver(true);
             }
             Debug.Log(board.name + " lost with " + board.GetPoints());
+            board.GetComponent<ExplodeOnLoss>().ExplodeBoard();
             GameObject.Find("GameLogic").GetComponent<Scoring>().PlayerLost(board);
             GameObject.Find("GameLogic").GetComponent<RunningGame>().SetRunningGameOver();
         }
