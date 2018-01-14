@@ -2193,6 +2193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290935734}
   - component: {fileID: 1290935733}
+  - component: {fileID: 1290935735}
   m_Layer: 0
   m_Name: PassedObject
   m_TagString: Untagged
@@ -2229,6 +2230,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1290935735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1290935732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c9036ab6f85b34ea996a327ce9f1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleNames:
+  - buffRaw
+  - hattyRaw
+  buffRaw:
+  - {fileID: 21300000, guid: 7788a8445364d7f4ca78380f8ac5995b, type: 3}
+  - {fileID: 21300000, guid: de5187a77f1059845ae97b2cf3e8cb4b, type: 3}
+  - {fileID: 21300000, guid: 9eaacb4b79c94394cb435fe248d2a433, type: 3}
+  - {fileID: 21300000, guid: 2a6af553e50ad5248b864546937e379a, type: 3}
+  - {fileID: 21300000, guid: 5b6dd846cf6f7654099d9fc94993086e, type: 3}
+  hattyRaw:
+  - {fileID: 21300000, guid: b3a61323af2d13d469a25d7f49523ac8, type: 3}
+  - {fileID: 21300000, guid: 8f226a7fcc27e72409ae314159097826, type: 3}
+  - {fileID: 21300000, guid: 7636682d580ef02428922b23cc91140f, type: 3}
+  - {fileID: 21300000, guid: 724152346a0627f4bb9747fc2c8a7d9c, type: 3}
+  - {fileID: 21300000, guid: 562f379b3e6d8a5489a3df8d07636a03, type: 3}
 --- !u!1 &1303079017
 GameObject:
   m_ObjectHideFlags: 0

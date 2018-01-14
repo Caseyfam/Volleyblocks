@@ -25,7 +25,25 @@ public class Board : MonoBehaviour {
     public TextMesh comboText;
     public PortraitEmote portrait;
 
-    public Sprite frontIdle, sideIdle, sideWin, sideLose, sideDefeat;
+    private Sprite frontIdle, sideIdle, sideWin, sideLose, sideDefeat;
+
+    void Awake()
+    {
+        if (GameObject.Find("PassedObject").GetComponent<SelectedCharacters>())
+        {
+            SelectedCharacters selectedChars = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
+            if (thisBoardPosition == boardPosition.LEFT)
+            {
+                Sprite[] charSprites = selectedChars.ReturnSprites("LEFT");
+                SetBoardSprites(charSprites[0], charSprites[1], charSprites[2], charSprites[3], charSprites[4]);
+            }
+            else
+            {
+                Sprite[] charSprites = selectedChars.ReturnSprites("RIGHT");
+                SetBoardSprites(charSprites[0], charSprites[1], charSprites[2], charSprites[3], charSprites[4]);
+            }
+        }
+    }
 
     public void SetBoardSprites(Sprite frontIdle, Sprite sideIdle, Sprite sideWin, Sprite sideLose, Sprite sideDefeat)
     {
