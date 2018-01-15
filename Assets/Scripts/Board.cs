@@ -29,20 +29,24 @@ public class Board : MonoBehaviour {
 
     void Awake()
     {
-        if (GameObject.Find("PassedObject").GetComponent<SelectedCharacters>())
+        if (GameObject.Find("PassedObject"))
         {
-            SelectedCharacters selectedChars = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
-            if (thisBoardPosition == boardPosition.LEFT)
+            if (GameObject.Find("PassedObject").GetComponent<SelectedCharacters>())
             {
-                Sprite[] charSprites = selectedChars.ReturnSprites("LEFT");
-                SetBoardSprites(charSprites[0], charSprites[1], charSprites[2], charSprites[3], charSprites[4]);
-            }
-            else
-            {
-                Sprite[] charSprites = selectedChars.ReturnSprites("RIGHT");
-                SetBoardSprites(charSprites[0], charSprites[1], charSprites[2], charSprites[3], charSprites[4]);
+                SelectedCharacters selectedChars = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
+                if (thisBoardPosition == boardPosition.LEFT)
+                {
+                    Sprite[] charSprites = selectedChars.ReturnSprites("LEFT");
+                    SetBoardSprites(charSprites[0], charSprites[1], charSprites[2], charSprites[3], charSprites[4]);
+                }
+                else
+                {
+                    Sprite[] charSprites = selectedChars.ReturnSprites("RIGHT");
+                    SetBoardSprites(charSprites[0], charSprites[1], charSprites[2], charSprites[3], charSprites[4]);
+                }
             }
         }
+
     }
 
     public void SetBoardSprites(Sprite frontIdle, Sprite sideIdle, Sprite sideWin, Sprite sideLose, Sprite sideDefeat)

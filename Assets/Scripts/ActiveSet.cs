@@ -67,6 +67,7 @@ public class ActiveSet : MonoBehaviour
     void Awake()
     {
         board = GetComponent<Board>();
+        Reset();
     }
 
     public string[] SelectRandomBlock()
@@ -553,7 +554,7 @@ public class ActiveSet : MonoBehaviour
     {
         if (canMovePieces)
         {
-            if (!isCPU)
+            if (!isCPU && !GetComponent<GameOver>().gameOver)
             {
                 if (Input.GetKeyDown(KeyCode.W))
                 {
