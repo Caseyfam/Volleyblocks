@@ -78,6 +78,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PasswordLetter.cs" />
+    <Compile Include="Assets\PasswordSystem.cs" />
     <Compile Include="Assets\Scripts\ActiveSet.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
@@ -89,7 +91,9 @@
     <Compile Include="Assets\Scripts\ChainInfo.cs" />
     <Compile Include="Assets\Scripts\ColorStrip.cs" />
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
+    <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
+    <Compile Include="Assets\Scripts\FireAnimate.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\LoadBattle.cs" />
     <Compile Include="Assets\Scripts\LogoRotate.cs" />
@@ -99,6 +103,7 @@
     <Compile Include="Assets\Scripts\ReadySign.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
+    <Compile Include="Assets\Scripts\SelectedCharacters.cs" />
     <Compile Include="Assets\Scripts\TideAnimation.cs" />
     <Compile Include="Assets\Scripts\TiledBackground.cs" />
   </ItemGroup>
