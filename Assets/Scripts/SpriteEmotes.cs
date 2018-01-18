@@ -46,6 +46,7 @@ public class SpriteEmotes : MonoBehaviour {
             {
                 isMoving = false;
                 transform.localScale = originalScale;
+
             }
         }
 
@@ -85,6 +86,20 @@ public class SpriteEmotes : MonoBehaviour {
         else
         {
             target = new Vector3(15f, originalY);
+        }
+    }
+
+    public void ExitStageOppositeSide(float moveSpeed)
+    {
+        this.moveSpeed = moveSpeed;
+        isMoving = true;
+        if (spritePosition == Direction.LEFT)
+        {
+            target = new Vector3(15f, originalY);
+        }
+        else
+        {
+            target = new Vector3(-15f, originalY);
         }
     }
 

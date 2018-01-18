@@ -410,10 +410,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -421,9 +421,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'P L A C E H O L D E R
-
-    D I A L O G U E'
+  m_Text: 
 --- !u!222 &980543118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -522,6 +520,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1945603832}
+  - component: {fileID: 1945603833}
   m_Layer: 0
   m_Name: CutsceneLogic
   m_TagString: Untagged
@@ -542,6 +541,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1945603833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945603831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29045094c36f9dd43ba7e9964ff00701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftSprite: {fileID: 2071313726}
+  rightSprite: {fileID: 1466702561}
+  mainText: {fileID: 980543117}
 --- !u!1 &1975404292
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\CameraTilt.cs" />
     <Compile Include="Assets\Scripts\ChainInfo.cs" />
     <Compile Include="Assets\Scripts\ColorStrip.cs" />
+    <Compile Include="Assets\Scripts\CutsceneLogic.cs" />
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
     <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
