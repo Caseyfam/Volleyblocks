@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/StoryScene.unity
+- path: Assets/VolleyScene.unity
   isLoaded: 1
   isActive: 1
