@@ -11,6 +11,7 @@ public class CutsceneLogic : MonoBehaviour
     private bool dialogueDoneDisplaying = true;
 
     private bool textCrawling = false;
+    private bool sectionComplete = true;
 
     private int globalSceneIndex = 0;
 
@@ -22,7 +23,7 @@ public class CutsceneLogic : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (!textCrawling)
+        if (sectionComplete)
         {
             switch (globalSceneIndex)
             {
@@ -38,12 +39,32 @@ public class CutsceneLogic : MonoBehaviour
                     break;
             }
         }
-	}
+        if (!textCrawling)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                sectionComplete = true;
+                globalSceneIndex++;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                StopAllCoroutines();
+                mainText.text = desiredText;
+                textCrawling = false;
+            }
+        }
+    }
 
     private string currentText;
+    private string desiredText;
 
     void DisplayDialogue(string text, float letterWaitTime)
     {
+        desiredText = text;
+        sectionComplete = false;
         textCrawling = true;
         currentText = "";
         StartCoroutine(SlowAddText(letterWaitTime, -1, text));
@@ -62,7 +83,7 @@ public class CutsceneLogic : MonoBehaviour
         else
         {
             textCrawling = false;
-            globalSceneIndex++; // Debug
+            //globalSceneIndex++;
         }
     }
 }
