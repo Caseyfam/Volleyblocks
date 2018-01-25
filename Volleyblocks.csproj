@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
     <Compile Include="Assets\Scripts\FireAnimate.cs" />
+    <Compile Include="Assets\Scripts\FogRoll.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\LoadBattle.cs" />
     <Compile Include="Assets\Scripts\LogoRotate.cs" />
