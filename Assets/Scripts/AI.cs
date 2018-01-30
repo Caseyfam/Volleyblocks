@@ -114,180 +114,9 @@ public class AI : MonoBehaviour {
     string maxOrientation = "UP";
     int[] maxBlockPos = new int[] { 0, 0 };
 
-    // ONLY FOR OLD AI DEBUG PURPOSES
-    bool foundConnectingPos = false;
-    string calcOrientation = "UP";
-
-    void ConnectingPosCalc(int[] blockPos, int rowAdd1, int colAdd1, int rowAdd2, int colAdd2, string blockColor)
-    {
-        if (board.boardBlocks[blockPos[0] + rowAdd1, blockPos[1] + colAdd1] && board.boardBlocks[blockPos[0] + rowAdd2, blockPos[1] + colAdd2])
-        {
-            // If right block color equal to bottom block color equal to bottom block color
-            if (board.boardBlocks[blockPos[0] + rowAdd1, blockPos[1] + colAdd1].GetComponent<Block>().blockColor == activeSet.bottomBlock.blockColor &&
-                board.boardBlocks[blockPos[0] + rowAdd2, blockPos[1] + colAdd2].GetComponent<Block>().blockColor == activeSet.bottomBlock.blockColor &&
-                board.boardBlocks[blockPos[0] + rowAdd1, blockPos[1] + colAdd1].GetComponent<Block>().blockColor == board.boardBlocks[blockPos[0] + rowAdd2, blockPos[1] + colAdd2].GetComponent<Block>().blockColor)
-            {
-                topDestination = blockPos;
-                // Set orientation
-                foundConnectingPos = true;
-            }
-        }
-    }
-    // END ONLY FOR OLD AI DEBUG PURPOSES
-
     void CalcDesiredDestination()
     {
-        if (useOldAI) // For fun debugging purposes
-        {
-            List<int[]> openCoords = new List<int[]>();
-            openCoords = ReturnOpenCoords();
-            bool foundPos = false;
-            foundConnectingPos = false;
-            calcOrientation = "UP";
-            int maxChain = 0;
-            int[] tempDestination = new int[2];
-            foreach (int[] blockPos in openCoords)
-            {
-                if (!foundConnectingPos)
-                {
-                    if (blockPos[0] + 1 <= 11 && blockPos[0] - 1 >= 0 && blockPos[1] - 1 >= 0 && blockPos[1] + 1 <= 5)
-                    {
-                        ConnectingPosCalc(blockPos, 0, 1, 1, 0, activeSet.bottomBlock.blockColor);
-                        ConnectingPosCalc(blockPos, 0, -1, 1, 0, activeSet.bottomBlock.blockColor);
-                        ConnectingPosCalc(blockPos, 0, -1, 0, 1, activeSet.bottomBlock.blockColor);
-                        ConnectingPosCalc(blockPos, -1, 1, 0, 0, activeSet.topBlock.blockColor);
-                        ConnectingPosCalc(blockPos, -1, -1, 0, 0, activeSet.topBlock.blockColor);
-                        ConnectingPosCalc(blockPos, -1, -1, -1, 1, activeSet.topBlock.blockColor);
-                    }
-                }
-            }
-            if (!foundConnectingPos)
-            {
-                foreach (int[] blockPos in openCoords)
-                {
-                    if (blockPos[0] + 1 <= 11 && blockPos[0] >= 1 && blockPos[1] >= 0 && blockPos[1] <= 5)
-                    {
-                        if (blockPos[1] + 1 <= 5 && board.boardBlocks[blockPos[0], blockPos[1] + 1] != null)
-                        {
-                            if (board.boardBlocks[blockPos[0], blockPos[1] + 1].GetComponent<Block>().blockColor == activeSet.bottomBlock.blockColor)
-                            {
-                                if (board.boardBlocks[blockPos[0], blockPos[1] + 1].GetComponent<ChainInfo>().chainLength >= maxChain)
-                                {
-                                    maxChain = board.boardBlocks[blockPos[0], blockPos[1] + 1].GetComponent<ChainInfo>().chainLength;
-                                    topDestination = blockPos;
-                                    foundPos = true;
-                                    calcOrientation = "UP";
-                                }
-                            }
-                        }
-                        if (blockPos[1] - 1 >= 0)
-                        {
-                            if (board.boardBlocks[blockPos[0], blockPos[1] - 1] != null)
-                            {
-                                if (board.boardBlocks[blockPos[0], blockPos[1] - 1].GetComponent<Block>().blockColor == activeSet.bottomBlock.blockColor)
-                                {
-                                    if (board.boardBlocks[blockPos[0], blockPos[1] - 1].GetComponent<ChainInfo>().chainLength >= maxChain)
-                                    {
-                                        maxChain = board.boardBlocks[blockPos[0], blockPos[1] - 1].GetComponent<ChainInfo>().chainLength;
-                                        topDestination = blockPos;
-                                        foundPos = true;
-                                        calcOrientation = "UP";
-                                    }
-                                }
-                            }
-                        }
-                        if (board.boardBlocks[blockPos[0] + 1, blockPos[1]].GetComponent<Block>().blockColor == activeSet.bottomBlock.blockColor)
-                        {
-                            if (board.boardBlocks[blockPos[0] + 1, blockPos[1]].GetComponent<ChainInfo>().chainLength > maxChain)
-                            {
-                                maxChain = board.boardBlocks[blockPos[0] + 1, blockPos[1]].GetComponent<ChainInfo>().chainLength;
-                                topDestination = blockPos;
-                                foundPos = true;
-                                calcOrientation = "UP";
-                            }
-                        }
-                        if (board.boardBlocks[blockPos[0] + 1, blockPos[1]].GetComponent<Block>().blockColor == activeSet.topBlock.blockColor)
-                        {
-                            if (board.boardBlocks[blockPos[0] + 1, blockPos[1]].GetComponent<ChainInfo>().chainLength > maxChain)
-                            {
-                                maxChain = board.boardBlocks[blockPos[0] + 1, blockPos[1]].GetComponent<ChainInfo>().chainLength;
-                                topDestination = blockPos;
-                                foundPos = true;
-                                calcOrientation = "DOWN";
-                            }
-                        }
-                        if (blockPos[1] + 1 <= 5)
-                        {
-                            if (board.boardBlocks[blockPos[0], blockPos[1] + 1] != null)
-                            {
-                                if (board.boardBlocks[blockPos[0], blockPos[1] + 1].GetComponent<Block>().blockColor == activeSet.topBlock.blockColor)
-                                {
-                                    if (board.boardBlocks[blockPos[0], blockPos[1] + 1].GetComponent<ChainInfo>().chainLength >= maxChain)
-                                    {
-                                        maxChain = board.boardBlocks[blockPos[0], blockPos[1] + 1].GetComponent<ChainInfo>().chainLength;
-                                        topDestination = blockPos;
-                                        foundPos = true;
-                                        calcOrientation = "DOWN";
-                                    }
-                                }
-                            }
-                        }
-                        if (blockPos[1] - 1 >= 0)
-                        {
-                            if (board.boardBlocks[blockPos[0], blockPos[1] - 1] != null)
-                            {
-                                if (board.boardBlocks[blockPos[0], blockPos[1] - 1].GetComponent<Block>().blockColor == activeSet.topBlock.blockColor)
-                                {
-                                    if (board.boardBlocks[blockPos[0], blockPos[1] - 1].GetComponent<ChainInfo>().chainLength >= maxChain)
-                                    {
-                                        maxChain = board.boardBlocks[blockPos[0], blockPos[1] - 1].GetComponent<ChainInfo>().chainLength;
-                                        topDestination = blockPos;
-                                        foundPos = true;
-                                        calcOrientation = "DOWN";
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (!foundPos && !foundConnectingPos)
-            {
-                topDestination[0] = 0; // Who cares
-                topDestination[1] = Random.Range(0, 6);
-                int[] lowestDestination = new int[2];
-                int lowestHeight = 0;
-                foreach (int[] blockPos in openCoords)
-                {
-                    if (blockPos[0] > lowestHeight)
-                    {
-                        lowestHeight = blockPos[0];
-                        lowestDestination = blockPos;
-                    }
-                }
-                topDestination = lowestDestination;
-                switch (Random.Range(0, 4))
-                {
-                    case 0:
-                        calcOrientation = "LEFT";
-                        break;
-                    case 1:
-                        calcOrientation = "RIGHT";
-                        break;
-                    case 2:
-                        calcOrientation = "UP";
-                        break;
-                    case 3:
-                        calcOrientation = "DOWN";
-                        break;
-                    default:
-                        break;
-                }
-            }
-            BasicMoveSetter(topDestination, calcOrientation);
-        }
-        else // Better, new AI! Woo
+        if (!useOldAI) // Should really get rid of this
         {
             List<int[]> openCoords = new List<int[]>();
             openCoords = ReturnOpenCoords();
@@ -383,14 +212,11 @@ public class AI : MonoBehaviour {
                             }
                         }
                     }
-                    //Debug.Log(localChainLength + " " + maxOrientation + " " + maxBlockPos[0] + "," + maxBlockPos[1]);
                 }
             }
             BasicMoveSetter(maxBlockPos, maxOrientation);
         }
-        
     }
-
 
     List<int[]> ReturnOpenCoords()
     {

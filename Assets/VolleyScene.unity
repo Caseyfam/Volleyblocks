@@ -780,6 +780,7 @@ MonoBehaviour:
   rightWall: {fileID: 655533298}
   comboText: {fileID: 1265161878}
   portrait: {fileID: 141379642}
+  ball: {fileID: 1626061758}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -836,6 +837,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  runningGame: {fileID: 1133255540}
+  boardsInPlay: {fileID: 1133255543}
+  gameLogic: {fileID: 1133255539}
+  scoring: {fileID: 1133255542}
 --- !u!114 &152511245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,6 +1795,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  runningGame: {fileID: 1133255540}
+  boardsInPlay: {fileID: 1133255543}
+  gameLogic: {fileID: 1133255539}
+  scoring: {fileID: 1133255542}
 --- !u!114 &358213214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,6 +1870,7 @@ MonoBehaviour:
   rightWall: {fileID: 165137912}
   comboText: {fileID: 117431973}
   portrait: {fileID: 141379642}
+  ball: {fileID: 1626061758}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -3965,6 +3975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runningGame: 1
+  ball: {fileID: 1626061758}
+  camTilt: {fileID: 1272212086}
 --- !u!4 &1133255541
 Transform:
   m_ObjectHideFlags: 0
@@ -4710,6 +4722,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  runningGame: {fileID: 1133255540}
+  boardsInPlay: {fileID: 1133255543}
+  gameLogic: {fileID: 1133255539}
+  scoring: {fileID: 1133255542}
 --- !u!114 &1325199824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4766,6 +4782,7 @@ MonoBehaviour:
   rightWall: {fileID: 1855277185}
   comboText: {fileID: 151264734}
   portrait: {fileID: 1853437634}
+  ball: {fileID: 1626061758}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -5072,6 +5089,8 @@ MonoBehaviour:
   maxHeight: 3.33
   minHeight: -2.33
   serveDone: 0
+  boardsInPlay: {fileID: 1133255543}
+  runningGame: {fileID: 1133255540}
 --- !u!1 &1658814101
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,6 +6099,7 @@ MonoBehaviour:
   rightWall: {fileID: 861412621}
   comboText: {fileID: 816970139}
   portrait: {fileID: 1853437634}
+  ball: {fileID: 1626061758}
   currentColor:
     serializedVersion: 2
     rgba: 16777215
@@ -6130,6 +6150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  runningGame: {fileID: 1133255540}
+  boardsInPlay: {fileID: 1133255543}
+  gameLogic: {fileID: 1133255539}
+  scoring: {fileID: 1133255542}
 --- !u!114 &2063762323
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,10 @@ public class GameOver : MonoBehaviour {
     Board board;
     //[HideInInspector]
     public bool gameOver = false;
+    public RunningGame runningGame;
+    public BoardsInPlay boardsInPlay;
+    public GameObject gameLogic;
+    public Scoring scoring;
 
 	// Use this for initialization
 	void Start ()
@@ -20,7 +24,7 @@ public class GameOver : MonoBehaviour {
         {
             if (board.boardBlocks[0, j] != null)
             {
-                if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
+                if (runningGame.runningGame)
                 {
                     SetGameOver(false);
                 }
@@ -30,25 +34,25 @@ public class GameOver : MonoBehaviour {
 
     public void SetGameOver(bool won)
     {
-        GameObject.Find("GameLogic").GetComponent<RunningGame>().SetRunningGameOver();
+        runningGame.SetRunningGameOver();
         if (won)
         {
 
         }
-        else
+        if(!won)
         {
-            if (!GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().leftBoard.Equals(board))
+            if (!boardsInPlay.leftBoard.Equals(board))
             {
-                GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().leftBoard.GetComponent<GameOver>().SetGameOver(true);
+                boardsInPlay.leftBoard.GetComponent<GameOver>().SetGameOver(true);
             }
-            else if (!GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().rightBoard.Equals(board))
+            else if (!boardsInPlay.rightBoard.Equals(board))
             {
-                GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().rightBoard.GetComponent<GameOver>().SetGameOver(true);
+                boardsInPlay.rightBoard.GetComponent<GameOver>().SetGameOver(true);
             }
             Debug.Log(board.name + " lost with " + board.GetPoints());
             board.GetComponent<ExplodeOnLoss>().ExplodeBoard();
-            GameObject.Find("GameLogic").GetComponent<Scoring>().PlayerLost(board);
-            GameObject.Find("GameLogic").GetComponent<RunningGame>().SetRunningGameOver();
+            scoring.PlayerLost(board);
+            runningGame.SetRunningGameOver();
         }
         
         gameOver = true;

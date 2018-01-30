@@ -27,6 +27,8 @@ public class Board : MonoBehaviour {
 
     private Sprite frontIdle, sideIdle, sideWin, sideLose, sideDefeat;
 
+    public Ball ball;
+
     void Awake()
     {
         if (GameObject.Find("PassedObject"))
@@ -89,18 +91,6 @@ public class Board : MonoBehaviour {
     public void Reset()
     {
         boardBools = new bool[rows, columns];
-        /*
-        for (int i = rows - 1; i >= 0; i--) // Start from bottom row
-        {
-            for (int j = 0; j < columns; j++) // Columns
-            {
-                if (boardBlocks[i, j] != null)
-                {
-                    Destroy(boardBlocks[i, j]);
-                }
-            }
-        }
-        */
         foreach (Transform child in transform)
         {
             if (!child.name.Equals("ColumnHighlight") && !child.name.Equals("LeftWall") && !child.name.Equals("RightWall") && !child.name.Equals("ComboText") && !child.name.Equals("Backing"))
@@ -128,11 +118,11 @@ public class Board : MonoBehaviour {
     {
         if (thisBoardPosition == boardPosition.LEFT)
         {
-            GameObject.Find("Ball").GetComponent<Ball>().SetFirstMove("RIGHT", this);
+            ball.SetFirstMove("RIGHT", this);
         }
         else
         {
-            GameObject.Find("Ball").GetComponent<Ball>().SetFirstMove("LEFT", this);
+            ball.SetFirstMove("LEFT", this);
         }
     }
 

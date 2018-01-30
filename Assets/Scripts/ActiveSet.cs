@@ -21,8 +21,6 @@ public class ActiveSet : MonoBehaviour
     [HideInInspector]
     public string orientation = "UP";
 
-    private bool bottomIsDrive = false;
-
     [HideInInspector]
     public int bottomRow, bottomColumn, topRow, topColumn;
 
@@ -36,14 +34,15 @@ public class ActiveSet : MonoBehaviour
     List<GameObject> modifiedRandomizer;
     Board board;
 
-    UnityEngine.Random random = new UnityEngine.Random();
+    // Privately held variables previously obtained with GetComponent
+    FallHighlight fallHighlight;
+    AI ai;
 
     public void Reset()
     {
         canMovePieces = false;
         bottomTile = null; topTile = null; bottomBlock = null; topBlock = null;
         orientation = "UP";
-        bottomIsDrive = false;
         blockNum = 0;
         canManualLock = false;
         if (isCPU)
@@ -66,7 +65,12 @@ public class ActiveSet : MonoBehaviour
 
     void Awake()
     {
+        fallHighlight = GetComponent<FallHighlight>();
         board = GetComponent<Board>();
+        if (isCPU)
+        {
+            ai = GetComponent<AI>();
+        }
         Reset();
     }
 
@@ -157,7 +161,6 @@ public class ActiveSet : MonoBehaviour
     {
         if (!GetComponent<GameOver>().gameOver)
         {
-            bottomIsDrive = false;
             canManualLock = false;
             orientation = "UP";
             bottomTile = (GameObject)Instantiate(Resources.Load(block1));
@@ -187,7 +190,7 @@ public class ActiveSet : MonoBehaviour
 
             if (isCPU)
             {
-                GetComponent<AI>().ResetTurn();
+                ai.ResetTurn();
             }
 
             StopAllCoroutines();
@@ -594,7 +597,7 @@ public class ActiveSet : MonoBehaviour
         }
         if (updateHighlight)
         {
-            GetComponent<FallHighlight>().UpdateHighlight(topTile, bottomTile, orientation);
+            fallHighlight.UpdateHighlight(topTile, bottomTile, orientation);
             updateHighlight = false;
         }
     }

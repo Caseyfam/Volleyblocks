@@ -24,10 +24,13 @@ public class Ball : MonoBehaviour {
     float ballSpeed = 1f;
     private int randomServeRotation = 0;
 
+    public BoardsInPlay boardsInPlay;
+    public RunningGame runningGame;
+
     void Awake()
     {
-        leftBoard = GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().leftBoard;
-        rightBoard = GameObject.Find("GameLogic").GetComponent<BoardsInPlay>().rightBoard;
+        leftBoard = boardsInPlay.leftBoard;
+        rightBoard = boardsInPlay.rightBoard;
     }
 
     void Reset()
@@ -63,7 +66,7 @@ public class Ball : MonoBehaviour {
 	public void SetRightBallPoints()
     {
         //Debug.Log("Setting right");
-        if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
+        if (runningGame.runningGame)
         {
             CheckIfLost("LEFT");
         }
@@ -73,7 +76,7 @@ public class Ball : MonoBehaviour {
     public void SetLeftBallPoints()
     {
         //Debug.Log("Setting left");
-        if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
+        if (runningGame.runningGame)
         {
             CheckIfLost("RIGHT");
         }
@@ -82,7 +85,7 @@ public class Ball : MonoBehaviour {
 
     void CheckIfLost(string boardPosition)
     {
-        if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
+        if (runningGame.runningGame)
         {
             if (boardPosition == "LEFT")
             {
@@ -227,7 +230,7 @@ public class Ball : MonoBehaviour {
             }
         }
 
-        if (GameObject.Find("GameLogic").GetComponent<RunningGame>().runningGame)
+        if (runningGame.runningGame)
         {
             if (currentDirection.Equals("RIGHT"))
             {

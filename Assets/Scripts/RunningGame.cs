@@ -8,7 +8,8 @@ public class RunningGame : MonoBehaviour {
 
     bool matchComplete = false;
 
-
+    public Ball ball;
+    public CameraTilt camTilt;
 
     public void SetMatchComplete(bool flag)
     {
@@ -32,8 +33,8 @@ public class RunningGame : MonoBehaviour {
             runningGame = true;
             GetComponent<BoardsInPlay>().rightBoard.Reset();
             GetComponent<BoardsInPlay>().leftBoard.Reset();
-            GameObject.Find("Ball").GetComponent<Ball>().Start();
-            GameObject.Find("Main Camera").GetComponent<CameraTilt>().Reset();
+            ball.Start();
+            camTilt.Reset();
         }
         else
         {
