@@ -11,9 +11,6 @@ public class AI : MonoBehaviour {
     Board board;
     ActiveSet activeSet;
 
-    int[] topDestination = new int[2]; // row, column;
-    int[] bottomDestination = new int[2];
-
     List<string> moves = new List<string>();
 
     [HideInInspector]
@@ -23,8 +20,6 @@ public class AI : MonoBehaviour {
     {
         aiCanMove = false;
         moves = new List<string>();
-        topDestination = new int[2];
-        bottomDestination = new int[2];
     }
 
     // Use this for initialization

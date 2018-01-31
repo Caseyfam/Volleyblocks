@@ -12,7 +12,7 @@ public class ButtonLogic : MonoBehaviour {
     private int setsCount = 3;
 
     public UnityEngine.UI.Text playersText, cpuText, gamesText, setsText;
-    public GameObject mainMenu, arcadeMenu, versusMenu;
+    public GameObject mainMenu, arcadeMenu, versusMenu, passwordMenu, characterSelect;
 
     public void Arcade()
     {
@@ -28,8 +28,10 @@ public class ButtonLogic : MonoBehaviour {
 
     public void StartButton()
     {
-        // Need to pass AI params here
-        GetComponent<LoadBattle>().LoadNewBattle(players, turnLength, gamesCount, setsCount);
+        // This should load character select instead
+        versusMenu.SetActive(false);
+        characterSelect.SetActive(true);
+        //GetComponent<LoadBattle>().LoadNewBattle(players, turnLength, gamesCount, setsCount);
     }
 
     public void PlayersButton()
@@ -95,5 +97,11 @@ public class ButtonLogic : MonoBehaviour {
         }
 
         setsText.text = "Sets: First to " + setsCount;
+    }
+
+    public void PasswordButton()
+    {
+        arcadeMenu.SetActive(false);
+        passwordMenu.SetActive(true);
     }
 }

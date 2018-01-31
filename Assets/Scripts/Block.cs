@@ -13,7 +13,6 @@ public class Block : MonoBehaviour {
 
     public GameObject above, right, below, left;
 
-    private Vector3 storedOriginal;
     private Vector3 target;
     private bool isMoving = false;
     private bool isDestroying = false;
@@ -74,7 +73,6 @@ public class Block : MonoBehaviour {
                 else
                 {
                     target = transform.position + addition;
-                    storedOriginal = transform.position;
                     isMoving = true;
                     isBusy = true;
                 }
