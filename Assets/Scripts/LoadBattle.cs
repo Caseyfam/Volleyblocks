@@ -9,7 +9,27 @@ public class LoadBattle : MonoBehaviour
 
     public void LoadNewBattle(string playerCase, float newTurnLength, int gamesCount, int setsCount)
     {
-        GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, newTurnLength, gamesCount, setsCount);
+        try
+        {
+            GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, newTurnLength, gamesCount, setsCount);
+        }
+        catch
+        {
+            Debug.LogError("PassedObject does not exist. Did you not load from Menu?");
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void LoadNewBattle(string playerCase, float newTurnLength, int gamesCount, int setsCount, int storyIndex)
+    {
+        try
+        {
+            GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, newTurnLength, gamesCount, setsCount, storyIndex);
+        }
+        catch
+        {
+            Debug.LogError("PassedObject does not exist. Did you not load from Menu?");
+        }
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

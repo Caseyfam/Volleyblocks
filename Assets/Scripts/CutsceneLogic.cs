@@ -8,6 +8,9 @@ public class CutsceneLogic : MonoBehaviour
     public UnityEngine.UI.Text mainText;
 
     private float defaultLetterWait = 0.03f;
+    private LoadBattle loadBattle;
+    private SelectedCharacters selectedChars;
+    private SelectedScene selectedScene;
 
     [System.Serializable]
     public class Scenes
@@ -35,6 +38,20 @@ public class CutsceneLogic : MonoBehaviour
     private bool sectionComplete = true;
 
     private int globalSceneIndex = 0;
+
+    void Awake()
+    {
+        loadBattle = GetComponent<LoadBattle>();
+        try
+        {
+            selectedChars = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
+            selectedScene = GameObject.Find("PassedObject").GetComponent<SelectedScene>();
+        }
+        catch
+        {
+            Debug.LogError("Could not find PassedObject. Did you not load from Menu?");
+        }
+    }
 
 	void Update ()
     {
@@ -126,6 +143,10 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue("PROVE TO ME YOU HAVE WHAT IT TAKES TO BE A VOLLEYBLOCK MASTER!", defaultLetterWait);
                     break;
                 case 19:
+                    selectedChars.SetLeftBoard("girl");
+                    selectedChars.SetRightBoard("buff");
+                    selectedScene.SetSceneName("beach");
+                    loadBattle.LoadNewBattle("Player VS CPU", 1f, 3, 3, globalSceneIndex);
                     break;
                 case 20:
                     break;

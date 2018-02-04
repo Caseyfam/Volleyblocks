@@ -109,4 +109,9 @@ public class ButtonLogic : MonoBehaviour {
         arcadeMenu.SetActive(false);
         passwordMenu.SetActive(true);
     }
+
+    public void ArcadeNewGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
 }

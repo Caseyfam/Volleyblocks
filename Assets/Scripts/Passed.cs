@@ -10,6 +10,7 @@ public class Passed : MonoBehaviour {
     public float turnLength = 0f;
     public int setCount = 3;
     public int gamesCount = 3;
+    public int storyIndex;
 
     public void StoreValues (string players, float turn, int games, int sets)
     {
@@ -17,6 +18,15 @@ public class Passed : MonoBehaviour {
         turnLength = turn;
         gamesCount = games;
         setCount = sets;
+    }
+
+    public void StoreValues(string players, float turn, int games, int sets, int index)
+    {
+        playersInPlay = players;
+        turnLength = turn;
+        gamesCount = games;
+        setCount = sets;
+        storyIndex = index;
     }
 
     void Awake()

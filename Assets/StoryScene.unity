@@ -444,7 +444,7 @@ Transform:
   - {fileID: 1632950541}
   - {fileID: 1419160082}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &193365436
 GameObject:
@@ -1502,7 +1502,7 @@ Transform:
   - {fileID: 1777840190}
   - {fileID: 1687409857}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800891570
 GameObject:
@@ -3483,6 +3483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945603832}
   - component: {fileID: 1945603833}
+  - component: {fileID: 1945603834}
   m_Layer: 0
   m_Name: CutsceneLogic
   m_TagString: Untagged
@@ -3501,7 +3502,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1945603833
 MonoBehaviour:
@@ -3571,6 +3572,19 @@ MonoBehaviour:
   scenes:
     beachScene: {fileID: 788193781}
     shrineScene: {fileID: 120839420}
+--- !u!114 &1945603834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1945603831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c449af1a9f025f04da3bed89042dee29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useOldAI: 0
+  turnLength: 1
 --- !u!1 &1975404292
 GameObject:
   m_ObjectHideFlags: 0

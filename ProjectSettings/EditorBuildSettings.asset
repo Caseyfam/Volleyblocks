@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/VolleyScene.unity
     guid: d9d3ad0bc75b4844caa1edc26b9ebc40
+  - enabled: 1
+    path: Assets/StoryScene.unity
+    guid: a00a2d40db2bbc54299ba6e700454fc1
   - enabled: 0
-    path: Assets/3DScene.unity
+    path: 
     guid: 32b43070d6efced47bba63de870777c3
