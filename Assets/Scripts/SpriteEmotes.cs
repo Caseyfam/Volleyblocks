@@ -16,9 +16,12 @@ public class SpriteEmotes : MonoBehaviour {
     private Vector3 originalScale;
     private Vector3 target;
 
+    private SpriteRenderer spriteRenderer;
+
 	// Use this for initialization
 	void Awake ()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
 	    if (spritePosition == Direction.LEFT)
         {
             originalX = -5f;
@@ -54,6 +57,14 @@ public class SpriteEmotes : MonoBehaviour {
         {
             transform.position = new Vector3(Random.Range(originalX - shakeRange, originalX + shakeRange), Random.Range(originalY - shakeRange, originalY + shakeRange));
         }
+    }
+
+    private bool isActive = false;
+
+    public void ToggleVisibility()
+    {
+        gameObject.SetActive(isActive);
+        isActive = !isActive;
     }
 
     public void EnterStageSide(float moveSpeed)
@@ -131,10 +142,16 @@ public class SpriteEmotes : MonoBehaviour {
         StartCoroutine(ShakeTimer(time));
     }
 
+    public void SetSprite(Sprite newSprite)
+    {
+        spriteRenderer.sprite = newSprite;
+    }
+
     IEnumerator ShakeTimer(float time)
     {
         isShaking = true;
         yield return new WaitForSeconds(time);
         isShaking = false;
+        transform.position = new Vector3(originalX, originalY, 0f);
     }
 }

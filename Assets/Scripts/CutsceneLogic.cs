@@ -7,6 +7,27 @@ public class CutsceneLogic : MonoBehaviour
     public SpriteEmotes leftSprite, rightSprite;
     public UnityEngine.UI.Text mainText;
 
+    private float defaultLetterWait = 0.03f;
+
+    [System.Serializable]
+    public class Scenes
+    {
+        public GameObject beachScene, shrineScene;
+    }
+
+    [System.Serializable]
+    public class Sprites
+    {
+        public Sprite buffFront, buffSide, buffWin, buffLose, buffDefeat, girlFront, girlSide, girlWin, girlLose, girlDefeat;
+        public Sprite hattyFront, hattySide, hattyWin, hattyLose, hattyDefeat, profFront, profSide, profWin, profLose, profDefeat;
+        public Sprite senseiFront, senseiSide, senseiWin, senseiLose, senseiDefeat, rawBuffFront, rawBuffSide, rawBuffWin, rawBuffLose, rawBuffDefeat;
+        public Sprite rawGirlFront, rawGirlSide, rawGirlWin, rawGirlLose, rawGirlDefeat, rawHattyFront, rawHattySide, rawHattyWin, rawHattyLose, rawHattyDefeat;
+        public Sprite rawProfFront, rawProfSide, rawProfWin, rawProfLose, rawProfDefeat, rawSenseiFront, rawSenseiSide, rawSenseiWin, rawSenseiLose, rawSenseiDefeat;
+    }
+
+    public Sprites sprites = new Sprites();
+    public Scenes scenes = new Scenes();
+
     private float defaultFontSize = 26f;
     private bool dialogueDoneDisplaying = true;
 
@@ -15,12 +36,6 @@ public class CutsceneLogic : MonoBehaviour
 
     private int globalSceneIndex = 0;
 
-	// Use this for initialization
-	void Start ()
-    {
-    }
-	
-	// Update is called once per frame
 	void Update ()
     {
         if (sectionComplete)
@@ -29,21 +44,97 @@ public class CutsceneLogic : MonoBehaviour
             {
                 default:
                 case 0:
-                    DisplayDialogue("This is a test thing!", 0.03f);
+                    rightSprite.ToggleVisibility();
+                    scenes.beachScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlSide);
+                    leftSprite.EnterStageSide(1f);
+                    DisplayDialogue("Ok, I'll be careful. Bye everyone!", defaultLetterWait);
                     break;
                 case 1:
-                    DisplayDialogue("Round 2 baby!", 0.03f);
+                    DisplayDialogue("All my years of training have prepared me for this moment, to take down the 4 volleyblock masters standing in my way!", defaultLetterWait);
                     break;
                 case 2:
-                    DisplayDialogue("Round 3 why not?", 0.03f);
+                    DisplayDialogue("I can't even believe my parents even let me compete in the volleyblock regional champion competition...", defaultLetterWait);
+                    break;
+                case 3:
+                    DisplayDialogue("To think that I need to take on the masters of the sport! The elusive 4 who have been hidden from the public eye.", defaultLetterWait);
+                    leftSprite.SetSprite(sprites.girlLose);
+                    break;
+                case 4:
+                    DisplayDialogue("What secrets could they be keeping, what techniques have they mastered?", defaultLetterWait);
+                    break;
+                case 5:
+                    DisplayDialogue("I have to know, I have to learn! I need to be the best block / circle / weird cross stacker there ever was!", defaultLetterWait);
+                    leftSprite.SetSprite(sprites.girlWin);
+                    break;
+                case 6:
+                    DisplayDialogue("Alright, the only lead I have is that Buff Beach Bobby is the first master, and he's never lost a match in his life...", defaultLetterWait);
+                    break;
+                case 7:
+                    DisplayDialogue("Mom, Dad, Little Jimmy, I won't let you guys down. Let's go!", defaultLetterWait);
+                    leftSprite.SetSprite(sprites.girlSide);
+                    break;
+                case 8:
+                    scenes.beachScene.SetActive(true);
+                    rightSprite.ToggleVisibility();
+                    leftSprite.ToggleVisibility();
+                    leftSprite.SetSprite(sprites.girlSide);
+                    rightSprite.SetSprite(sprites.buffWin);
+                    rightSprite.EnterStageSide(1f);
+                    rightSprite.SetSprite(sprites.buffLose);
+                    DisplayDialogue("HRAH, HUT, HRAH, GRAHHHHHHHHHHHHH", 0.1f);
+                    break;
+                case 9:
+                    DisplayDialogue("Whew, what a workout. Volleyblocks totally makes you work, huh?", defaultLetterWait);
+                    rightSprite.SetSprite(sprites.buffWin);
+                    break;
+                case 10:
+                    leftSprite.ToggleVisibility();
+                    leftSprite.EnterStageSide(1f);
+                    DisplayDialogue("BUFF BEACH BOBBY!", defaultLetterWait);
+                    break;
+                case 11:
+                    DisplayDialogue("Huh? Who the heck are you?", defaultLetterWait);
+                    rightSprite.SetSprite(sprites.buffSide);
+                    break;
+                case 12:
+                    DisplayDialogue("I challenge you to a duel for your badge! I'm going to prove that I have what it takes to be the volleyblock regional champion!", defaultLetterWait);
+                    leftSprite.SetSprite(sprites.girlWin);
+                    break;
+                case 13:
+                    DisplayDialogue(". . .", 0.6f);
+                    break;
+                case 14:
+                    DisplayDialogue("HA HOOOOOOOOOOOO", defaultLetterWait);
+                    rightSprite.Shake(1f, 0.2f);
+                    rightSprite.SetSprite(sprites.buffWin);
+                    leftSprite.SetSprite(sprites.girlLose);
+                    break;
+                case 15:
+                    DisplayDialogue("FINALLY, SOMEONE THINKS THEY'RE TOUGH ENOUGH TO FACE ME?", defaultLetterWait);
+                    break;
+                case 16:
+                    DisplayDialogue("HA HOOOOOOOOOOOO", defaultLetterWait);
+                    rightSprite.Shake(1f, 0.2f);
+                    break;
+                case 17:
+                    DisplayDialogue("OKAY KID, I'LL HUMOR YOU. LET'S GO.", defaultLetterWait);
+                    rightSprite.SetSprite(sprites.buffSide);
+                    leftSprite.SetSprite(sprites.girlSide);
+                    break;
+                case 18:
+                    DisplayDialogue("PROVE TO ME YOU HAVE WHAT IT TAKES TO BE A VOLLEYBLOCK MASTER!", defaultLetterWait);
+                    break;
+                case 19:
+                    break;
+                case 20:
                     break;
                     // Fade from black to house
                     // Girl:
-                    // Ahhhhh, what a lovely morning! The perfect morning
-                    // to take on the volleyblock champions of the world!
+                    // Ok, I'll be careful. Bye everyone!
                     // All my years of training have prepared me for this
-                    // moment, to take down the 8 volleyblock masters
-                    // who stand in my way of being the champion!
+                    // moment, to take down the 4 volleyblock masters
+                    // who stand in my way of being the volleyblock regional champion!
 
                     // Silhouttes of the masters
 

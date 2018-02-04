@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &120839421
 Transform:
   m_ObjectHideFlags: 0
@@ -3517,6 +3517,60 @@ MonoBehaviour:
   leftSprite: {fileID: 2071313726}
   rightSprite: {fileID: 1466702561}
   mainText: {fileID: 980543117}
+  sprites:
+    buffFront: {fileID: 21300000, guid: af9af37db18081341bba7d417d7647e5, type: 3}
+    buffSide: {fileID: 21300000, guid: c27c5834a6a69174a9f570034aac6307, type: 3}
+    buffWin: {fileID: 21300000, guid: 1eb6cdec830952b49b52de866e697e49, type: 3}
+    buffLose: {fileID: 21300000, guid: c825fb5e69bf23e44bb42a32482731a2, type: 3}
+    buffDefeat: {fileID: 21300000, guid: b52932c407dccd645a1db5dfcf884e21, type: 3}
+    girlFront: {fileID: 21300000, guid: b68db8def31ad7144860e7c93cba6efb, type: 3}
+    girlSide: {fileID: 21300000, guid: 54e6977f032803a4881f69a15f37a3b0, type: 3}
+    girlWin: {fileID: 21300000, guid: 384de9c7fed1f594781d21c1eac4e9ec, type: 3}
+    girlLose: {fileID: 21300000, guid: 1a2b3ea4beb381f4ca6f9b5c698a0fd1, type: 3}
+    girlDefeat: {fileID: 21300000, guid: 4133ea8e906a1644380f8291dd1de3c5, type: 3}
+    hattyFront: {fileID: 21300000, guid: 38a9c9fcd4cc0064f9761cd24fbfb619, type: 3}
+    hattySide: {fileID: 21300000, guid: 426f44a48c8c643418a7384e96837341, type: 3}
+    hattyWin: {fileID: 21300000, guid: 5a6b0cface6fb454e8fff738bd7fbb82, type: 3}
+    hattyLose: {fileID: 21300000, guid: 1664a8d3536547a45ba605aab9272f0f, type: 3}
+    hattyDefeat: {fileID: 21300000, guid: bbdc9d533345ae54aa3a12d77e87b1b2, type: 3}
+    profFront: {fileID: 21300000, guid: a3d6a640b0761774185231f62ccca6d7, type: 3}
+    profSide: {fileID: 21300000, guid: b70948071b3f6b344b040b11657d814e, type: 3}
+    profWin: {fileID: 21300000, guid: 668181a080ffe4e43bd1536ab06643d8, type: 3}
+    profLose: {fileID: 21300000, guid: 9a98f0adee8ae854b895b87edc5fa75a, type: 3}
+    profDefeat: {fileID: 21300000, guid: f4779779242f8e748abe1d7a231aff33, type: 3}
+    senseiFront: {fileID: 21300000, guid: 6bf54f41223414e4292c53c345fb8b51, type: 3}
+    senseiSide: {fileID: 21300000, guid: f0f57918810325241b87f2f0472fa236, type: 3}
+    senseiWin: {fileID: 21300000, guid: 9c49853d7d85af445b743a6cc7e18e4e, type: 3}
+    senseiLose: {fileID: 21300000, guid: 3172c0494d7234b41be7fb4dd72b84cc, type: 3}
+    senseiDefeat: {fileID: 21300000, guid: 5cfb1a483f6706244ba3ae57195fb671, type: 3}
+    rawBuffFront: {fileID: 21300000, guid: 7788a8445364d7f4ca78380f8ac5995b, type: 3}
+    rawBuffSide: {fileID: 21300000, guid: de5187a77f1059845ae97b2cf3e8cb4b, type: 3}
+    rawBuffWin: {fileID: 21300000, guid: 9eaacb4b79c94394cb435fe248d2a433, type: 3}
+    rawBuffLose: {fileID: 21300000, guid: 2a6af553e50ad5248b864546937e379a, type: 3}
+    rawBuffDefeat: {fileID: 21300000, guid: 5b6dd846cf6f7654099d9fc94993086e, type: 3}
+    rawGirlFront: {fileID: 21300000, guid: ad0ec0d6d1ebecc47a32afd22b4979b2, type: 3}
+    rawGirlSide: {fileID: 21300000, guid: dd7d1b57582ee934cb2bef06c7ef02cb, type: 3}
+    rawGirlWin: {fileID: 21300000, guid: 6e25de3e514b9bb4497939584ab6c37b, type: 3}
+    rawGirlLose: {fileID: 21300000, guid: 55d5ff153062a8848a82ad8c699ff1e2, type: 3}
+    rawGirlDefeat: {fileID: 21300000, guid: 57ab6166d2b92504cae25fd1ff69d6cf, type: 3}
+    rawHattyFront: {fileID: 21300000, guid: b3a61323af2d13d469a25d7f49523ac8, type: 3}
+    rawHattySide: {fileID: 21300000, guid: 8f226a7fcc27e72409ae314159097826, type: 3}
+    rawHattyWin: {fileID: 21300000, guid: 7636682d580ef02428922b23cc91140f, type: 3}
+    rawHattyLose: {fileID: 21300000, guid: 724152346a0627f4bb9747fc2c8a7d9c, type: 3}
+    rawHattyDefeat: {fileID: 21300000, guid: 562f379b3e6d8a5489a3df8d07636a03, type: 3}
+    rawProfFront: {fileID: 21300000, guid: 73d147cba9bae804c8d3c1f85cd8ae87, type: 3}
+    rawProfSide: {fileID: 21300000, guid: 2259009d327f9cf45bb8e69bfa724643, type: 3}
+    rawProfWin: {fileID: 21300000, guid: e81575e675b7bb34c80e762457c4cc69, type: 3}
+    rawProfLose: {fileID: 21300000, guid: f8682787b207e3b46a7a3ef473160c66, type: 3}
+    rawProfDefeat: {fileID: 21300000, guid: 6715a4007c1554f48b924dd0fef53ef6, type: 3}
+    rawSenseiFront: {fileID: 21300000, guid: afcec3ebbeb1e694293bbc3a92dcdbe3, type: 3}
+    rawSenseiSide: {fileID: 21300000, guid: 8e86faeee2532d9468dab6b64ef5fb59, type: 3}
+    rawSenseiWin: {fileID: 21300000, guid: d04ae880ab5274c40afa7756af18643d, type: 3}
+    rawSenseiLose: {fileID: 21300000, guid: d04ecd524799ec04b8c3cfc95f70c709, type: 3}
+    rawSenseiDefeat: {fileID: 21300000, guid: a9ab01102b48f0346a55c4163d1c7e1d, type: 3}
+  scenes:
+    beachScene: {fileID: 788193781}
+    shrineScene: {fileID: 120839420}
 --- !u!1 &1975404292
 GameObject:
   m_ObjectHideFlags: 0
