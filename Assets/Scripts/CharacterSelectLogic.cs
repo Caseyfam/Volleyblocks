@@ -6,32 +6,93 @@ public class CharacterSelectLogic : MonoBehaviour {
 
     SelectedCharacters charStorage;
     GameObject menu;
+    Passed passed;
     public GameObject p1Arrow, p2Arrow;
 
-    private int p1Selection, p2Selection;
+    private int p1Selection = 0, p2Selection = 4;
+    bool p1Locked = false, p2Locked = false;
+    bool menuInitialized = false;
 
     private void Awake()
     {
         menu = gameObject;
-        charStorage = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();  
+        charStorage = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
+        passed = GameObject.Find("PassedObject").GetComponent<Passed>();
     }
 	
 	void Update ()
     {
 	    if (menu.activeSelf)
         {
+            if (!menuInitialized)
+            {
+                Debug.Log(passed.playersInPlay);
+                switch (passed.playersInPlay)
+                {
+                    case "Player VS CPU":
+                        SetRandomCharacter(2);
+                        p1Arrow.SetActive(true);
+                        p2Locked = true;
+                        break;
+                    case "Player VS Player":
+                        p1Arrow.SetActive(true);
+                        p2Arrow.SetActive(true);
+                        break;
+                    case "CPU VS CPU":
+                    default:
+                        SetRandomCharacter(1);
+                        SetRandomCharacter(2);
+                        // Just exit / start battle / whatever
+                        break;
+                }
+                menuInitialized = true;
+            }
             MoveCursor(p1Arrow, ref p1Selection);
+            MoveCursor(p2Arrow, ref p2Selection);
             // If player vs CPU -> One cursor
             // If player vs player -> Two cursors
             // If CPU Vs CPU -> skip character select and load game
             // but first set up random portraits
+
+            if (p1Locked && p2Locked)
+            {
+                // display start button
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    // start
+                    GameObject.Find("MenuLogic").GetComponent<ButtonLogic>().ContinueFromCharacterSelect();
+                }
+            }
         }
 	}
 
     void MoveCursor(GameObject arrow, ref int selection)
     {
-        // Get right inputs before so we can differentiate players
-        if (Input.GetKeyDown(KeyCode.D))
+        if (arrow.name.Equals("P1arrow"))
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                HorizontalMovement(true, arrow, ref selection);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                HorizontalMovement(false, arrow, ref selection);
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Confirm();
+                LockCursor(1);
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+    void HorizontalMovement(bool right, GameObject arrow, ref int selection)
+    {
+        if (right)
         {
             selection++;
             arrow.transform.position = new Vector3(arrow.transform.position.x + 3.5f, arrow.transform.position.y, 0f);
@@ -41,7 +102,7 @@ public class CharacterSelectLogic : MonoBehaviour {
                 arrow.transform.position = new Vector3(-7f, arrow.transform.position.y, 0f);
             }
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        else
         {
             selection--;
             arrow.transform.position = new Vector3(arrow.transform.position.x - 3.5f, arrow.transform.position.y, 0f);
@@ -51,9 +112,34 @@ public class CharacterSelectLogic : MonoBehaviour {
                 arrow.transform.position = new Vector3(7f, arrow.transform.position.y, 0f);
             }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+    }
+
+    void Confirm()
+    {
+        SetCharacters();
+    }
+
+    void LockCursor(int playerNum)
+    {
+        if (playerNum == 1)
         {
-            SetCharacters(); // Just for testing
+            p1Locked = true;
+        }
+        else
+        {
+            p2Locked = true;
+        }
+    }
+
+    void SetRandomCharacter(int playerNum)
+    {
+        if (playerNum == 1)
+        {
+            p1Selection = Random.Range(0, 5);
+        }
+        else
+        {
+            p2Selection = Random.Range(0, 5);
         }
     }
 
@@ -65,7 +151,7 @@ public class CharacterSelectLogic : MonoBehaviour {
         {
             default:
             case 0:
-                p1Name = "raw";
+                p1Name = "buff";
                 break;
             case 1:
                 p1Name = "girl";

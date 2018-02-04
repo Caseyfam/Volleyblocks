@@ -9,7 +9,7 @@ public class LoadBattle : MonoBehaviour
 
     public void LoadNewBattle(string playerCase, float newTurnLength, int gamesCount, int setsCount)
     {
-        GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, useOldAI, newTurnLength, gamesCount, setsCount);
+        GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, newTurnLength, gamesCount, setsCount);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

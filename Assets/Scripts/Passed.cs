@@ -7,15 +7,13 @@ public class Passed : MonoBehaviour {
     public static Passed instance;
 
     public string playersInPlay = "Player VS CPU";
-    public bool useOldAI = false;
     public float turnLength = 0f;
     public int setCount = 3;
     public int gamesCount = 3;
 
-    public void StoreValues (string players, bool useAI, float turn, int games, int sets)
+    public void StoreValues (string players, float turn, int games, int sets)
     {
         playersInPlay = players;
-        useOldAI = useAI;
         turnLength = turn;
         gamesCount = games;
         setCount = sets;

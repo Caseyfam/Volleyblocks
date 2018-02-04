@@ -203,8 +203,15 @@ public class ActiveSet : MonoBehaviour
         switch (orientation)
         {
             case "UP":
-                bottomBlock.SetBlockPosition(bottomRow, bottomColumn, bottomAddition, instant);
-                topBlock.SetBlockPosition(topRow, topColumn, topAddition, instant);
+                try
+                {
+                    bottomBlock.SetBlockPosition(bottomRow, bottomColumn, bottomAddition, instant);
+                    topBlock.SetBlockPosition(topRow, topColumn, topAddition, instant);
+                }
+                catch
+                {
+
+                }
                 break;
             case "LEFT":
                 if (direction.Equals("RIGHT"))
@@ -242,8 +249,15 @@ public class ActiveSet : MonoBehaviour
         this.topRow = topRow;
         this.topColumn = topColumn;
 
-        topBlock.CalculateNeighbors();
-        bottomBlock.CalculateNeighbors();
+        try
+        {
+            topBlock.CalculateNeighbors();
+            bottomBlock.CalculateNeighbors();
+        }
+        catch
+        {
+
+        }
     }
 
     void SetTilePosition(int bottomRow, int bottomColumn, int topRow, int topColumn, Vector3 bottomAddition, Vector3 topAddition, bool instant)

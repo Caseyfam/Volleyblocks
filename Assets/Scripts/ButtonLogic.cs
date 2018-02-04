@@ -29,9 +29,14 @@ public class ButtonLogic : MonoBehaviour {
     public void StartButton()
     {
         // This should load character select instead
+        GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(players, turnLength, gamesCount, setsCount);
         versusMenu.SetActive(false);
         characterSelect.SetActive(true);
-        //GetComponent<LoadBattle>().LoadNewBattle(players, turnLength, gamesCount, setsCount);
+    }
+
+    public void ContinueFromCharacterSelect()
+    {
+        GetComponent<LoadBattle>().LoadNewBattle(players, turnLength, gamesCount, setsCount);
     }
 
     public void PlayersButton()

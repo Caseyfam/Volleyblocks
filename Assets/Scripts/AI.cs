@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AI : MonoBehaviour {
 
-    public bool useOldAI = false;
-
     public float turnWaitTime = 0.1f;
 
     Board board;
@@ -33,7 +31,6 @@ public class AI : MonoBehaviour {
     {
         try
         {
-            useOldAI = GameObject.Find("PassedObject").GetComponent<Passed>().useOldAI;
             turnWaitTime = GameObject.Find("PassedObject").GetComponent<Passed>().turnLength;
         }
         catch
@@ -111,106 +108,103 @@ public class AI : MonoBehaviour {
 
     void CalcDesiredDestination()
     {
-        if (!useOldAI) // Should really get rid of this
+        List<int[]> openCoords = new List<int[]>();
+        openCoords = ReturnOpenCoords();
+        maxChainLength = 0;
+        foreach (int[] blockPos in openCoords)
         {
-            List<int[]> openCoords = new List<int[]>();
-            openCoords = ReturnOpenCoords();
-            maxChainLength = 0;
-            foreach (int[] blockPos in openCoords)
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 4; i++)
+                // Bottom block = core block
+                // Top block = dangle block
+                localChainLength = 0;
+                GameObject[,] tempBoardBlocks = new GameObject[12, 6];
+                System.Array.Copy(GetComponent<Board>().boardBlocks, tempBoardBlocks, GetComponent<Board>().boardBlocks.GetLength(0) * GetComponent<Board>().boardBlocks.GetLength(1));
+                switch (i)
                 {
-                    // Bottom block = core block
-                    // Top block = dangle block
-                    localChainLength = 0;
-                    GameObject[,] tempBoardBlocks = new GameObject[12, 6];
-                    System.Array.Copy(GetComponent<Board>().boardBlocks, tempBoardBlocks, GetComponent<Board>().boardBlocks.GetLength(0) * GetComponent<Board>().boardBlocks.GetLength(1));
-                    switch (i)
-                    {
-                        case 0: // UP
-                                // Make a temp Board with added blocks
-                                // Pass in to chainCalc
-                            tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.bottomBlock.gameObject;
-                            try
-                            {
-                                tempBoardBlocks[blockPos[0] - 1, blockPos[1]] = activeSet.topBlock.gameObject;
-                            }
-                            catch
-                            {
-                                // Do nothing because if the AI chose this move then they have lost.
-                            }
-                            currentOrientation = "UP";
-                            break;
-                        case 1: // DOWN
-                            try
-                            {
-                                tempBoardBlocks[blockPos[0] - 1, blockPos[1]] = activeSet.bottomBlock.gameObject;
-                            }
-                            catch
-                            {
+                    case 0: // UP
+                            // Make a temp Board with added blocks
+                            // Pass in to chainCalc
+                        tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.bottomBlock.gameObject;
+                        try
+                        {
+                            tempBoardBlocks[blockPos[0] - 1, blockPos[1]] = activeSet.topBlock.gameObject;
+                        }
+                        catch
+                        {
+                            // Do nothing because if the AI chose this move then they have lost.
+                        }
+                        currentOrientation = "UP";
+                        break;
+                    case 1: // DOWN
+                        try
+                        {
+                            tempBoardBlocks[blockPos[0] - 1, blockPos[1]] = activeSet.bottomBlock.gameObject;
+                        }
+                        catch
+                        {
 
-                            }
+                        }
+                        tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.topBlock.gameObject;
+                        currentOrientation = "DOWN";
+                        break;
+                    case 2: // LEFT
+                        if (blockPos[1] == 0)
+                        {
+                            tempBoardBlocks[blockPos[0], blockPos[1] + 1] = activeSet.bottomBlock.gameObject;
                             tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.topBlock.gameObject;
-                            currentOrientation = "DOWN";
-                            break;
-                        case 2: // LEFT
-                            if (blockPos[1] == 0)
-                            {
-                                tempBoardBlocks[blockPos[0], blockPos[1] + 1] = activeSet.bottomBlock.gameObject;
-                                tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.topBlock.gameObject;
-                            }
-                            else
-                            {
-                                tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.bottomBlock.gameObject;
-                                tempBoardBlocks[blockPos[0], blockPos[1] - 1] = activeSet.topBlock.gameObject;
-                            }
-                            currentOrientation = "LEFT";
-                            break;
-                        case 3: // RIGHT
-                            if (blockPos[1] == 5)
-                            {
-                                tempBoardBlocks[blockPos[0], blockPos[1] - 1] = activeSet.bottomBlock.gameObject;
-                                tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.topBlock.gameObject;
-                            }
-                            else
-                            {
-                                tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.bottomBlock.gameObject;
-                                tempBoardBlocks[blockPos[0], blockPos[1] + 1] = activeSet.topBlock.gameObject;
-                            }
-                            currentOrientation = "RIGHT";
-                            break;
-                    }
-                    tempBoardBlocks[blockPos[0], blockPos[1]].GetComponent<ChainInfo>().ChainCalculation(this, tempBoardBlocks[blockPos[0], blockPos[1]].GetComponent<Block>(), tempBoardBlocks, blockPos);
-                    if (localChainLength > maxChainLength)
+                        }
+                        else
+                        {
+                            tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.bottomBlock.gameObject;
+                            tempBoardBlocks[blockPos[0], blockPos[1] - 1] = activeSet.topBlock.gameObject;
+                        }
+                        currentOrientation = "LEFT";
+                        break;
+                    case 3: // RIGHT
+                        if (blockPos[1] == 5)
+                        {
+                            tempBoardBlocks[blockPos[0], blockPos[1] - 1] = activeSet.bottomBlock.gameObject;
+                            tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.topBlock.gameObject;
+                        }
+                        else
+                        {
+                            tempBoardBlocks[blockPos[0], blockPos[1]] = activeSet.bottomBlock.gameObject;
+                            tempBoardBlocks[blockPos[0], blockPos[1] + 1] = activeSet.topBlock.gameObject;
+                        }
+                        currentOrientation = "RIGHT";
+                        break;
+                }
+                tempBoardBlocks[blockPos[0], blockPos[1]].GetComponent<ChainInfo>().ChainCalculation(this, tempBoardBlocks[blockPos[0], blockPos[1]].GetComponent<Block>(), tempBoardBlocks, blockPos);
+                if (localChainLength > maxChainLength)
+                {
+                    maxOrientation = currentOrientation;
+                    maxBlockPos = blockPos;
+                    maxChainLength = localChainLength;
+                }
+                else if (localChainLength == maxChainLength)
+                {
+                    if (blockPos[0] > maxBlockPos[0])
                     {
                         maxOrientation = currentOrientation;
                         maxBlockPos = blockPos;
                         maxChainLength = localChainLength;
                     }
-                    else if (localChainLength == maxChainLength)
-                    {
-                        if (blockPos[0] > maxBlockPos[0])
-                        {
-                            maxOrientation = currentOrientation;
-                            maxBlockPos = blockPos;
-                            maxChainLength = localChainLength;
-                        }
-                    }
+                }
 
-                    for (int k = 11; k >= 0; k--) // Start from bottom row
+                for (int k = 11; k >= 0; k--) // Start from bottom row
+                {
+                    for (int j = 0; j < 6; j++) // Columns
                     {
-                        for (int j = 0; j < 6; j++) // Columns
+                        if (tempBoardBlocks[k, j] != null)
                         {
-                            if (tempBoardBlocks[k, j] != null)
-                            {
-                                tempBoardBlocks[k, j].GetComponent<ChainInfo>().wasHit = false;
-                            }
+                            tempBoardBlocks[k, j].GetComponent<ChainInfo>().wasHit = false;
                         }
                     }
                 }
             }
-            BasicMoveSetter(maxBlockPos, maxOrientation);
         }
+        BasicMoveSetter(maxBlockPos, maxOrientation);
     }
 
     List<int[]> ReturnOpenCoords()
