@@ -567,45 +567,66 @@ public class ActiveSet : MonoBehaviour
     // Update is called once per frame
     [HideInInspector]
     public bool updateHighlight = false;
+
     void Update()
     {
         if (canMovePieces)
         {
             if (!isCPU && !GetComponent<GameOver>().gameOver)
             {
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetAxisRaw("Vertical") > 0.3f)
                 {
-                    LockBlocks(true);
-                    updateHighlight = true;
+                    if (!axisLocked)
+                    {
+                        LockBlocks(true);
+                        updateHighlight = true;
+                        PrepareAxisWait("Vertical");
+                    }
                 }
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetAxisRaw("Vertical") < -0.3f)
                 {
-                    ManualLock();
+                    if (!axisLocked)
+                    {
+                        ManualLock();
+                        PrepareAxisWait("Vertical");
+                    }
                 }
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetButtonDown("Counterclockwise1"))
                 {
                     RotateActiveSet("COUNTERCLOCKWISE");
                     updateHighlight = true;
                 }
-                else if (Input.GetMouseButtonDown(1))
+                else if (Input.GetButtonDown("Clockwise1"))
                 {
                     RotateActiveSet("CLOCKWISE");
                     updateHighlight = true;
                 }
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetAxisRaw("Horizontal") > 0.3f)
                 {
-                    MoveActiveSet("RIGHT");
-                    updateHighlight = true;
+                    if (!axisLocked)
+                    {
+                        MoveActiveSet("RIGHT");
+                        updateHighlight = true;
+                        PrepareAxisWait("Horizontal");
+                    }
                 }
-                else if (Input.GetKeyDown(KeyCode.A))
+                else if (Input.GetAxisRaw("Horizontal") < -0.3f)
                 {
-                    MoveActiveSet("LEFT");
-                    updateHighlight = true;
+                    if (!axisLocked)
+                    {
+                        MoveActiveSet("LEFT");
+                        updateHighlight = true;
+                        PrepareAxisWait("Horizontal");
+                    }
                 }
-                else if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetAxisRaw("Vertical") < -0.3f) // Down isn't working yet.
                 {
-                    MoveActiveSet("DOWN");
+                    if (!axisLocked)
+                    {
+                        MoveActiveSet("DOWN");
+                        PrepareAxisWait("Vertical");
+                    }
                 }
             }
         }
@@ -613,6 +634,32 @@ public class ActiveSet : MonoBehaviour
         {
             fallHighlight.UpdateHighlight(topTile, bottomTile, orientation);
             updateHighlight = false;
+        }
+        if (axisLocked && prevAxis != null)
+        {
+            if (Input.GetAxisRaw(prevAxis) == 0)
+            {
+                axisLocked = false;
+                prevAxis = null;
+            }
+        }
+    }
+
+    private bool axisLocked = false;
+    private float timeToGo;
+    private string prevAxis;
+    void PrepareAxisWait(string newAxis)
+    {
+        prevAxis = newAxis;
+        axisLocked = true;
+        timeToGo = Time.fixedTime + 0.2f;
+    }
+
+    void FixedUpdate()
+    {
+        if (axisLocked && Time.fixedTime >= timeToGo)
+        {
+            axisLocked = false;
         }
     }
 
