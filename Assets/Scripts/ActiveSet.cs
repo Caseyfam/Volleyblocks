@@ -585,11 +585,7 @@ public class ActiveSet : MonoBehaviour
                 }
                 if (Input.GetAxisRaw("Vertical") < -0.3f)
                 {
-                    if (!axisLocked)
-                    {
-                        ManualLock();
-                        PrepareAxisWait("Vertical");
-                    }
+                    ManualLock();
                 }
 
                 if (Input.GetButtonDown("Counterclockwise1"))
@@ -620,7 +616,7 @@ public class ActiveSet : MonoBehaviour
                         PrepareAxisWait("Horizontal");
                     }
                 }
-                if (Input.GetAxisRaw("Vertical") < -0.3f) // Down isn't working yet.
+                if (Input.GetAxisRaw("Vertical") < -0.3f)
                 {
                     if (!axisLocked)
                     {
@@ -646,6 +642,7 @@ public class ActiveSet : MonoBehaviour
     }
 
     private bool axisLocked = false;
+    private bool downLock = false;
     private float timeToGo;
     private string prevAxis;
     void PrepareAxisWait(string newAxis)
@@ -659,6 +656,8 @@ public class ActiveSet : MonoBehaviour
     {
         if (axisLocked && Time.fixedTime >= timeToGo)
         {
+            Debug.Log("Down unlocked");
+            downLock = false;
             axisLocked = false;
         }
     }
@@ -709,53 +708,50 @@ public class ActiveSet : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        // DEBUG STATEMENT
-        if (gameObject.name.Equals("playerBoard"))
+        if (!downLock)
         {
-            //Debug.Log(orientation);
+            switch (orientation)
+            {
+                case "UP":
+                    if (!CheckIfOverlapping(bottomRow + 1, bottomColumn))
+                    {
+                        //Debug.Log("FALLING");
+                        SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
+                    }
+                    else // Target block is overlapping
+                    {
+                        //Debug.Log("LOCKING NOW");
+                        yield return new WaitForSeconds(1f);
+                        LockBlocks(true);
+                    }
+                    break;
+                case "DOWN":
+                    if (!CheckIfOverlapping(topRow + 1, topColumn))
+                    {
+                        SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
+                    }
+                    else // Target block is overlapping
+                    {
+                        yield return new WaitForSeconds(1f);
+                        LockBlocks(true);
+                    }
+                    break;
+                case "LEFT":
+                case "RIGHT":
+                    if (!CheckIfOverlapping(topRow + 1, topColumn) && !CheckIfOverlapping(bottomRow + 1, bottomColumn))
+                    {
+                        SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
+                    }
+                    else // Target block is overllaping
+                    {
+                        yield return new WaitForSeconds(1f);
+                        LockBlocks(true);
+                    }
+                    break;
+            }
+            StopAllCoroutines();
+            StartCoroutine(BlockFall(blockFallSpeed));
         }
-
-        switch (orientation)
-        {
-            case "UP":
-                if (!CheckIfOverlapping(bottomRow + 1, bottomColumn))
-                {
-                    //Debug.Log("FALLING");
-                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
-                }
-                else // Target block is overlapping
-                {
-                    //Debug.Log("LOCKING NOW");
-                    yield return new WaitForSeconds(1f);
-                    LockBlocks(true);
-                }
-                break;
-            case "DOWN":
-                if (!CheckIfOverlapping(topRow + 1, topColumn))
-                {
-                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
-                }
-                else // Target block is overlapping
-                {
-                    yield return new WaitForSeconds(1f);
-                    LockBlocks(true);
-                }
-                break;
-            case "LEFT":
-            case "RIGHT":
-                if (!CheckIfOverlapping(topRow + 1, topColumn) && !CheckIfOverlapping(bottomRow + 1, bottomColumn))
-                {
-                    SetTilePosition(bottomRow + 1, bottomColumn, topRow + 1, topColumn, new Vector3(0f, -0.8f), new Vector3(0f, -0.8f), true);
-                }
-                else // Target block is overllaping
-                {
-                    yield return new WaitForSeconds(1f);
-                    LockBlocks(true);
-                }
-                break;
-        }
-        StopAllCoroutines();
-        StartCoroutine(BlockFall(blockFallSpeed));
     }
 
     public void LockBlocks(bool instant)
