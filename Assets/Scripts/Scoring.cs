@@ -9,14 +9,19 @@ public class Scoring : MonoBehaviour {
     private int leftPoints = 0, leftGames = 0, rightPoints = 0, rightGames = 0;
     public TextMesh lPointsText, lGamesText, rPointsText, rGamesText;
 
+    private Passed passedObject;
+    private RunningGame runningGame;
+
     bool matchComplete = false;
 
     private void Start()
     {
+        runningGame = GetComponent<RunningGame>();
         try
         {
-            pointsToGame = GameObject.Find("PassedObject").GetComponent<Passed>().gamesCount;
-            gamesToWin = GameObject.Find("PassedObject").GetComponent<Passed>().setCount;
+            passedObject = GameObject.Find("PassedObject").GetComponent<Passed>();
+            pointsToGame = passedObject.gamesCount;
+            gamesToWin = passedObject.setCount;
         }
         catch
         {
@@ -40,8 +45,8 @@ public class Scoring : MonoBehaviour {
             rPointsText.text = rightPoints.ToString();
             CheckIfGame(rightPoints, "LEFT");
         }
-        GetComponent<RunningGame>().SetMatchComplete(matchComplete);
-        GetComponent<RunningGame>().SetRunningGameOver();
+        runningGame.SetMatchComplete(matchComplete);
+        runningGame.SetRunningGameOver();
     }
 
     void CheckIfGame(int points, string position)
@@ -102,7 +107,14 @@ public class Scoring : MonoBehaviour {
     {
         try
         {
-            //UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            Debug.Log(playerWon);
+            Debug.Log(passedObject.isStory);
+            if (playerWon == "won" && passedObject.isStory)
+            {
+                passedObject.storyIndex++;
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2); // Load story scene
+                // Scene index should initialize correctly
+            }
         }
         catch
         {

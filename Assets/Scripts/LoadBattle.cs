@@ -33,6 +33,19 @@ public class LoadBattle : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
+    public void LoadNewBattle(string playerCase, float newTurnLength, int gamesCount, int setsCount, int storyIndex, bool isStory)
+    {
+        try
+        {
+            GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(playerCase, newTurnLength, gamesCount, setsCount, storyIndex, isStory);
+        }
+        catch
+        {
+            Debug.LogError("PassedObject does not exist. Did you not load from Menu?");
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
     // When called, load volley scene.
     // Save gameObject info.
     // Make sure empty isn't destroyed with this script.

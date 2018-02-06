@@ -46,6 +46,7 @@ public class CutsceneLogic : MonoBehaviour
         {
             selectedChars = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
             selectedScene = GameObject.Find("PassedObject").GetComponent<SelectedScene>();
+            globalSceneIndex = GameObject.Find("PassedObject").GetComponent<Passed>().storyIndex;
         }
         catch
         {
@@ -146,9 +147,11 @@ public class CutsceneLogic : MonoBehaviour
                     selectedChars.SetLeftBoard("girl");
                     selectedChars.SetRightBoard("buff");
                     selectedScene.SetSceneName("beach");
-                    loadBattle.LoadNewBattle("Player VS CPU", 1f, 3, 3, globalSceneIndex);
+                    //loadBattle.LoadNewBattle("Player VS CPU", 1f, 3, 3, globalSceneIndex, true);
+                    loadBattle.LoadNewBattle("Player VS CPU", 5f, 1, 1, globalSceneIndex, true);
                     break;
                 case 20:
+                    DisplayDialogue("Welp, we made it out of the battle DEBUG", defaultLetterWait);
                     break;
                     // Fade from black to house
                     // Girl:
