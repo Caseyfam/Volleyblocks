@@ -10,7 +10,7 @@ public class SetScene : MonoBehaviour {
     [System.Serializable]
     public class Scenes
     {
-        public GameObject beachScene, shrineScene;
+        public GameObject beachScene, shrineScene, foyerScene;
     }
     public Scenes scenes = new Scenes();
 
@@ -37,6 +37,9 @@ public class SetScene : MonoBehaviour {
                 break;
             case "shrine":
                 scenes.shrineScene.SetActive(true);
+                break;
+            case "foyer":
+                scenes.foyerScene.SetActive(true);
                 break;
         }
     }
