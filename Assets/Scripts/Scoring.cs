@@ -88,7 +88,7 @@ public class Scoring : MonoBehaviour {
                 Debug.Log("LEFT BOARD WON THE SET");
                 playerWon = "won";
                 matchComplete = true;
-                ReturnToOverworld();
+                ResultsScreen();
             }
         }
         else
@@ -98,12 +98,23 @@ public class Scoring : MonoBehaviour {
                 Debug.Log("RIGHT BOARD WON THE SET");
                 playerWon = "lost";
                 matchComplete = true;
-                ReturnToOverworld();
+                ResultsScreen();
             }
         }
     }
 
-    void ReturnToOverworld()
+    void ResultsScreen()
+    {
+        // Display winner portraits with dialogue?
+        // Somehow get correct boards to grab sprites for winning stuff
+        // Add restart option that reloads scene
+        // Add back to versus screen
+        // Add main menu
+        // if Story mode and you win, should be continue
+        // if Story mode and you lost, should be retry match
+    }
+
+    void ReturnToStory()
     {
         try
         {
@@ -112,8 +123,12 @@ public class Scoring : MonoBehaviour {
             if (playerWon == "won" && passedObject.isStory)
             {
                 passedObject.storyIndex++;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(2); // Load story scene
-                // Scene index should initialize correctly
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2); 
+            }
+            else if (playerWon != "won" && passedObject.isStory)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1); // Reload volley scene as test
+                // Should have some game over screen instead
             }
         }
         catch

@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\CutsceneLogic.cs" />
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
     <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
+    <Compile Include="Assets\Scripts\FadeInToColor.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
     <Compile Include="Assets\Scripts\FireAnimate.cs" />
     <Compile Include="Assets\Scripts\FogRoll.cs" />

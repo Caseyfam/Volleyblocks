@@ -15,7 +15,7 @@ public class CutsceneLogic : MonoBehaviour
     [System.Serializable]
     public class Scenes
     {
-        public GameObject beachScene, shrineScene;
+        public GameObject beachScene, shrineScene, foyerScene;
     }
 
     [System.Serializable]
