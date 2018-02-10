@@ -30,7 +30,6 @@ public class CharacterSelectLogic : MonoBehaviour {
                 switch (passed.playersInPlay)
                 {
                     case "Player VS CPU":
-                        SetRandomCharacter(2);
                         p1Arrow.SetActive(true);
                         p2Locked = true;
                         break;
@@ -42,24 +41,35 @@ public class CharacterSelectLogic : MonoBehaviour {
                     default:
                         SetRandomCharacter(1);
                         SetRandomCharacter(2);
+                        p1Locked = true;
+                        p2Locked = true;
                         // Just exit / start battle / whatever
+                        SetCharacters();
+                        GameObject.Find("MenuLogic").GetComponent<ButtonLogic>().ContinueFromCharacterSelect();
                         break;
                 }
                 menuInitialized = true;
             }
             MoveCursor(p1Arrow, ref p1Selection);
             MoveCursor(p2Arrow, ref p2Selection);
-            // If player vs CPU -> One cursor
-            // If player vs player -> Two cursors
-            // If CPU Vs CPU -> skip character select and load game
-            // but first set up random portraits
 
             if (p1Locked && p2Locked)
             {
-                // display start button
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     // start
+                    switch (passed.playersInPlay)
+                    {
+                        case "Player VS CPU":
+                            SetRandomCharacter(2);
+                            break;
+                        case "Player VS Player":
+                            break;
+                        case "CPU VS CPU":
+                        default:
+                            break;
+                    }
+                    SetCharacters();
                     GameObject.Find("MenuLogic").GetComponent<ButtonLogic>().ContinueFromCharacterSelect();
                 }
             }
@@ -86,7 +96,7 @@ public class CharacterSelectLogic : MonoBehaviour {
         }
         else
         {
-
+            // P2 movement
         }
     }
 

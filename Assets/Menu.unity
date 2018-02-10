@@ -6785,6 +6785,7 @@ MonoBehaviour:
   setCount: 3
   gamesCount: 3
   storyIndex: 0
+  isStory: 0
 --- !u!4 &1290935734
 Transform:
   m_ObjectHideFlags: 0
@@ -6809,6 +6810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c9036ab6f85b34ea996a327ce9f1dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftBoardName: 
+  rightBoardName: 
   buffRaw:
   - {fileID: 21300000, guid: 7788a8445364d7f4ca78380f8ac5995b, type: 3}
   - {fileID: 21300000, guid: de5187a77f1059845ae97b2cf3e8cb4b, type: 3}
@@ -6842,9 +6845,9 @@ MonoBehaviour:
   buff:
   - {fileID: 21300000, guid: af9af37db18081341bba7d417d7647e5, type: 3}
   - {fileID: 21300000, guid: 1eb6cdec830952b49b52de866e697e49, type: 3}
+  - {fileID: 21300000, guid: c27c5834a6a69174a9f570034aac6307, type: 3}
   - {fileID: 21300000, guid: c825fb5e69bf23e44bb42a32482731a2, type: 3}
   - {fileID: 21300000, guid: b52932c407dccd645a1db5dfcf884e21, type: 3}
-  - {fileID: 21300000, guid: c27c5834a6a69174a9f570034aac6307, type: 3}
   hatty:
   - {fileID: 21300000, guid: 38a9c9fcd4cc0064f9761cd24fbfb619, type: 3}
   - {fileID: 21300000, guid: 426f44a48c8c643418a7384e96837341, type: 3}

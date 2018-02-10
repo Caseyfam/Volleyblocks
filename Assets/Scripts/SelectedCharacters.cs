@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SelectedCharacters : MonoBehaviour {
 
-    [HideInInspector]
     public string leftBoardName = "", rightBoardName = "";
 
     // frontIdle, sideIdle, sideWin, sideLose, sideDefeat

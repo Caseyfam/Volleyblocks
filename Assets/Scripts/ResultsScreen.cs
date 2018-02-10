@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResultsScreen : MonoBehaviour {
 
-    public GameObject resultsGraphics, resultsCanvas;
+    public GameObject resultsGraphics, resultsCanvas, password;
 
     public SpriteRenderer winnerSprite;
     public UnityEngine.UI.Text gloatText;
@@ -94,5 +94,9 @@ public class ResultsScreen : MonoBehaviour {
         gloatText.text = winningDialogue;
         resultsCanvas.SetActive(true);
         resultsGraphics.SetActive(true);
+        if (!isStory)
+        {
+            password.SetActive(false);
+        }
     }
 }

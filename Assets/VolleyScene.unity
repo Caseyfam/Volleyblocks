@@ -4904,6 +4904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultsGraphics: {fileID: 162285249}
   resultsCanvas: {fileID: 1037757631}
+  password: {fileID: 1550105427}
   winnerSprite: {fileID: 1052750500}
   gloatText: {fileID: 1768880362}
 --- !u!1 &1135753130
