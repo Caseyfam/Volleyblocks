@@ -25,7 +25,7 @@ public class Scoring : MonoBehaviour {
         }
         catch
         {
-            //Debug.LogError("ERROR: Game and / or set count not initialized properly.");
+            Debug.LogError("Couldn't get Passed");
             pointsToGame = 1;
             gamesToWin = 1;
         }
@@ -113,28 +113,9 @@ public class Scoring : MonoBehaviour {
         {
             GetComponent<ResultsScreen>().ResultsSetup(playerWon, false);
         }
-    }
-
-    void ReturnToStory()
-    {
-        try
+        if (playerWon == "won" && passedObject.isStory)
         {
-            Debug.Log(playerWon);
-            Debug.Log(passedObject.isStory);
-            if (playerWon == "won" && passedObject.isStory)
-            {
-                passedObject.storyIndex++;
-                UnityEngine.SceneManagement.SceneManager.LoadScene(2); 
-            }
-            else if (playerWon != "won" && passedObject.isStory)
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(1); // Reload volley scene as test
-                // Should have some game over screen instead
-            }
-        }
-        catch
-        {
-            Debug.Log("Should exit to overworld if PassedObject exists");
+            passedObject.storyIndex++;
         }
     }
 }

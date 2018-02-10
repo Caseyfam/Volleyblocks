@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ResultsScreen : MonoBehaviour {
 
-    public GameObject resultsGraphics, resultsCanvas, password;
+    public GameObject resultsGraphics, resultsCanvas, password, continueButton, retryButton;
 
     public SpriteRenderer winnerSprite;
     public UnityEngine.UI.Text gloatText;
     bool isStory = false;
+
+    private string winPassword, losePassword;
 
     BoardsInPlay boardsInPlay;
 
@@ -26,10 +28,14 @@ public class ResultsScreen : MonoBehaviour {
         try
         {
             passedObject = GameObject.Find("PassedObject");
+            winPassword = passedObject.GetComponent<Passed>().winPassword;
+            losePassword = passedObject.GetComponent<Passed>().losePassword;
         }
         catch
         {
             passedObject = null;
+            winPassword = "DEBUGWIN";
+            losePassword = "DEBUGLOSE";
         }
 
         if (playerWon.Equals("won"))
@@ -97,6 +103,22 @@ public class ResultsScreen : MonoBehaviour {
         if (!isStory)
         {
             password.SetActive(false);
+        }
+        else
+        {
+            if (playerWon.Equals("won"))
+            {
+                continueButton.SetActive(true);
+                retryButton.SetActive(false);
+                password.GetComponentInChildren<UnityEngine.UI.Text>().text = "Password: " + winPassword;
+            }
+            else
+            {
+                retryButton.SetActive(true);
+                continueButton.SetActive(false);
+                password.GetComponentInChildren<UnityEngine.UI.Text>().text = "Password: " + losePassword;
+            }
+            password.SetActive(true);
         }
     }
 }

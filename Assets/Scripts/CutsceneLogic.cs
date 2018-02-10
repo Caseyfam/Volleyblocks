@@ -37,6 +37,8 @@ public class CutsceneLogic : MonoBehaviour
     private bool textCrawling = false;
     private bool sectionComplete = true;
 
+    private GameObject passedObject;
+
     private int globalSceneIndex = 0;
 
     void Awake()
@@ -44,9 +46,10 @@ public class CutsceneLogic : MonoBehaviour
         loadBattle = GetComponent<LoadBattle>();
         try
         {
-            selectedChars = GameObject.Find("PassedObject").GetComponent<SelectedCharacters>();
-            selectedScene = GameObject.Find("PassedObject").GetComponent<SelectedScene>();
-            globalSceneIndex = GameObject.Find("PassedObject").GetComponent<Passed>().storyIndex;
+            passedObject = GameObject.Find("PassedObject");
+            selectedChars = passedObject.GetComponent<SelectedCharacters>();
+            selectedScene = passedObject.GetComponent<SelectedScene>();
+            globalSceneIndex = passedObject.GetComponent<Passed>().storyIndex;
         }
         catch
         {
@@ -147,11 +150,14 @@ public class CutsceneLogic : MonoBehaviour
                     selectedChars.SetLeftBoard("girl");
                     selectedChars.SetRightBoard("buff");
                     selectedScene.SetSceneName("beach");
-                    //loadBattle.LoadNewBattle("Player VS CPU", 1f, 3, 3, globalSceneIndex, true);
+                    passedObject.GetComponent<Passed>().StorePasswords("BUFFDOWN", "BUFFDUDE");
                     loadBattle.LoadNewBattle("Player VS CPU", 5f, 1, 1, globalSceneIndex, true);
                     break;
                 case 20:
                     DisplayDialogue("Welp, we made it out of the battle DEBUG", defaultLetterWait);
+                    break;
+                case 21:
+                    DisplayDialogue("Section 2", defaultLetterWait);
                     break;
                     // Fade from black to house
                     // Girl:

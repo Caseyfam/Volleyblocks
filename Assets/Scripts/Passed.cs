@@ -12,6 +12,7 @@ public class Passed : MonoBehaviour {
     public int gamesCount = 3;
     public int storyIndex = 0;
     public bool isStory = false;
+    public string winPassword, losePassword;
 
     public void StoreValues (string players, float turn, int games, int sets)
     {
@@ -31,6 +32,12 @@ public class Passed : MonoBehaviour {
     {
         StoreValues(players, turn, games, sets, index);
         this.isStory = isStory;
+    }
+
+    public void StorePasswords(string winPassword, string losePassword)
+    {
+        this.winPassword = winPassword;
+        this.losePassword = losePassword;
     }
 
     void Awake()
