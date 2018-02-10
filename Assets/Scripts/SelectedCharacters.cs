@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SelectedCharacters : MonoBehaviour {
 
-    private string leftBoardName = "";
-    private string rightBoardName = "";
+    [HideInInspector]
+    public string leftBoardName = "", rightBoardName = "";
 
     // frontIdle, sideIdle, sideWin, sideLose, sideDefeat
     public Sprite[] buffRaw;

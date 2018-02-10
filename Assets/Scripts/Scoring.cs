@@ -105,13 +105,14 @@ public class Scoring : MonoBehaviour {
 
     void ResultsScreen()
     {
-        // Display winner portraits with dialogue?
-        // Somehow get correct boards to grab sprites for winning stuff
-        // Add restart option that reloads scene
-        // Add back to versus screen
-        // Add main menu
-        // if Story mode and you win, should be continue
-        // if Story mode and you lost, should be retry match
+        try
+        {
+            GetComponent<ResultsScreen>().ResultsSetup(playerWon, passedObject.isStory);
+        }
+        catch
+        {
+            GetComponent<ResultsScreen>().ResultsSetup(playerWon, false);
+        }
     }
 
     void ReturnToStory()

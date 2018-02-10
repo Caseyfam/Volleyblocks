@@ -25,7 +25,8 @@ public class Board : MonoBehaviour {
     public TextMesh comboText;
     public PortraitEmote portrait;
 
-    private Sprite frontIdle, sideIdle, sideWin, sideLose, sideDefeat;
+    [HideInInspector]
+    public Sprite frontIdle, sideIdle, sideWin, sideLose, sideDefeat;
 
     public Ball ball;
 

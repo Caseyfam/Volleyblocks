@@ -104,7 +104,9 @@
     <Compile Include="Assets\Scripts\PortraitEmote.cs" />
     <Compile Include="Assets\Scripts\PredeterminedBlocks.cs" />
     <Compile Include="Assets\Scripts\ReadySign.cs" />
+    <Compile Include="Assets\Scripts\ResultsScreen.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
+    <Compile Include="Assets\Scripts\ScaleUp.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
     <Compile Include="Assets\Scripts\SelectedCharacters.cs" />
     <Compile Include="Assets\Scripts\SelectedScene.cs" />
