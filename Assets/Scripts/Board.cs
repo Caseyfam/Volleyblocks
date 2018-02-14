@@ -106,6 +106,8 @@ public class Board : MonoBehaviour {
         GetComponent<GameOver>().gameOver = false;
         GetComponent<ActiveSet>().Reset();
         currentColor = Color.white;
+        leftWall.color = currentColor;
+        rightWall.color = currentColor;
     }
 
     // Use this for initialization
@@ -140,7 +142,10 @@ public class Board : MonoBehaviour {
                     boardBlocks[i, j].GetComponent<Block>().CalculateNeighbors();
                 }
             }
+        }
 
+        for (int i = rows - 1; i >= 0; i--)
+        {
             for (int j = 0; j < columns; j++) // Columns
             {
                 if (boardBlocks[i, j] != null)
@@ -151,7 +156,10 @@ public class Board : MonoBehaviour {
                     }
                 }
             }
+        }
 
+        for (int i = rows - 1; i >= 0; i--)
+        {
             for (int j = 0; j < columns; j++) // Columns
             {
                 if (boardBlocks[i, j] != null)
@@ -162,7 +170,10 @@ public class Board : MonoBehaviour {
                     }
                 }
             }
+        }
 
+        for (int i = rows - 1; i >= 0; i--)
+        {
             for (int j = 0; j < columns; j++) // Columns
             {
                 if (boardBlocks[i, j] != null)
@@ -171,6 +182,7 @@ public class Board : MonoBehaviour {
                 }
             }
         }
+        
     }
 
     public void CleanBoard()

@@ -105,6 +105,7 @@ public class Scoring : MonoBehaviour {
 
     void ResultsScreen()
     {
+        runningGame.SetMatchComplete(true);
         try
         {
             GetComponent<ResultsScreen>().ResultsSetup(playerWon, passedObject.isStory);

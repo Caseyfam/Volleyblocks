@@ -88,10 +88,10 @@
     <Compile Include="Assets\Scripts\CameraTilt.cs" />
     <Compile Include="Assets\Scripts\ChainInfo.cs" />
     <Compile Include="Assets\Scripts\CharacterSelectLogic.cs" />
-    <Compile Include="Assets\Scripts\ColorStrip.cs" />
     <Compile Include="Assets\Scripts\CutsceneLogic.cs" />
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
     <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
+    <Compile Include="Assets\Scripts\FadeInToColor.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
     <Compile Include="Assets\Scripts\FireAnimate.cs" />
     <Compile Include="Assets\Scripts\FogRoll.cs" />
@@ -104,9 +104,14 @@
     <Compile Include="Assets\Scripts\PortraitEmote.cs" />
     <Compile Include="Assets\Scripts\PredeterminedBlocks.cs" />
     <Compile Include="Assets\Scripts\ReadySign.cs" />
+    <Compile Include="Assets\Scripts\ResultsScreen.cs" />
+    <Compile Include="Assets\Scripts\ResultsScreenButtons.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
+    <Compile Include="Assets\Scripts\ScaleUp.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
     <Compile Include="Assets\Scripts\SelectedCharacters.cs" />
+    <Compile Include="Assets\Scripts\SelectedScene.cs" />
+    <Compile Include="Assets\Scripts\SetScene.cs" />
     <Compile Include="Assets\Scripts\SpriteEmotes.cs" />
     <Compile Include="Assets\Scripts\TideAnimation.cs" />
     <Compile Include="Assets\Scripts\TiledBackground.cs" />

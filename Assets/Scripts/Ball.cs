@@ -140,7 +140,19 @@ public class Ball : MonoBehaviour {
                     else
                     {
                         // Normal emote
-                        attackedBoard.EmoteBoard("sideIdle");
+                        switch (Random.Range(0,5))
+                        {
+                            default:
+                            case 0:
+                            case 1:
+                            case 2:
+                                attackedBoard.EmoteBoard("sideIdle");
+                                break;
+                            case 3:
+                            case 4:
+                                attackedBoard.EmoteBoard("sideLose");
+                                break;
+                        }
                     }
 
                     // Call color change here
