@@ -31,7 +31,7 @@ public class RunningGame : MonoBehaviour {
         if (!matchComplete)
         {
             isFading = true;
-            StartCoroutine(WaitToFadeBlack(1f));
+            StartCoroutine(WaitToFadeBlack(0.5f));
         }
     }
     IEnumerator WaitToFadeBlack(float time)
@@ -39,16 +39,16 @@ public class RunningGame : MonoBehaviour {
         yield return new WaitForSeconds(time);
         // If is match / set point, interject here!
         isFading = false;
-        StartCoroutine(WaitToFadeWhite(0.5f));
-    }
-    IEnumerator WaitToFadeWhite(float time)
-    {
-        yield return new WaitForSeconds(time);
         runningGame = true;
         GetComponent<BoardsInPlay>().rightBoard.Reset();
         GetComponent<BoardsInPlay>().leftBoard.Reset();
         ball.Start();
         camTilt.Reset();
+        StartCoroutine(WaitToFadeWhite(0.5f));
+    }
+    IEnumerator WaitToFadeWhite(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
     bool isFading = false;

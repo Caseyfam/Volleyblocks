@@ -13,17 +13,50 @@ public class ButtonLogic : MonoBehaviour {
 
     public UnityEngine.UI.Text playersText, cpuText, gamesText, setsText;
     public GameObject mainMenu, arcadeMenu, versusMenu, passwordMenu, characterSelect;
+    public UnityEngine.EventSystems.EventSystem eventSystem;
+    public GameObject arcadeButton, versusButton, arcadeNewButton, versusStartButton, passwordButton, passBackButton; // Entry buttons
+
+    public void ButtonPressLogic(GameObject newButton, GameObject desiredMenu, GameObject currentMenu)
+    {
+        eventSystem.SetSelectedGameObject(newButton);
+        newButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+        desiredMenu.SetActive(true);
+        currentMenu.SetActive(false);
+    }
 
     public void Arcade()
     {
-        mainMenu.SetActive(false);
-        arcadeMenu.SetActive(true);
+        ButtonPressLogic(arcadeNewButton, arcadeMenu, mainMenu);
     }
 
     public void Versus()
     {
-        mainMenu.SetActive(false);
-        versusMenu.SetActive(true);
+        ButtonPressLogic(versusStartButton, versusMenu, mainMenu);
+    }
+
+    public void VersusBack()
+    {
+        ButtonPressLogic(versusButton, mainMenu, versusMenu);
+    }
+
+    public void ArcadeBack()
+    {
+        ButtonPressLogic(arcadeButton, mainMenu, arcadeMenu);
+    }
+
+    public void PasswordBack()
+    {
+        ButtonPressLogic(passwordButton, arcadeMenu, passwordMenu);
+    }
+
+    public void PasswordButton()
+    {
+        ButtonPressLogic(passBackButton, passwordMenu, arcadeMenu);
+    }
+
+    public void ArcadeNewGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     public void StartButton()
@@ -104,14 +137,4 @@ public class ButtonLogic : MonoBehaviour {
         setsText.text = "Sets: First to " + setsCount;
     }
 
-    public void PasswordButton()
-    {
-        arcadeMenu.SetActive(false);
-        passwordMenu.SetActive(true);
-    }
-
-    public void ArcadeNewGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-    }
 }
