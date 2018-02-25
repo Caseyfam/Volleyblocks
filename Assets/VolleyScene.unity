@@ -881,6 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 152511241}
   - component: {fileID: 152511242}
+  - component: {fileID: 152511248}
   - component: {fileID: 152511243}
   - component: {fileID: 152511244}
   - component: {fileID: 152511245}
@@ -1029,6 +1030,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85c8c396a685e8458823d49a4747dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &152511248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 152511240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d9c521b007c4743b20605524671e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisVertical: Vertical
+  axisHorizontal: Horizontal
+  counterClockwise: Counterclockwise1
+  clockwise: Clockwise1
 --- !u!1 &162285249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,7 +2458,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -5143,6 +5159,7 @@ MonoBehaviour:
   retryButton: {fileID: 2117468721}
   winnerSprite: {fileID: 1052750500}
   gloatText: {fileID: 1768880362}
+  eventSystem: {fileID: 1484509889}
 --- !u!114 &1133255546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5818,6 +5835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1325199826}
   - component: {fileID: 1325199825}
+  - component: {fileID: 1325199829}
   - component: {fileID: 1325199824}
   - component: {fileID: 1325199823}
   - component: {fileID: 1325199827}
@@ -5953,6 +5971,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85c8c396a685e8458823d49a4747dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1325199829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325199822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d9c521b007c4743b20605524671e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisVertical: Vertical2
+  axisHorizontal: Horizontal2
+  counterClockwise: Counterclockwise2
+  clockwise: Clockwise2
 --- !u!1 &1330235191
 GameObject:
   m_ObjectHideFlags: 0
@@ -8358,7 +8391,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7058823, g: 0.7058823, b: 0.7058823, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1

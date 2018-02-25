@@ -567,6 +567,15 @@ public class ActiveSet : MonoBehaviour
     // Update is called once per frame
     [HideInInspector]
     public bool updateHighlight = false;
+    private string vertInput, horInput, cclkInput, clkInput;
+
+    public void SetInputs(string axisVertical, string axisHorizontal, string counterClockwise, string clockwise)
+    {
+        vertInput = axisVertical;
+        horInput = axisHorizontal;
+        cclkInput = counterClockwise;
+        clkInput = clockwise;
+    }
 
     void Update()
     {
@@ -574,7 +583,7 @@ public class ActiveSet : MonoBehaviour
         {
             if (!isCPU && !GetComponent<GameOver>().gameOver)
             {
-                if (Input.GetAxisRaw("Vertical") > 0.3f)
+                if (Input.GetAxisRaw(vertInput) > 0.3f)
                 {
                     if (!axisLocked)
                     {
@@ -583,45 +592,45 @@ public class ActiveSet : MonoBehaviour
                         PrepareAxisWait("Vertical");
                     }
                 }
-                if (Input.GetAxisRaw("Vertical") < -0.3f)
+                if (Input.GetAxisRaw(vertInput) < -0.3f)
                 {
                     ManualLock();
                 }
 
-                if (Input.GetButtonDown("Counterclockwise1"))
+                if (Input.GetButtonDown(cclkInput)) // was counterclockwise1
                 {
                     RotateActiveSet("COUNTERCLOCKWISE");
                     updateHighlight = true;
                 }
-                else if (Input.GetButtonDown("Clockwise1"))
+                else if (Input.GetButtonDown(clkInput)) // was clockwise1
                 {
                     RotateActiveSet("CLOCKWISE");
                     updateHighlight = true;
                 }
-                if (Input.GetAxisRaw("Horizontal") > 0.3f)
+                if (Input.GetAxisRaw(horInput) > 0.3f)
                 {
                     if (!axisLocked)
                     {
                         MoveActiveSet("RIGHT");
                         updateHighlight = true;
-                        PrepareAxisWait("Horizontal");
+                        PrepareAxisWait(horInput);
                     }
                 }
-                else if (Input.GetAxisRaw("Horizontal") < -0.3f)
+                else if (Input.GetAxisRaw(horInput) < -0.3f)
                 {
                     if (!axisLocked)
                     {
                         MoveActiveSet("LEFT");
                         updateHighlight = true;
-                        PrepareAxisWait("Horizontal");
+                        PrepareAxisWait(horInput);
                     }
                 }
-                if (Input.GetAxisRaw("Vertical") < -0.3f)
+                if (Input.GetAxisRaw(vertInput) < -0.3f)
                 {
                     if (!axisLocked)
                     {
                         MoveActiveSet("DOWN");
-                        PrepareAxisWait("Vertical");
+                        PrepareAxisWait(vertInput);
                     }
                 }
             }

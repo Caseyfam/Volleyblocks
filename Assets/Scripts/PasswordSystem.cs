@@ -38,14 +38,12 @@ public class PasswordSystem : MonoBehaviour {
                 // Part of password not created yet
             }
         }
-        Debug.Log(password);
     }
 
     public void SetLetter(char letter, int currentLetter)
     {
         int index = System.Convert.ToInt32(letter) - 65;
         letters[currentLetter].sprite = alphabet[index];
-        Debug.Log(index);
     }
 
     public void ClearPassword()

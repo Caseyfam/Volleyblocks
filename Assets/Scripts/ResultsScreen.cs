@@ -18,9 +18,10 @@ public class ResultsScreen : MonoBehaviour {
     {
         boardsInPlay = GetComponent<BoardsInPlay>();
     }
-
+    public UnityEngine.EventSystems.EventSystem eventSystem;
 	public void ResultsSetup(string playerWon, bool isStory)
     {
+
         this.isStory = isStory;
         string winningBoardName = "";
 
@@ -161,9 +162,17 @@ public class ResultsScreen : MonoBehaviour {
         if (!isStory)
         {
             password.SetActive(false);
+            continueButton.SetActive(false);
+            retryButton.SetActive(true);
+
+            eventSystem.SetSelectedGameObject(retryButton);
+            retryButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
         }
         else
         {
+            eventSystem.SetSelectedGameObject(continueButton);
+            continueButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+
             if (playerWon.Equals("won"))
             {
                 continueButton.SetActive(true);

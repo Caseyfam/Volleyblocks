@@ -55,7 +55,7 @@ public class CharacterSelectLogic : MonoBehaviour {
 
             if (p1Locked && p2Locked)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetButtonDown("Start"))
                 {
                     // start
                     switch (passed.playersInPlay)
@@ -76,19 +76,34 @@ public class CharacterSelectLogic : MonoBehaviour {
         }
 	}
 
+    string p1Horizontal = "Horizontal";
+    string p2Horizontal = "Horizontal2";
+    string p1Submit = "Submit";
+    string p2Submit = "Submit2";
+
     void MoveCursor(GameObject arrow, ref int selection)
     {
         if (arrow.name.Equals("P1arrow"))
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            // Need to add DPAD here as well
+            if (Input.GetAxisRaw(p1Horizontal) > 0.3f)
             {
-                HorizontalMovement(true, arrow, ref selection);
+                if (!axisLocked)
+                {
+                    HorizontalMovement(true, arrow, ref selection);
+                    PrepareAxisWait(p1Horizontal);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetAxisRaw(p1Horizontal) < -0.3f)
             {
-                HorizontalMovement(false, arrow, ref selection);
+                if (!axisLocked)
+                {
+                    HorizontalMovement(false, arrow, ref selection);
+                    PrepareAxisWait(p1Horizontal);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.E))
+
+            if (Input.GetButtonDown(p1Submit))
             {
                 Confirm();
                 LockCursor(1);
@@ -96,7 +111,46 @@ public class CharacterSelectLogic : MonoBehaviour {
         }
         else
         {
-            // P2 movement
+            if (Input.GetAxisRaw(p2Horizontal) > 0.3f)
+            {
+                if (!axisLocked)
+                {
+                    HorizontalMovement(true, arrow, ref selection);
+                    PrepareAxisWait(p2Horizontal);
+                }
+            }
+            else if (Input.GetAxisRaw(p2Horizontal) < -0.3f)
+            {
+                if (!axisLocked)
+                {
+                    HorizontalMovement(false, arrow, ref selection);
+                    PrepareAxisWait(p2Horizontal);
+                }
+            }
+
+            if (Input.GetButtonDown(p2Submit))
+            {
+                Confirm();
+                LockCursor(2);
+            }
+        }
+    }
+
+    private bool axisLocked = false;
+    private float timeToGo;
+    private string prevAxis;
+    void PrepareAxisWait(string newAxis)
+    {
+        prevAxis = newAxis;
+        axisLocked = true;
+        timeToGo = Time.fixedTime + 0.2f;
+    }
+
+    void FixedUpdate()
+    {
+        if (axisLocked && Time.fixedTime >= timeToGo)
+        {
+            axisLocked = false;
         }
     }
 

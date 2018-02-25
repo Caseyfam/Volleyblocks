@@ -16,6 +16,31 @@ public class ButtonLogic : MonoBehaviour {
     public UnityEngine.EventSystems.EventSystem eventSystem;
     public GameObject arcadeButton, versusButton, arcadeNewButton, versusStartButton, passwordButton, passBackButton; // Entry buttons
 
+    string currentMenu = "";
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            switch (currentMenu)
+            {
+                default:
+                case "Arcade":
+                    ArcadeBack();
+                    break;
+                case "Versus":
+                    VersusBack();
+                    break;
+                case "Password":
+                    PasswordBack();
+                    break;
+                case "CharacterSelect":
+                    CharacterSelectBack();
+                    break;
+            }
+        }
+    }
+
     public void ButtonPressLogic(GameObject newButton, GameObject desiredMenu, GameObject currentMenu)
     {
         eventSystem.SetSelectedGameObject(newButton);
@@ -27,11 +52,13 @@ public class ButtonLogic : MonoBehaviour {
     public void Arcade()
     {
         ButtonPressLogic(arcadeNewButton, arcadeMenu, mainMenu);
+        currentMenu = "Arcade";
     }
 
     public void Versus()
     {
         ButtonPressLogic(versusStartButton, versusMenu, mainMenu);
+        currentMenu = "Versus";
     }
 
     public void VersusBack()
@@ -47,11 +74,13 @@ public class ButtonLogic : MonoBehaviour {
     public void PasswordBack()
     {
         ButtonPressLogic(passwordButton, arcadeMenu, passwordMenu);
+        currentMenu = "Arcade";
     }
 
     public void PasswordButton()
     {
         ButtonPressLogic(passBackButton, passwordMenu, arcadeMenu);
+        currentMenu = "Password";
     }
 
     public void ArcadeNewGame()
@@ -65,6 +94,15 @@ public class ButtonLogic : MonoBehaviour {
         GameObject.Find("PassedObject").GetComponent<Passed>().StoreValues(players, turnLength, gamesCount, setsCount);
         versusMenu.SetActive(false);
         characterSelect.SetActive(true);
+        currentMenu = "CharacterSelect";
+    }
+
+    public void CharacterSelectBack()
+    {
+        versusMenu.SetActive(true);
+        characterSelect.SetActive(false);
+        ButtonPressLogic(versusStartButton, versusMenu, characterSelect);
+        currentMenu = "Versus";
     }
 
     public void ContinueFromCharacterSelect()

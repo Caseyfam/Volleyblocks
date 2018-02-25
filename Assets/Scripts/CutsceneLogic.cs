@@ -363,7 +363,7 @@ public class CutsceneLogic : MonoBehaviour
         }
         if (!textCrawling)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Submit"))
             {
                 sectionComplete = true;
                 globalSceneIndex++;
@@ -371,7 +371,7 @@ public class CutsceneLogic : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Submit"))
             {
                 StopAllCoroutines();
                 mainText.text = desiredText;
