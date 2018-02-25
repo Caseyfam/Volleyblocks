@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LabTankBob.cs" />
     <Compile Include="Assets\Scripts\ActiveSet.cs" />
     <Compile Include="Assets\Scripts\ActiveSetInput.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
