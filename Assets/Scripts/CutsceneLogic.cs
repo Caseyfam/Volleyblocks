@@ -286,187 +286,79 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue("How exquisite!", defaultLetterWait);
                     break;
                 case 51:
+                    leftSprite.Shake(1f, 0.2f);
                     DisplayDialogue("HYAH!", defaultLetterWait);
                     break;
                 case 52:
+                    rightSprite.SetSprite(sprites.hattySide);
                     DisplayDialogue("How divine!", defaultLetterWait);
                     break;
                 case 53:
+                    leftSprite.SetSprite(sprites.girlWin);
+                    leftSprite.Shake(1f, 0.2f);
                     DisplayDialogue("HRAH!", defaultLetterWait);
                     break;
                 case 54:
+                    rightSprite.SetSprite(sprites.hattyDefeat);
                     DisplayDialogue("I GIVE!", defaultLetterWait);
                     break;
                 case 55:
+                    rightSprite.SetSprite(sprites.hattySide);
                     DisplayDialogue("What an excellent performance miss. I'm truly taken aback.", defaultLetterWait);
                     break;
                 case 56:
+                    leftSprite.SetSprite(sprites.girlSide);
                     DisplayDialogue("Why thank you. You weren't too bad yourself.", defaultLetterWait);
                     break;
                 case 57:
+                    rightSprite.SetSprite(sprites.hattyWin);
                     DisplayDialogue("Your words humble me, but I lack in many areas. Being brought up with wealth as my ally has made me worse for the wear.", defaultLetterWait);
                     break;
                 case 58:
+                    rightSprite.SetSprite(sprites.hattyDefeat);
                     DisplayDialogue("I've been coddled in these niceities for far too long...", defaultLetterWait);
                     break;
                 case 59:
+                    rightSprite.SetSprite(sprites.hattySide);
                     DisplayDialogue("But look at you! Clawing your way from the bottom to achieve your goals! Truly inspiring.", defaultLetterWait);
                     break;
                 case 60:
+                    leftSprite.SetSprite(sprites.girlWin);
                     DisplayDialogue("Well, I guess you could put it like that if you really wanted to...", defaultLetterWait);
                     break;
                 case 61:
+                    rightSprite.SetSprite(sprites.hattyWin);
                     DisplayDialogue("And I shall! Now, let me accompany you on your quest!", defaultLetterWait);
                     break;
                 case 62:
+                    leftSprite.SetSprite(sprites.girlLose);
                     DisplayDialogue("Wait what.", defaultLetterWait);
                     break;
                 case 63:
                     DisplayDialogue("You think you can make it out on the road?", defaultLetterWait);
                     break;
                 case 64:
+                    leftSprite.SetSprite(sprites.buffSide);
                     DisplayDialogue("I'm pretty well trained and even I'm experiencing some blisters from all this walking!", defaultLetterWait);
                     break;
                 case 65:
                     DisplayDialogue("Nonsense companion. No, I want to push my very self to the limits as I lead you to your next opponent.", defaultLetterWait);
                     break;
                 case 66:
+                    leftSprite.SetSprite(sprites.girlLose);
                     DisplayDialogue("And who might that be?", defaultLetterWait);
                     break;
                 case 67:
+                    rightSprite.SetSprite(sprites.hattySide);
                     DisplayDialogue("Your next opponent should not be taken lightly.", defaultLetterWait);
                     break;
                 case 68:
                     DisplayDialogue("She's the maiden of science, the dynamic discoverer...", defaultLetterWait);
                     break;
                 case 69:
+                    rightSprite.SetSprite(sprites.hattyFront);
                     DisplayDialogue("The one and only... Professor Sylvia!", defaultLetterWait);
                     break;
-
-                    // Fade from black to house
-                    // Girl:
-                    // Ok, I'll be careful. Bye everyone!
-                    // All my years of training have prepared me for this
-                    // moment, to take down the 4 volleyblock masters
-                    // who stand in my way of being the volleyblock regional champion!
-
-                    // Silhouttes of the masters
-
-                    // To think that there are masters of the sport that
-                    // remain elusive from the public eye. What secrets could
-                    // they be keeping, what techniques have they mastered?
-                    // I have to know, I have to learn! I need to be the best!
-                    // Alright, first up we have Beach Boy Bobby. Let's go!
-
-                    // Cut to beach scene
-
-                    // Bobby:
-                    // HRAH, HUT, HRAH, GRAHHHHHHH
-                    // Whew, what a workout. Volleyblocks totally makes you work, huh?
-                    // Girl:
-                    // BEACH BOY BOBBY!
-                    // Bobby:
-                    // Huh?
-                    // Girl:
-                    // I challenge you to a duel for your badge! Let me prove I have
-                    // what it takes to be the volleyblocks champion?
-                    // Bobby:
-                    // ...
-                    // HAAAAAAAAAAAAAA
-                    // FINALLY, ONE WHO DECLARES THEMSELVES A WORTHY CHALLENGER?
-                    // HO HA HOOOOOOOOO
-                    // LET'S GO. PROVE TO ME YOU HAVE WHAT IT TAKES TO BE
-                    // A VOLLEYBLOCK MASTER
-
-                    // Battle
-
-                    // Bobby:
-                    // Whewwww... wow..... That was pretty good kid....
-                    // Wowww.... outta breath.... easy there Bobby...
-                    // Girl:
-                    // Uh, are you going to be ok?
-                    // Bobby:
-                    // YES. WHEW! WOW. What a battle, what a thrill! That isn't something
-                    // you can just get training alone. I've been waiting for this day.
-                    // Girl, let me join you on your quest?
-                    // Girl: 
-                    // Huh ?
-                    // Bobby:
-                    // Please! I have a feeling that following you will lead me to other
-                    // warriors and masters of volleyblocks. There's so much I need to learn
-                    // that long runs on the beach won't bring me!
-                    // Girl:
-                    // Well, I guess it couldn't hurt. Let's go!
-                    // Bobby:
-                    // Considering how elusive us masters are supposed to be, I doubt you
-                    // thought of who you'd be fighting next?
-                    // Girl:
-                    // Yeah... you're right.
-                    // Bobby:
-                    // Every master holds the name of the next. Since I have lost, I guess
-                    // I have no choice but to reveal my most closely guarded secret.
-                    // The name of your next opponnet is... Sir Kensington!
-
-                    // Cut to mansion scene
-
-                    // Girl:
-                    // Wow, he actually has a butler? Who has a butler nowadays?
-                    // Bobby:
-                    // I should get me one of those to bring me cold protein shakes
-                    // after my morning jogs.
-                    // ???:
-                    // AH, THE FORMIDABLE FLOWER EMERGES
-                    // Girl:
-                    // Huh?
-                    // Sir:
-                    // WELCOME TO MY HUMBLE ABODE!
-                    // The name's Kensington, but that's Sir Kensington to you.
-                    // That is, of course, unless you can prove your mettle child!
-                    // Girl:
-                    // Do you take me for a volleyblock chump?
-                    // Sir:
-                    // While looks can be deceiving, they can also reveal deep truths!
-                    // I have no doubt that this will be a fun match, but it will be
-                    // a match you shall lose!
-
-                    // Battle
-
-                    // Sir:
-                    // How exquisite!
-                    // Girl:
-                    // HYAH!
-                    // Sir:
-                    // How divine!
-                    // Girl:
-                    // HRAH!
-                    // Sir:
-                    // I GIVE. What an excellent performance miss. I'm truly taken aback.
-                    // Girl:
-                    // Why thank you. You weren't too bad yourself.
-                    // Sir:
-                    // No, I lack in many areas. Being brought up with wealth as my ally
-                    // has made me worse for the wear. I've been coddled in these
-                    // niceities for far too long. But look at you! Clawing your way
-                    // from the bottom to achieve your goals! It is truly inspiring.
-                    // Girl:
-                    // Well, I guess you could put it like that if you really wanted to...
-                    // Sir:
-                    // And I shall! Now, I shall also accompany you on your quest!
-                    // Girl:
-                    // Wait what.
-                    // Bobby:
-                    // You think you can make it out on the road? I'm pretty well trained and
-                    // even I'm experiencing some blisters from all this walking
-                    // Sir:
-                    // Nonsense, my companion. No, I want to push my very self to the limits
-                    // as I lead you to your next opponent.
-                    // Girl:
-                    // And who might that be?
-                    // Sir:
-                    // Your next opponent will not be taken lightly. She's the maiden of science,
-                    // the dynamic discoverer, the one and only: Professor Sylvia!
-
-
             }
         }
         if (!textCrawling)

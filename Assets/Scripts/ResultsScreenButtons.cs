@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class ResultsScreenButtons : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void StoryRetry()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
@@ -29,6 +19,4 @@ public class ResultsScreenButtons : MonoBehaviour {
         Destroy(GameObject.Find("PassedObject"));
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
-
-
 }
