@@ -8,6 +8,8 @@ public class PasswordSystem : MonoBehaviour {
     public UnityEngine.UI.Image[] letters;
     public Sprite[] alphabet;
 
+    public Passed passed;
+
     public void EnterPassword()
     {
         // Load to various scenes here
@@ -49,5 +51,37 @@ public class PasswordSystem : MonoBehaviour {
     public void ClearPassword()
     {
         password = "";
+    }
+
+    public void PasswordConfirm()
+    {
+        bool isStory = true;
+        int sceneIndex = 0;
+        switch (password)
+        {
+            default:
+                Debug.Log("INVALID PASSWORD");
+                isStory = false;
+                break;
+            case "BUFFDOWN":
+                sceneIndex = 20;
+                break;
+            case "BUFFDUDE":
+                sceneIndex = 17;
+                break;
+            case "RICHDOWN":
+                sceneIndex = 50;
+                break;
+            case "RICHDUDE":
+                sceneIndex = 48;
+                break;
+        }
+
+        if (isStory)
+        {
+            passed.isStory = isStory;
+            passed.storyIndex = sceneIndex;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
     }
 }

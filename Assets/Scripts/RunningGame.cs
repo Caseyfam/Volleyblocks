@@ -10,17 +10,27 @@ public class RunningGame : MonoBehaviour {
 
     public Ball ball;
     public CameraTilt camTilt;
-    public UnityEngine.UI.Image fadeCurtain;
+    public UnityEngine.UI.Image fadeCurtain, matchPointImage, setPointImage;
+
+    public SpriteRenderer readySignSR;
+    public Sprite matchPontSprite, setPointSprite;
 
     public void SetMatchComplete(bool flag)
     {
         matchComplete = flag;
     }
 
+    bool setPoint = false, matchPoint = false;
+    public void SetRunningGameOver(bool isSetPoint, bool isMatchPoint)
+    {
+        SetRunningGameOver();
+        setPoint = isSetPoint;
+        matchPoint = isMatchPoint;
+    }
+
     public void SetRunningGameOver()
     {
         runningGame = false;
-
         // Pause board and reset
         StartCoroutine(RestartGame(2f));
     }
@@ -31,24 +41,35 @@ public class RunningGame : MonoBehaviour {
         if (!matchComplete)
         {
             isFading = true;
-            StartCoroutine(WaitToFadeBlack(0.5f));
+            StartCoroutine(WaitToFadeBlack(0.5f)); // 0.5f
         }
     }
     IEnumerator WaitToFadeBlack(float time)
     {
         yield return new WaitForSeconds(time);
         // If is match / set point, interject here!
+
+        StartCoroutine(ContinueGame(0f));
+    }
+    IEnumerator ContinueGame(float time)
+    {
+        yield return new WaitForSeconds(time);
         isFading = false;
         runningGame = true;
         GetComponent<BoardsInPlay>().rightBoard.Reset();
         GetComponent<BoardsInPlay>().leftBoard.Reset();
+        setPointImage.transform.localScale = Vector3.zero;
+        matchPointImage.transform.localScale = Vector3.zero;
         ball.Start();
         camTilt.Reset();
-        StartCoroutine(WaitToFadeWhite(0.5f));
-    }
-    IEnumerator WaitToFadeWhite(float time)
-    {
-        yield return new WaitForSeconds(time);
+        if (matchPoint)
+        {
+            readySignSR.sprite = matchPontSprite;
+        }
+        else if (setPoint)
+        {
+            readySignSR.sprite = setPointSprite;
+        }
     }
 
     bool isFading = false;

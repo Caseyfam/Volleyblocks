@@ -15,7 +15,7 @@ public class CutsceneLogic : MonoBehaviour
     [System.Serializable]
     public class Scenes
     {
-        public GameObject beachScene, shrineScene, foyerScene;
+        public GameObject beachScene, shrineScene, foyerScene, labScene;
     }
 
     [System.Serializable]
@@ -143,6 +143,7 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue("OKAY KID, I'LL HUMOR YOU. LET'S GO.", defaultLetterWait);
                     rightSprite.SetSprite(sprites.buffSide);
                     leftSprite.SetSprite(sprites.girlSide);
+                    scenes.beachScene.SetActive(true);
                     break;
                 case 18:
                     DisplayDialogue("PROVE TO ME YOU HAVE WHAT IT TAKES TO BE A VOLLEYBLOCK MASTER!", defaultLetterWait);
@@ -151,7 +152,7 @@ public class CutsceneLogic : MonoBehaviour
                     selectedChars.SetLeftBoard("girl");
                     selectedChars.SetRightBoard("buff");
                     selectedScene.SetSceneName("beach");
-                    passedObject.GetComponent<Passed>().StorePasswords("BUFFDOWN", "BUFFDUDE");
+                    passedObject.GetComponent<Passed>().StorePasswords("BUFFDOWN", "BUFFDUDE"); // Passwords updated in PasswordSystem.cs
                     loadBattle.LoadNewBattle("Player VS CPU", 5f, 1, 1, globalSceneIndex, true);
                     break;
                 case 20:
@@ -269,6 +270,8 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue("While looks can be deceiving, they can also reveal deep truths!", defaultLetterWait);
                     break;
                 case 48:
+                    scenes.foyerScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlSide);
                     rightSprite.SetSprite(sprites.hattyWin);
                     DisplayDialogue("I have no doubt that this will be an entertaining match, but it will be a match you shall lose!", defaultLetterWait);
                     break; 

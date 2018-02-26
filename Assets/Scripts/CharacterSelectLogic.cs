@@ -9,6 +9,8 @@ public class CharacterSelectLogic : MonoBehaviour {
     Passed passed;
     public GameObject p1Arrow, p2Arrow;
 
+    public SpriteRenderer[] characterSprites;
+
     private int p1Selection = 0, p2Selection = 4;
     bool p1Locked = false, p2Locked = false;
     bool menuInitialized = false;
@@ -107,6 +109,7 @@ public class CharacterSelectLogic : MonoBehaviour {
             {
                 Confirm();
                 LockCursor(1);
+                characterSprites[p1Selection].color = new Color(0f, 0f, 0f);
             }
         }
         else
@@ -132,6 +135,7 @@ public class CharacterSelectLogic : MonoBehaviour {
             {
                 Confirm();
                 LockCursor(2);
+                characterSprites[p2Selection].color = new Color(0f, 0f, 0f);
             }
         }
     }

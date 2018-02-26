@@ -12,10 +12,10 @@ public class ButtonLogic : MonoBehaviour {
     private int setsCount = 3;
 
     public UnityEngine.UI.Text playersText, cpuText, gamesText, setsText;
-    public GameObject mainMenu, arcadeMenu, versusMenu, passwordMenu, characterSelect;
+    public GameObject mainMenu, arcadeMenu, versusMenu, passwordMenu, characterSelect, logo;
     public UnityEngine.EventSystems.EventSystem eventSystem;
     public GameObject arcadeButton, versusButton, arcadeNewButton, versusStartButton, passwordButton, passBackButton; // Entry buttons
-
+    public SpriteRenderer[] charSelectPortraits;
     string currentMenu = "";
 
     void Update()
@@ -64,23 +64,28 @@ public class ButtonLogic : MonoBehaviour {
     public void VersusBack()
     {
         ButtonPressLogic(versusButton, mainMenu, versusMenu);
+        logo.SetActive(true);
+
     }
 
     public void ArcadeBack()
     {
         ButtonPressLogic(arcadeButton, mainMenu, arcadeMenu);
+        logo.SetActive(true);
     }
 
     public void PasswordBack()
     {
         ButtonPressLogic(passwordButton, arcadeMenu, passwordMenu);
         currentMenu = "Arcade";
+        logo.SetActive(true);
     }
 
     public void PasswordButton()
     {
         ButtonPressLogic(passBackButton, passwordMenu, arcadeMenu);
         currentMenu = "Password";
+        logo.SetActive(false);
     }
 
     public void ArcadeNewGame()
@@ -95,6 +100,7 @@ public class ButtonLogic : MonoBehaviour {
         versusMenu.SetActive(false);
         characterSelect.SetActive(true);
         currentMenu = "CharacterSelect";
+        logo.SetActive(false);
     }
 
     public void CharacterSelectBack()
@@ -103,6 +109,11 @@ public class ButtonLogic : MonoBehaviour {
         characterSelect.SetActive(false);
         ButtonPressLogic(versusStartButton, versusMenu, characterSelect);
         currentMenu = "Versus";
+        logo.SetActive(true);
+        foreach (SpriteRenderer sr in charSelectPortraits)
+        {
+            sr.color = new Color(255f, 255f, 255f);
+        }
     }
 
     public void ContinueFromCharacterSelect()
@@ -161,7 +172,7 @@ public class ButtonLogic : MonoBehaviour {
             gamesCount = 1;
         }
 
-        gamesText.text = "Games: First to " + gamesCount;
+        gamesText.text = "Sets: First to " + gamesCount + " games";
     }
 
     public void SetsButton()
@@ -172,7 +183,7 @@ public class ButtonLogic : MonoBehaviour {
             setsCount = 1;
         }
 
-        setsText.text = "Sets: First to " + setsCount;
+        setsText.text = "Match: First to " + setsCount + "sets";
     }
 
 }

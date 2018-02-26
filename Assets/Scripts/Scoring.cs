@@ -45,8 +45,32 @@ public class Scoring : MonoBehaviour {
             rPointsText.text = rightPoints.ToString();
             CheckIfGame(rightPoints, "LEFT");
         }
+        bool matchPoint = false;
+        bool setPoint = false;
+        if (leftPoints == pointsToGame - 1 || rightPoints == pointsToGame - 1)
+        {
+            if (leftGames == gamesToWin - 1)
+            {
+                // Match point
+                matchPoint = true;
+                setPoint = false;
+            }
+            else if (rightGames == gamesToWin - 1)
+            {
+                // Match point
+                matchPoint = true;
+                setPoint = false;
+            }
+            else
+            {
+                // Set point only
+                setPoint = true;
+                matchPoint = false;
+            }
+        }
+
         runningGame.SetMatchComplete(matchComplete);
-        runningGame.SetRunningGameOver();
+        runningGame.SetRunningGameOver(setPoint, matchPoint);
     }
 
     void CheckIfGame(int points, string position)
@@ -60,6 +84,8 @@ public class Scoring : MonoBehaviour {
                 lGamesText.text = leftGames.ToString();
                 lPointsText.text = "0";
                 leftPoints = 0;
+                rightPoints = 0;
+                rPointsText.text = "0";
                 CheckIfWinner(leftGames, position);
             }
         }
@@ -72,6 +98,8 @@ public class Scoring : MonoBehaviour {
                 rGamesText.text = rightGames.ToString();
                 rPointsText.text = "0";
                 rightPoints = 0;
+                leftPoints = 0;
+                lPointsText.text = "0";
                 CheckIfWinner(rightGames, position);
             }
         }

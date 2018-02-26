@@ -78,7 +78,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LabTankBob.cs" />
     <Compile Include="Assets\Scripts\ActiveSet.cs" />
     <Compile Include="Assets\Scripts\ActiveSetInput.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
@@ -98,6 +97,7 @@
     <Compile Include="Assets\Scripts\FireAnimate.cs" />
     <Compile Include="Assets\Scripts\FogRoll.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\LabTankBob.cs" />
     <Compile Include="Assets\Scripts\LoadBattle.cs" />
     <Compile Include="Assets\Scripts\LogoRotate.cs" />
     <Compile Include="Assets\Scripts\Passed.cs" />
