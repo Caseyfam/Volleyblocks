@@ -45,6 +45,7 @@ public class ButtonLogic : MonoBehaviour {
     {
         eventSystem.SetSelectedGameObject(newButton);
         newButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+        newButton.transform.localScale *= 1.2f;
         desiredMenu.SetActive(true);
         currentMenu.SetActive(false);
     }
@@ -65,7 +66,6 @@ public class ButtonLogic : MonoBehaviour {
     {
         ButtonPressLogic(versusButton, mainMenu, versusMenu);
         logo.SetActive(true);
-
     }
 
     public void ArcadeBack()
