@@ -6099,6 +6099,7 @@ MonoBehaviour:
   flash: {fileID: 909799283}
   mainMenu: {fileID: 753462879}
   movingBackground: {fileID: 912781128}
+  director: {fileID: 617212998}
 --- !u!4 &820614167
 Transform:
   m_ObjectHideFlags: 0

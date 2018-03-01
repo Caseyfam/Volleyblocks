@@ -9,11 +9,15 @@ public class MainMenuIntro : MonoBehaviour {
     float flashSteps = 0.1f;
 
     public GameObject mainMenu, movingBackground;
+    public UnityEngine.Playables.PlayableDirector director;
+    bool skipped = false;
+
+    Coroutine flashWait;
 
 	// Use this for initialization
 	void Start ()
     {
-        StartCoroutine(WaitToFlash(4f));
+        flashWait = StartCoroutine(WaitToFlash(4f));
 	}
 	
     void Update()
@@ -25,6 +29,16 @@ public class MainMenuIntro : MonoBehaviour {
         else
         {
             flash.color = new Color(flash.color.r, flash.color.g, flash.color.b, Mathf.MoveTowards(flash.color.a, 0f, flashSteps));
+        }
+
+        if (Input.GetButtonDown("Submit"))
+        {
+            if (!skipped)
+            {
+                StopCoroutine(flashWait);
+                StartCoroutine(WaitToFlash(0f));
+            }
+            skipped = true;
         }
     }
 
@@ -38,6 +52,14 @@ public class MainMenuIntro : MonoBehaviour {
     IEnumerator WaitToUnflash(float time)
     {
         yield return new WaitForSeconds(time);
+        if (skipped)
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        director.time = 4f;
         isFlashing = false;
         mainMenu.SetActive(true);
         movingBackground.SetActive(true);
