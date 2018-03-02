@@ -11,6 +11,7 @@ public class MainMenuIntro : MonoBehaviour {
     public GameObject mainMenu, movingBackground;
     public UnityEngine.Playables.PlayableDirector director;
     bool skipped = false;
+    bool canSkip = true;
 
     Coroutine flashWait;
 
@@ -33,7 +34,7 @@ public class MainMenuIntro : MonoBehaviour {
 
         if (Input.GetButtonDown("Submit"))
         {
-            if (!skipped)
+            if (!skipped && canSkip)
             {
                 StopCoroutine(flashWait);
                 StartCoroutine(WaitToFlash(0f));
@@ -46,6 +47,7 @@ public class MainMenuIntro : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         isFlashing = true;
+        canSkip = false;
         StartCoroutine(WaitToUnflash(0.3f));
     }
 
