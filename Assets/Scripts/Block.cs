@@ -121,10 +121,7 @@ public class Block : MonoBehaviour {
 
         if (isMoving)
         {
-            //transform.position = Vector3.MoveTowards(transform.position, target, (storedOriginal.y - target.y)/8f);
             transform.position = Vector3.MoveTowards(transform.position, target, 0.1f);
-            //Debug.Log("Block: " + gameObject.name + "transform.position: " + transform.position + " target: " + target);
-            // Need to make steps associated with how big of a jump the target is.
             if (transform.position == target)
             {
                 isMoving = false;

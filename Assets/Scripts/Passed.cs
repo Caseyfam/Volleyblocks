@@ -12,6 +12,7 @@ public class Passed : MonoBehaviour {
     public int gamesCount = 3;
     public int storyIndex = 0;
     public bool isStory = false;
+    public bool mainMenuCutsceneSkipped = false;
     public string winPassword, losePassword;
 
     public void StoreValues (string players, float turn, int games, int sets)

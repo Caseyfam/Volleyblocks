@@ -19,9 +19,21 @@ public class MainMenuIntro : MonoBehaviour {
 	void Start ()
     {
         flashWait = StartCoroutine(WaitToFlash(4f));
+        if (GameObject.Find("PassedObject").GetComponent<Passed>().mainMenuCutsceneSkipped)
+        {
+            SkipCutscene();
+        }
 	}
 	
     void Update()
+    {
+        if (Input.GetButtonDown("Submit"))
+        {
+            SkipCutscene();
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (isFlashing)
         {
@@ -31,16 +43,16 @@ public class MainMenuIntro : MonoBehaviour {
         {
             flash.color = new Color(flash.color.r, flash.color.g, flash.color.b, Mathf.MoveTowards(flash.color.a, 0f, flashSteps));
         }
+    }
 
-        if (Input.GetButtonDown("Submit"))
+    void SkipCutscene()
+    {
+        if (!skipped && canSkip)
         {
-            if (!skipped && canSkip)
-            {
-                StopCoroutine(flashWait);
-                StartCoroutine(WaitToFlash(0f));
-            }
-            skipped = true;
+            StopCoroutine(flashWait);
+            StartCoroutine(WaitToFlash(0f));
         }
+        skipped = true;
     }
 
     IEnumerator WaitToFlash(float time)
@@ -65,6 +77,7 @@ public class MainMenuIntro : MonoBehaviour {
         isFlashing = false;
         mainMenu.SetActive(true);
         movingBackground.SetActive(true);
+        GameObject.Find("PassedObject").GetComponent<Passed>().mainMenuCutsceneSkipped = true;
         StartCoroutine(WaitToDestroy(3f));
     }
 

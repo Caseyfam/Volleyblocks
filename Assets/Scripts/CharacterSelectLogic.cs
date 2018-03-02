@@ -90,7 +90,7 @@ public class CharacterSelectLogic : MonoBehaviour {
             // Need to add DPAD here as well
             if (Input.GetAxisRaw(p1Horizontal) > 0.3f)
             {
-                if (!axisLocked)
+                if (!axisLocked && !p1Locked)
                 {
                     HorizontalMovement(true, arrow, ref selection);
                     PrepareAxisWait(p1Horizontal);
@@ -98,7 +98,7 @@ public class CharacterSelectLogic : MonoBehaviour {
             }
             else if (Input.GetAxisRaw(p1Horizontal) < -0.3f)
             {
-                if (!axisLocked)
+                if (!axisLocked && !p1Locked)
                 {
                     HorizontalMovement(false, arrow, ref selection);
                     PrepareAxisWait(p1Horizontal);
@@ -107,14 +107,31 @@ public class CharacterSelectLogic : MonoBehaviour {
 
             if (Input.GetButtonDown(p1Submit))
             {
-                Confirm();
-                LockCursor(1);
-                characterSprites[p1Selection].color = new Color(0f, 0f, 0f);
+                if (p1Locked)
+                {
+                    p1Locked = false;
+                    characterSprites[p1Selection].color = new Color(255f, 255f, 255f);
+                }
+                else
+                {
+                    if (p1Selection != p2Selection && !p2Locked && passed.playersInPlay.Equals("Player VS Player"))
+                    {
+                        Confirm();
+                        LockCursor(1);
+                        characterSprites[p1Selection].color = new Color(0f, 0f, 0f);
+                    }
+                    else
+                    {
+                        Confirm();
+                        LockCursor(1);
+                        characterSprites[p1Selection].color = new Color(0f, 0f, 0f);
+                    }
+                }
             }
         }
         else
         {
-            if (Input.GetAxisRaw(p2Horizontal) > 0.3f)
+            if (Input.GetAxisRaw(p2Horizontal) > 0.3f && !p2Locked)
             {
                 if (!axisLocked)
                 {
@@ -122,7 +139,7 @@ public class CharacterSelectLogic : MonoBehaviour {
                     PrepareAxisWait(p2Horizontal);
                 }
             }
-            else if (Input.GetAxisRaw(p2Horizontal) < -0.3f)
+            else if (Input.GetAxisRaw(p2Horizontal) < -0.3f && !p2Locked)
             {
                 if (!axisLocked)
                 {
@@ -133,9 +150,20 @@ public class CharacterSelectLogic : MonoBehaviour {
 
             if (Input.GetButtonDown(p2Submit))
             {
-                Confirm();
-                LockCursor(2);
-                characterSprites[p2Selection].color = new Color(0f, 0f, 0f);
+                if (p2Locked)
+                {
+                    p2Locked = false;
+                    characterSprites[p2Selection].color = new Color(255f, 255f, 255f);
+                }
+                else
+                {
+                    if (p1Selection != p2Selection && !p1Locked && passed.playersInPlay.Equals("Player VS Player"))
+                    {
+                        Confirm();
+                        LockCursor(2);
+                        characterSprites[p2Selection].color = new Color(0f, 0f, 0f);
+                    }
+                }
             }
         }
     }

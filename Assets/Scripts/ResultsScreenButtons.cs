@@ -16,7 +16,7 @@ public class ResultsScreenButtons : MonoBehaviour {
 
     public void MainMenu()
     {
-        Destroy(GameObject.Find("PassedObject"));
+        //Destroy(GameObject.Find("PassedObject"));
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

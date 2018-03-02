@@ -108,6 +108,7 @@ public class ButtonLogic : MonoBehaviour {
         versusMenu.SetActive(true);
         characterSelect.SetActive(false);
         ButtonPressLogic(versusStartButton, versusMenu, characterSelect);
+        versusStartButton.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         currentMenu = "Versus";
         logo.SetActive(true);
         foreach (SpriteRenderer sr in charSelectPortraits)

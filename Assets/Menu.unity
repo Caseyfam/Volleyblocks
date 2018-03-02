@@ -3389,6 +3389,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 374093425}
+  - component: {fileID: 374093426}
   m_Layer: 0
   m_Name: Hatty
   m_TagString: Untagged
@@ -3412,6 +3413,20 @@ Transform:
   m_Father: {fileID: 2144759904}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374093426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 374093424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2aef4c56887e409148d95513cd843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitAmount: 0
+  randomRange: 7
+  logo: {fileID: 374093424}
 --- !u!1 &382868701
 GameObject:
   m_ObjectHideFlags: 0
@@ -11410,6 +11425,7 @@ MonoBehaviour:
   gamesCount: 3
   storyIndex: 0
   isStory: 0
+  mainMenuCutsceneSkipped: 0
   winPassword: 
   losePassword: 
 --- !u!4 &1290935734
@@ -12079,6 +12095,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1372133857}
+  - component: {fileID: 1372133858}
   m_Layer: 0
   m_Name: Sensei
   m_TagString: Untagged
@@ -12102,6 +12119,20 @@ Transform:
   m_Father: {fileID: 2144759904}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1372133858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1372133856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2aef4c56887e409148d95513cd843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitAmount: 0
+  randomRange: 7
+  logo: {fileID: 1372133856}
 --- !u!1 &1378749151
 GameObject:
   m_ObjectHideFlags: 0
@@ -13497,6 +13528,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1539012545}
+  - component: {fileID: 1539012546}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Untagged
@@ -13520,6 +13552,20 @@ Transform:
   m_Father: {fileID: 2144759904}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1539012546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1539012544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2aef4c56887e409148d95513cd843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitAmount: 0
+  randomRange: 7
+  logo: {fileID: 1539012544}
 --- !u!1 &1548336496
 GameObject:
   m_ObjectHideFlags: 0
@@ -15824,6 +15870,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1788116726}
+  - component: {fileID: 1788116727}
   m_Layer: 0
   m_Name: Buff
   m_TagString: Untagged
@@ -15847,6 +15894,20 @@ Transform:
   m_Father: {fileID: 2144759904}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1788116727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1788116725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2aef4c56887e409148d95513cd843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitAmount: 0
+  randomRange: 7
+  logo: {fileID: 1788116725}
 --- !u!1 &1798304541
 GameObject:
   m_ObjectHideFlags: 0
@@ -17045,6 +17106,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSizeMultiplier: 1.5
+--- !u!1 &1861156851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1861156852}
+  - component: {fileID: 1861156853}
+  m_Layer: 0
+  m_Name: PlayerSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1861156852
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1861156851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.22, y: 3.3, z: 0}
+  m_LocalScale: {x: 0.39832288, y: 0.3389981, z: 0.3389981}
+  m_Children: []
+  m_Father: {fileID: 2144759904}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1861156853
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1861156851}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 832835393853bdc4d9d30dfc7f244050, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 22.19, y: 7.09}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!1 &1869767222
 GameObject:
   m_ObjectHideFlags: 0
@@ -19021,6 +19153,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2075133956}
+  - component: {fileID: 2075133957}
   m_Layer: 0
   m_Name: Prof
   m_TagString: Untagged
@@ -19044,6 +19177,20 @@ Transform:
   m_Father: {fileID: 2144759904}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2075133957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2075133955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f2aef4c56887e409148d95513cd843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitAmount: 0
+  randomRange: 7
+  logo: {fileID: 2075133955}
 --- !u!1 &2076654289
 GameObject:
   m_ObjectHideFlags: 0
@@ -19688,6 +19835,7 @@ Transform:
   - {fileID: 374093425}
   - {fileID: 2075133956}
   - {fileID: 1372133857}
+  - {fileID: 1861156852}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

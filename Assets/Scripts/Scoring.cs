@@ -142,9 +142,12 @@ public class Scoring : MonoBehaviour {
         {
             GetComponent<ResultsScreen>().ResultsSetup(playerWon, false);
         }
-        if (playerWon == "won" && passedObject.isStory)
+        if (passedObject != null)
         {
-            passedObject.storyIndex++;
+            if (playerWon == "won" && passedObject.isStory)
+            {
+                passedObject.storyIndex++;
+            }
         }
     }
 }
