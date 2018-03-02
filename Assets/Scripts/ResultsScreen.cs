@@ -37,6 +37,7 @@ public class ResultsScreen : MonoBehaviour {
             passedObject = null;
             winPassword = "DEBUGWIN";
             losePassword = "DEBUGLOSE";
+            isStory = false;
         }
         bool cpuLost = false;
         if (playerWon.Equals("won"))
@@ -157,7 +158,7 @@ public class ResultsScreen : MonoBehaviour {
         gloatText.text = winningDialogue;
         textBacking.SetActive(true);
         storyElements.SetActive(true);
-        passedObject.SetActive(true);
+        password.SetActive(true);
         resultsGraphics.SetActive(true);
         if (!isStory)
         {
@@ -170,18 +171,25 @@ public class ResultsScreen : MonoBehaviour {
         }
         else
         {
-            eventSystem.SetSelectedGameObject(continueButton);
-            continueButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+
 
             if (playerWon.Equals("won"))
             {
                 continueButton.SetActive(true);
+
+                eventSystem.SetSelectedGameObject(continueButton);
+                continueButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+
                 retryButton.SetActive(false);
                 password.GetComponentInChildren<UnityEngine.UI.Text>().text = "Password: " + winPassword;
             }
             else
             {
                 retryButton.SetActive(true);
+
+                eventSystem.SetSelectedGameObject(retryButton);
+                retryButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+
                 continueButton.SetActive(false);
                 password.GetComponentInChildren<UnityEngine.UI.Text>().text = "Password: " + losePassword;
             }

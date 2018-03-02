@@ -183,7 +183,7 @@ public class ButtonLogic : MonoBehaviour {
             setsCount = 1;
         }
 
-        setsText.text = "Match: First to " + setsCount + "sets";
+        setsText.text = "Match: First to " + setsCount + " sets";
     }
 
 }
