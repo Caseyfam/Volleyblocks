@@ -5458,38 +5458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4afc1d658931c14c81dccd2d7fa7414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allObjects:
-  - {fileID: 1961023749}
-  - {fileID: 638868699}
-  - {fileID: 339185557}
-  - {fileID: 2016151178}
-  - {fileID: 551040898}
-  - {fileID: 814214941}
-  - {fileID: 1775051860}
-  - {fileID: 295859351}
-  - {fileID: 1324734913}
-  - {fileID: 1801540383}
-  - {fileID: 247383330}
-  - {fileID: 938282148}
-  - {fileID: 339435616}
-  - {fileID: 484959272}
-  - {fileID: 1837060489}
-  - {fileID: 1853558182}
-  - {fileID: 1756316109}
-  - {fileID: 1619343383}
-  - {fileID: 1382577905}
-  - {fileID: 1405188708}
-  - {fileID: 1432988412}
-  - {fileID: 718449007}
-  - {fileID: 1587710127}
-  - {fileID: 1697187970}
-  - {fileID: 475653170}
-  - {fileID: 1460377966}
   scenes:
     beachScene: {fileID: 139819993}
     shrineScene: {fileID: 365377353}
     foyerScene: {fileID: 1921588663}
-    labScene: {fileID: 1660667728}
 --- !u!114 &1133255545
 MonoBehaviour:
   m_ObjectHideFlags: 0
