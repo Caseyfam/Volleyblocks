@@ -58,8 +58,6 @@ public class RunningGame : MonoBehaviour {
         runningGame = true;
         GetComponent<BoardsInPlay>().rightBoard.Reset();
         GetComponent<BoardsInPlay>().leftBoard.Reset();
-        setPointImage.transform.localScale = Vector3.zero;
-        matchPointImage.transform.localScale = Vector3.zero;
         ball.Start();
         camTilt.Reset();
         if (matchPoint)
