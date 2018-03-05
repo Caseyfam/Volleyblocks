@@ -63,6 +63,9 @@ public class MainMenuIntro : MonoBehaviour {
         StartCoroutine(WaitToUnflash(0.3f));
     }
 
+    public UnityEngine.EventSystems.EventSystem eventSystem;
+    public GameObject initialButton;
+
     IEnumerator WaitToUnflash(float time)
     {
         yield return new WaitForSeconds(time);
@@ -76,6 +79,9 @@ public class MainMenuIntro : MonoBehaviour {
         director.time = 4f;
         isFlashing = false;
         mainMenu.SetActive(true);
+        eventSystem.SetSelectedGameObject(initialButton);
+        initialButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
+        initialButton.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         movingBackground.SetActive(true);
         GameObject.Find("PassedObject").GetComponent<Passed>().mainMenuCutsceneSkipped = true;
         StartCoroutine(WaitToDestroy(3f));

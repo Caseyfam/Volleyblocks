@@ -4998,6 +4998,7 @@ MonoBehaviour:
   - {fileID: 1999619300}
   - {fileID: 761299519}
   - {fileID: 1406183856}
+  csLogic: {fileID: 2144759905}
 --- !u!95 &617212997
 Animator:
   serializedVersion: 3
@@ -7023,6 +7024,8 @@ MonoBehaviour:
   mainMenu: {fileID: 753462879}
   movingBackground: {fileID: 912781128}
   director: {fileID: 617212998}
+  eventSystem: {fileID: 743994949}
+  initialButton: {fileID: 1606608772}
 --- !u!4 &820614167
 Transform:
   m_ObjectHideFlags: 0
@@ -19858,6 +19861,7 @@ MonoBehaviour:
   - {fileID: 1999619300}
   - {fileID: 761299519}
   - {fileID: 1406183856}
+  menuInitialized: 0
 --- !u!1 &2146159260
 GameObject:
   m_ObjectHideFlags: 0

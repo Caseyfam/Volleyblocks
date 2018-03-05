@@ -16,7 +16,10 @@ public class ButtonLogic : MonoBehaviour {
     public UnityEngine.EventSystems.EventSystem eventSystem;
     public GameObject arcadeButton, versusButton, arcadeNewButton, versusStartButton, passwordButton, passBackButton; // Entry buttons
     public SpriteRenderer[] charSelectPortraits;
+    public CharacterSelectLogic csLogic;
     string currentMenu = "";
+
+    private Vector3 bigSize = new Vector3(1.2f, 1.2f, 1.2f);
 
     void Update()
     {
@@ -45,7 +48,7 @@ public class ButtonLogic : MonoBehaviour {
     {
         eventSystem.SetSelectedGameObject(newButton);
         newButton.GetComponent<UnityEngine.UI.Button>().OnSelect(null);
-        newButton.transform.localScale *= 1.2f;
+        newButton.transform.localScale = bigSize;
         desiredMenu.SetActive(true);
         currentMenu.SetActive(false);
     }
@@ -108,13 +111,14 @@ public class ButtonLogic : MonoBehaviour {
         versusMenu.SetActive(true);
         characterSelect.SetActive(false);
         ButtonPressLogic(versusStartButton, versusMenu, characterSelect);
-        versusStartButton.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        versusStartButton.transform.localScale = bigSize;
         currentMenu = "Versus";
         logo.SetActive(true);
         foreach (SpriteRenderer sr in charSelectPortraits)
         {
             sr.color = new Color(255f, 255f, 255f);
         }
+        csLogic.menuInitialized = false;
     }
 
     public void ContinueFromCharacterSelect()

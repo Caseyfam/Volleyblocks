@@ -13,7 +13,8 @@ public class CharacterSelectLogic : MonoBehaviour {
 
     private int p1Selection = 0, p2Selection = 4;
     bool p1Locked = false, p2Locked = false;
-    bool menuInitialized = false;
+    [HideInInspector]
+    public bool menuInitialized = false;
 
     private void Awake()
     {
