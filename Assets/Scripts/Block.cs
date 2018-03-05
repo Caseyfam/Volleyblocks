@@ -228,6 +228,23 @@ public class Block : MonoBehaviour {
         board.boardBools[row, column] = false;
         board.boardBlocks[row, column] = null;
         board.blocksDestroyedCount++;
+
+        GameObject newParticle = (GameObject)Instantiate(Resources.Load("DestroyedBlockParticle"));
+        newParticle.transform.position = transform.position;
+        newParticle.transform.parent = transform.parent.transform.parent.transform;
+        GameObject wallToPass;
+        switch (Random.Range(0,2))
+        {
+            case 0:
+                wallToPass = transform.parent.GetComponent<Board>().leftWall.gameObject;
+                break;
+            case 1:
+            default:
+                 wallToPass = transform.parent.GetComponent<Board>().rightWall.gameObject;
+                break;
+        }
+        newParticle.GetComponent<BlockDestroyParticle>().CreateParticle(blockColor, wallToPass);
+
         isDestroying = true;
         //Debug.Log("Added " + row + " " + column);
     }
