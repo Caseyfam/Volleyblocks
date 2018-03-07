@@ -27,6 +27,8 @@ public class Ball : MonoBehaviour {
     public BoardsInPlay boardsInPlay;
     public RunningGame runningGame;
 
+    public SpriteRenderer sr;
+
     void Awake()
     {
         leftBoard = boardsInPlay.leftBoard;
@@ -41,7 +43,7 @@ public class Ball : MonoBehaviour {
         transform.position = new Vector3(0f, -2.64f, 10f);
         transform.localScale = new Vector3(6.197968f, 6.197968f, 6.197968f);
         currentDirection = "NONE";
-        GetComponent<SpriteRenderer>().color = Color.white;
+        sr.color = Color.white;
         servePause = false;
         serveDone = false;
         GameObject.Find("ReadySign").GetComponent<ReadySign>().Reset();
@@ -156,7 +158,7 @@ public class Ball : MonoBehaviour {
                     }
 
                     // Call color change here
-                    GetComponent<SpriteRenderer>().color = attackedBoard.GetComponent<Board>().currentColor;
+                    sr.color = attackedBoard.GetComponent<Board>().currentColor;
 
                     attackedBoard.ResetPoints();
                     // anim.Play other volley

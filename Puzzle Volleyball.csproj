@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\ActiveSetInput.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
+    <Compile Include="Assets\Scripts\BallAnimate.cs" />
     <Compile Include="Assets\Scripts\Block.cs" />
     <Compile Include="Assets\Scripts\BlockDestroyParticle.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />

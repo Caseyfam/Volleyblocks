@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Scoreboard : MonoBehaviour
 {
-    private int leftGames = 0, rightGames = 0;
-    private int leftSets = 0, rightSets = 0;
-
     public SpriteRenderer srLeftGames, srRightGames, srLeftSets, srRightSets;
 
     public Sprite[] numbers;
@@ -15,22 +12,18 @@ public class Scoreboard : MonoBehaviour
 
     public void SetLeftGames(int val)
     {
-        leftGames = val;
         UpdateScoreboard(val, srLeftGames);
     }
     public void SetRightGames(int val)
     {
-        rightGames = val;
         UpdateScoreboard(val, srRightGames);
     }
     public void SetLeftSets(int val)
     {
-        leftSets = val;
         UpdateScoreboard(val, srLeftSets);
     }
     public void SetRightSets(int val)
     {
-        rightSets = val;
         UpdateScoreboard(val, srRightSets);
     }
 
