@@ -96,6 +96,8 @@
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
     <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
     <Compile Include="Assets\Scripts\FadeInToColor.cs" />
+    <Compile Include="Assets\Scripts\FadeOnLoad.cs" />
+    <Compile Include="Assets\Scripts\FadeSmart.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
     <Compile Include="Assets\Scripts\FireAnimate.cs" />
     <Compile Include="Assets\Scripts\FogRoll.cs" />
@@ -114,6 +116,8 @@
     <Compile Include="Assets\Scripts\ResultsScreenButtons.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
     <Compile Include="Assets\Scripts\ScaleUp.cs" />
+    <Compile Include="Assets\Scripts\Scoreboard.cs" />
+    <Compile Include="Assets\Scripts\ScoreboardLetterEffect.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
     <Compile Include="Assets\Scripts\SelectedCharacters.cs" />
     <Compile Include="Assets\Scripts\SelectedScene.cs" />

@@ -6,11 +6,6 @@ public class CameraTilt : MonoBehaviour {
 
     public GameObject ball;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update ()
     {

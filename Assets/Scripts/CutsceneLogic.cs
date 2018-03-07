@@ -6,6 +6,7 @@ public class CutsceneLogic : MonoBehaviour
 {
     public SpriteEmotes leftSprite, rightSprite;
     public UnityEngine.UI.Text mainText;
+    public FadeSmart fadeSmart;
 
     private float defaultLetterWait = 0.03f;
     private LoadBattle loadBattle;
@@ -36,6 +37,7 @@ public class CutsceneLogic : MonoBehaviour
 
     private bool textCrawling = false;
     private bool sectionComplete = true;
+    private bool canAdvanceText = true;
 
     private GameObject passedObject;
 
@@ -60,7 +62,7 @@ public class CutsceneLogic : MonoBehaviour
 
 	void Update ()
     {
-        if (sectionComplete)
+        if (sectionComplete && canAdvanceText)
         {
             switch (globalSceneIndex)
             {
@@ -148,12 +150,8 @@ public class CutsceneLogic : MonoBehaviour
                 case 18:
                     DisplayDialogue("PROVE TO ME YOU HAVE WHAT IT TAKES TO BE A VOLLEYBLOCK MASTER!", defaultLetterWait);
                     break;
-                case 19:
-                    selectedChars.SetLeftBoard("girl");
-                    selectedChars.SetRightBoard("buff");
-                    selectedScene.SetSceneName("beach");
-                    passedObject.GetComponent<Passed>().StorePasswords("BUFFDOWN", "BUFFDUDE"); // Passwords updated in PasswordSystem.cs
-                    loadBattle.LoadNewBattle("Player VS CPU", 5f, 1, 1, globalSceneIndex, true);
+                case 19: // BATTLE 1
+                    StartCoroutine(FadeIntoScene(1f, "girl", "buff", "beach", "BUFFDOWN", "BUFFDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
                     break;
                 case 20:
                     leftSprite.SetSprite(sprites.girlLose);
@@ -276,11 +274,8 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue("I have no doubt that this will be an entertaining match, but it will be a match you shall lose!", defaultLetterWait);
                     break; 
                 case 49: // BATTLE
-                    selectedChars.SetLeftBoard("girl");
-                    selectedChars.SetRightBoard("hatty");
-                    selectedScene.SetSceneName("foyer");
-                    passedObject.GetComponent<Passed>().StorePasswords("RICHDOWN", "RICHDUDE");
-                    loadBattle.LoadNewBattle("Player VS CPU", 5f, 1, 1, globalSceneIndex, true);
+                    //IEnumerator FadeIntoScene(float time, string leftBoardChar, string rightBoardChar, string sceneName, string winPassword, string losePassword, string playerCase, float newTurnLength, int gamesCount, int setsCount, int storyIndex, bool isStory)
+                    StartCoroutine(FadeIntoScene(1f, "girl", "hatty", "foyer", "RICHDOWN", "RICHDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
                     break;
                 case 50:
                     leftSprite.SetSprite(sprites.girlSide);
@@ -393,6 +388,18 @@ public class CutsceneLogic : MonoBehaviour
         textCrawling = true;
         currentText = "";
         StartCoroutine(SlowAddText(letterWaitTime, -1, text));
+    }
+
+    IEnumerator FadeIntoScene(float time, string leftBoardChar, string rightBoardChar, string sceneName, string winPassword, string losePassword, string playerCase, float newTurnLength, int gamesCount, int setsCount, int storyIndex, bool isStory)
+    {
+        canAdvanceText = false;
+        StartCoroutine(fadeSmart.StartFade(time));
+        yield return new WaitForSeconds(time);
+        selectedChars.SetLeftBoard(leftBoardChar);
+        selectedChars.SetRightBoard(rightBoardChar);
+        selectedScene.SetSceneName(sceneName);
+        passedObject.GetComponent<Passed>().StorePasswords(winPassword, losePassword);
+        loadBattle.LoadNewBattle(playerCase, newTurnLength, gamesCount, setsCount, storyIndex, isStory);
     }
 
     IEnumerator SlowAddText(float time, int index, string text)

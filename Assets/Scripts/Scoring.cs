@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Scoring : MonoBehaviour {
 
-    public int pointsToGame = 3;
-    public int gamesToWin = 3;
-    private int leftPoints = 0, leftGames = 0, rightPoints = 0, rightGames = 0;
-    public TextMesh lPointsText, lGamesText, rPointsText, rGamesText;
+    public int gamesToSet = 3;
+    public int setsToWin = 3;
+    private int leftGames = 0, leftSets = 0, rightGames = 0, rightSets = 0;
 
     private Passed passedObject;
     private RunningGame runningGame;
+
+    public Scoreboard scoreboard;
 
     bool matchComplete = false;
 
@@ -20,14 +21,14 @@ public class Scoring : MonoBehaviour {
         try
         {
             passedObject = GameObject.Find("PassedObject").GetComponent<Passed>();
-            pointsToGame = passedObject.gamesCount;
-            gamesToWin = passedObject.setCount;
+            gamesToSet = passedObject.gamesCount;
+            setsToWin = passedObject.setCount;
         }
         catch
         {
             Debug.LogError("Couldn't get Passed");
-            pointsToGame = 1;
-            gamesToWin = 1;
+            gamesToSet = 1;
+            setsToWin = 1;
         }
     }
 
@@ -35,27 +36,27 @@ public class Scoring : MonoBehaviour {
     {
         if (board.Equals(GetComponent<BoardsInPlay>().rightBoard))
         {
-            leftPoints++;
-            lPointsText.text = leftPoints.ToString();
-            CheckIfGame(leftPoints, "RIGHT");
+            leftGames++;
+            scoreboard.SetLeftGames(leftGames);
+            CheckIfGame(leftGames, "RIGHT");
         }
         else
         {
-            rightPoints++;
-            rPointsText.text = rightPoints.ToString();
-            CheckIfGame(rightPoints, "LEFT");
+            rightGames++;
+            scoreboard.SetRightGames(rightGames);
+            CheckIfGame(rightGames, "LEFT");
         }
         bool matchPoint = false;
         bool setPoint = false;
-        if (leftPoints == pointsToGame - 1 || rightPoints == pointsToGame - 1)
+        if (leftGames == gamesToSet - 1 || rightGames == gamesToSet - 1)
         {
-            if (leftGames == gamesToWin - 1)
+            if (leftSets == setsToWin - 1)
             {
                 // Match point
                 matchPoint = true;
                 setPoint = false;
             }
-            else if (rightGames == gamesToWin - 1)
+            else if (rightSets == setsToWin - 1)
             {
                 // Match point
                 matchPoint = true;
@@ -77,30 +78,30 @@ public class Scoring : MonoBehaviour {
     {
         if (position.Equals("RIGHT"))
         {
-            if (points >= pointsToGame)
+            if (points >= gamesToSet)
             {
                 points = 0;
-                leftGames++;
-                lGamesText.text = leftGames.ToString();
-                lPointsText.text = "0";
-                leftPoints = 0;
-                rightPoints = 0;
-                rPointsText.text = "0";
-                CheckIfWinner(leftGames, position);
+                leftSets++;
+                scoreboard.SetLeftSets(leftSets);
+                leftGames = 0;
+                rightGames = 0;
+                scoreboard.SetLeftGames(leftGames);
+                scoreboard.SetRightGames(rightGames);
+                CheckIfWinner(leftSets, position);
             }
         }
         else
         {
-            if (points >= pointsToGame)
+            if (points >= gamesToSet)
             {
                 points = 0;
-                rightGames++;
-                rGamesText.text = rightGames.ToString();
-                rPointsText.text = "0";
-                rightPoints = 0;
-                leftPoints = 0;
-                lPointsText.text = "0";
-                CheckIfWinner(rightGames, position);
+                rightSets++;
+                scoreboard.SetRightSets(rightSets);
+                rightGames = 0;
+                leftGames = 0;
+                scoreboard.SetRightGames(rightGames);
+                scoreboard.SetLeftGames(leftGames);
+                CheckIfWinner(rightSets, position);
             }
         }
     }
@@ -111,7 +112,7 @@ public class Scoring : MonoBehaviour {
     {
         if (position.Equals("RIGHT"))
         {
-            if (games >= gamesToWin)
+            if (games >= setsToWin)
             {
                 Debug.Log("LEFT BOARD WON THE SET");
                 playerWon = "won";
@@ -121,7 +122,7 @@ public class Scoring : MonoBehaviour {
         }
         else
         {
-            if (games >= gamesToWin)
+            if (games >= setsToWin)
             {
                 Debug.Log("RIGHT BOARD WON THE SET");
                 playerWon = "lost";

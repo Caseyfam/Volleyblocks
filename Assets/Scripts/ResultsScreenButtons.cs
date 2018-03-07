@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResultsScreenButtons : MonoBehaviour {
+    public FadeSmart fadeSmart;
+    private const float fadeTime = 1f;
 
     public void StoryRetry()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        StartCoroutine(FadeToScene(fadeTime, 1));
     }
 
     public void StoryContinue()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        StartCoroutine(FadeToScene(fadeTime, 2));
     }
 
     public void MainMenu()
     {
-        //Destroy(GameObject.Find("PassedObject"));
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        StartCoroutine(FadeToScene(fadeTime, 0));
+    }
+
+    IEnumerator FadeToScene(float time, int desiredScene)
+    {
+        StartCoroutine(fadeSmart.StartFade(time));
+        yield return new WaitForSeconds(time);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(desiredScene);
     }
 }

@@ -29,7 +29,6 @@ public class CharacterSelectLogic : MonoBehaviour {
         {
             if (!menuInitialized)
             {
-                Debug.Log(passed.playersInPlay);
                 switch (passed.playersInPlay)
                 {
                     case "Player VS CPU":

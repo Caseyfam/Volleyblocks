@@ -132,7 +132,7 @@ public class Ball : MonoBehaviour {
                     currentPointLead = attackedBoard.GetPoints();
 
 
-                    if (currentPointLead >= previousPointLead + 20)
+                    if (currentPointLead >= previousPointLead + 10)
                     {
                         // Super emote
                         attackedBoard.EmoteBoard("sideWin");
@@ -146,9 +146,9 @@ public class Ball : MonoBehaviour {
                             case 0:
                             case 1:
                             case 2:
+                            case 3:
                                 attackedBoard.EmoteBoard("sideIdle");
                                 break;
-                            case 3:
                             case 4:
                                 attackedBoard.EmoteBoard("sideLose");
                                 break;

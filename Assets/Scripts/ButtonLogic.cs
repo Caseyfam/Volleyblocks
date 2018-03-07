@@ -17,9 +17,14 @@ public class ButtonLogic : MonoBehaviour {
     public GameObject arcadeButton, versusButton, arcadeNewButton, versusStartButton, passwordButton, passBackButton; // Entry buttons
     public SpriteRenderer[] charSelectPortraits;
     public CharacterSelectLogic csLogic;
+    public PasswordSystem passwordSystem;
     string currentMenu = "";
 
     private Vector3 bigSize = new Vector3(1.2f, 1.2f, 1.2f);
+
+    public FadeSmart smartFade;
+
+    private const float fadeTime = 0.5f;
 
     void Update()
     {
@@ -79,6 +84,7 @@ public class ButtonLogic : MonoBehaviour {
 
     public void PasswordBack()
     {
+        passwordSystem.ClearPassword();
         ButtonPressLogic(passwordButton, arcadeMenu, passwordMenu);
         currentMenu = "Arcade";
         logo.SetActive(true);
@@ -93,7 +99,7 @@ public class ButtonLogic : MonoBehaviour {
 
     public void ArcadeNewGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        StartCoroutine(FadeToArcade(fadeTime));
     }
 
     public void StartButton()
@@ -123,7 +129,21 @@ public class ButtonLogic : MonoBehaviour {
 
     public void ContinueFromCharacterSelect()
     {
+        StartCoroutine(FadeToVersusBattle(fadeTime));
+    }
+
+    IEnumerator FadeToVersusBattle(float time)
+    {
+        smartFade.StartFadeNoEnd(0.14f);
+        yield return new WaitForSeconds(time);
         GetComponent<LoadBattle>().LoadNewBattle(players, turnLength, gamesCount, setsCount);
+    }
+
+    IEnumerator FadeToArcade(float time)
+    {
+        smartFade.StartFadeNoEnd(0.14f);
+        yield return new WaitForSeconds(time);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     public void PlayersButton()
@@ -172,7 +192,7 @@ public class ButtonLogic : MonoBehaviour {
     public void GamesButton()
     {
         gamesCount++;
-        if (gamesCount > 15)
+        if (gamesCount > 9)
         {
             gamesCount = 1;
         }

@@ -9,6 +9,9 @@ public class PasswordSystem : MonoBehaviour {
     public Sprite[] alphabet;
 
     public Passed passed;
+    public FadeSmart smartFade;
+
+    private bool canEnterPassword = true;
 
     public void EnterPassword()
     {
@@ -51,37 +54,52 @@ public class PasswordSystem : MonoBehaviour {
     public void ClearPassword()
     {
         password = "";
+        foreach (UnityEngine.UI.Image letter in letters)
+        {
+            letter.sprite = null;
+        }
     }
 
     public void PasswordConfirm()
     {
-        bool isStory = true;
-        int sceneIndex = 0;
-        switch (password)
+        if (canEnterPassword)
         {
-            default:
-                Debug.Log("INVALID PASSWORD");
-                isStory = false;
-                break;
-            case "BUFFDOWN":
-                sceneIndex = 20;
-                break;
-            case "BUFFDUDE":
-                sceneIndex = 17;
-                break;
-            case "RICHDOWN":
-                sceneIndex = 50;
-                break;
-            case "RICHDUDE":
-                sceneIndex = 48;
-                break;
-        }
+            bool isStory = true;
+            int sceneIndex = 0;
+            switch (password)
+            {
+                default:
+                    Debug.Log("INVALID PASSWORD");
+                    ClearPassword();
+                    isStory = false;
+                    break;
+                case "BUFFDOWN":
+                    sceneIndex = 20;
+                    break;
+                case "BUFFDUDE":
+                    sceneIndex = 17;
+                    break;
+                case "RICHDOWN":
+                    sceneIndex = 50;
+                    break;
+                case "RICHDUDE":
+                    sceneIndex = 48;
+                    break;
+            }
 
-        if (isStory)
-        {
-            passed.isStory = isStory;
-            passed.storyIndex = sceneIndex;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+            if (isStory)
+            {
+                passed.isStory = isStory;
+                passed.storyIndex = sceneIndex;
+                StartCoroutine(WaitToLoadStory(1f));
+            }
         }
+    }
+
+    IEnumerator WaitToLoadStory(float time)
+    {
+        smartFade.StartFadeNoEnd(0.14f);
+        yield return new WaitForSeconds(time);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 }
