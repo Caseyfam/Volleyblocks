@@ -7,6 +7,7 @@ public class FireAnimate : MonoBehaviour {
     public Sprite[] fire;
 
     public float waitTime;
+    public bool isRandom = false;
 
     private int currentIndex = 0;
     private SpriteRenderer thisRenderer;
@@ -24,7 +25,14 @@ public class FireAnimate : MonoBehaviour {
 	IEnumerator Animate(float time)
     {
         yield return new WaitForSeconds(time);
-        currentIndex++;
+        if (isRandom)
+        {
+            currentIndex = Random.Range(0, fire.Length - 1);
+        }
+        else
+        {
+            currentIndex++;
+        }
         if (currentIndex >= fire.Length)
         {
             currentIndex = 0;

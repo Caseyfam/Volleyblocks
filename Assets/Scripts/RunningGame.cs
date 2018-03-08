@@ -10,7 +10,7 @@ public class RunningGame : MonoBehaviour {
 
     public Ball ball;
     public CameraTilt camTilt;
-    public UnityEngine.UI.Image fadeCurtain, matchPointImage, setPointImage;
+    public UnityEngine.UI.Image fadeCurtain;
 
     public SpriteRenderer readySignSR;
     public Sprite matchPontSprite, setPointSprite;

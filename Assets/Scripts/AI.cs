@@ -35,7 +35,7 @@ public class AI : MonoBehaviour {
         }
         catch
         {
-
+            turnWaitTime = 100f; // DEBUG
         }
     }
 
