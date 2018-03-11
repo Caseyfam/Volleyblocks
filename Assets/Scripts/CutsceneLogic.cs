@@ -92,7 +92,7 @@ public class CutsceneLogic : MonoBehaviour
                     leftSprite.SetSprite(sprites.girlWin);
                     break;
                 case 6:
-                    DisplayDialogue("Alright, the only lead I have is that Buff Beach Bobby is the first master, and he's never lost a match in his life...", defaultLetterWait);
+                    DisplayDialogue("Alright, the only lead I have is that Beach Buff Bobby is the first master, and he's never lost a match in his life...", defaultLetterWait);
                     break;
                 case 7:
                     DisplayDialogue("Mom, Dad, Little Jimmy, I won't let you guys down. Let's go!", defaultLetterWait);
@@ -115,7 +115,7 @@ public class CutsceneLogic : MonoBehaviour
                 case 10:
                     leftSprite.ToggleVisibility();
                     leftSprite.EnterStageSide(1f);
-                    DisplayDialogue("BUFF BEACH BOBBY!", defaultLetterWait);
+                    DisplayDialogue("BEACH BUFF BOBBY!", defaultLetterWait);
                     break;
                 case 11:
                     DisplayDialogue("Huh? Who the heck are you?", defaultLetterWait);
@@ -356,6 +356,135 @@ public class CutsceneLogic : MonoBehaviour
                 case 69:
                     rightSprite.SetSprite(sprites.hattyFront);
                     DisplayDialogue("The one and only... Professor Sylvia!", defaultLetterWait);
+                    break;
+                case 70:
+                    leftSprite.SetSprite(null);
+                    rightSprite.SetSprite(sprites.profLose);
+                    scenes.foyerScene.SetActive(false);
+                    scenes.labScene.SetActive(true);
+                    DisplayDialogue("Ugh, this is going nowhere.", defaultLetterWait);
+                    break;
+                case 71:
+                    DisplayDialogue("Just what is this....", defaultLetterWait);
+                    break;
+                case 72:
+                    leftSprite.SetSprite(sprites.girlSide);
+                    DisplayDialogue("PROFESSOR SYLVIA! I CHALLENGE YOU TO A VOLLEYBLOCK MATCH!", defaultLetterWait);
+                    break;
+                case 73:
+                    rightSprite.SetSprite(sprites.profDefeat);
+                    DisplayDialogue("Now of all times....", defaultLetterWait);
+                    break;
+                case 74:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    DisplayDialogue("Uh, sorry. Is now a bad time?", defaultLetterWait);
+                    break;
+                case 75:
+                    leftSprite.SetSprite(sprites.hattyLose);
+                    DisplayDialogue("My apologies Professor. I didn't mean to-", defaultLetterWait);
+                    break;
+                case 76:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    rightSprite.SetSprite(sprites.profSide);
+                    DisplayDialogue("HA HA HA. No, now is as fine a time as any.", defaultLetterWait);
+                    break;
+                case 77:
+                    DisplayDialogue("Miss, you have no idea who you're dealing with!", defaultLetterWait);
+                    break;
+                case 78:
+                    leftSprite.SetSprite(sprites.girlWin);
+                    rightSprite.SetSprite(sprites.profWin);
+                    DisplayDialogue("My data shows that you will never be able to beat me!", defaultLetterWait);
+                    break;
+                case 79:
+                    StartCoroutine(FadeIntoScene(1f, "girl", "prof", "lab", "PROFDOWN", "PROFGIRL", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
+                    break;
+                case 80:
+                    scenes.labScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlSide);
+                    rightSprite.SetSprite(sprites.profLose);
+                    DisplayDialogue("Hmph. Very well.", defaultLetterWait);
+                    break;
+                case 81:
+                    DisplayDialogue("Your next opponent is Master Flin atop Mount Block.", defaultLetterWait);
+                    break;
+                case 82:
+                    DisplayDialogue("Congratulations, good luck, and goodbye.", defaultLetterWait);
+                    break;
+                case 83:
+                    rightSprite.ExitStageSide(1f, true);
+                    leftSprite.SetSprite(sprites.girlLose);
+                    DisplayDialogue("You too...", defaultLetterWait);
+                    break;
+                case 84:
+                    rightSprite.SetSprite(null);
+                    rightSprite.EnterStageBottom(100f);
+                    DisplayDialogue("She seemed upset. Was it something I said?", defaultLetterWait);
+                    break;
+                case 85:
+                    rightSprite.SetSprite(sprites.buffWin);
+                    DisplayDialogue("Don't worry about it. She's probably just a sore loser.", defaultLetterWait);
+                    break;
+                case 86:
+                    rightSprite.SetSprite(sprites.hattySide);
+                    DisplayDialogue("Keep your head clear lass. You can't worry over such trivial matters!", defaultLetterWait);
+                    break;
+                case 87:
+                    DisplayDialogue("Yeah. You guys are right. Let's keep going.", defaultLetterWait);
+                    break;
+                case 88:
+                    DisplayDialogue("    ", defaultLetterWait);
+                    leftSprite.ExitStageOppositeSide(1f);
+                    rightSprite.ExitStageSide(1f, true);
+                    break;
+                case 89:
+                    DisplayDialogue(". . . ", defaultLetterWait);
+                    leftSprite.EnterStageSide(1f);
+                    leftSprite.SetSprite(sprites.profLose);
+                    break;
+                case 90:
+                    DisplayDialogue("A girl with such talent for the sport...", defaultLetterWait);
+                    break;
+                case 91:
+                    DisplayDialogue("Magical blocks that grant energy when used in a sports-like competition...", defaultLetterWait);
+                    break;
+                case 92:
+                    leftSprite.SetSprite(sprites.profDefeat);
+                    DisplayDialogue("This isn't natural...", defaultLetterWait);
+                    break;
+                case 93:
+                    scenes.labScene.SetActive(false);
+                    scenes.shrineScene.SetActive(true);
+                    leftSprite.EnterStageSide(1f);
+                    leftSprite.SetSprite(sprites.girlDefeat);
+                    DisplayDialogue("I can't believe Mount Block was actually a mountain...", defaultLetterWait);
+                    break;
+                case 94:
+                    leftSprite.SetSprite(sprites.hattySide);
+                    DisplayDialogue("You said yourself that this wasn't going to be easy, lass.", defaultLetterWait);
+                    break;
+                case 95:
+                    leftSprite.SetSprite(sprites.buffLose);
+                    DisplayDialogue("WHEW... GAH... WAIT UP GUYS... hhhaaaaaaaaaaaa......", defaultLetterWait);
+                    break;
+                case 96:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    DisplayDialogue("Are you going to be alright?", defaultLetterWait);
+                    break;
+                case 97:
+                    leftSprite.SetSprite(sprites.buffLose);
+                    DisplayDialogue("Just... not used to... this kind of training...", defaultLetterWait);
+                    break;
+                case 98:
+                    leftSprite.SetSprite(sprites.hattySide);
+                    DisplayDialogue("I recall you questioning my physical abilities earlier, no?", defaultLetterWait);
+                    break;
+                case 99:
+                    leftSprite.SetSprite(sprites.buffLose);
+                    DisplayDialogue(". . .", defaultLetterWait);
+                    break;
+                case 100:
+
                     break;
             }
         }

@@ -1643,6 +1643,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 16d865b7a37226a4888e93ebda15002a, type: 3}
   - {fileID: 21300000, guid: 6b063c5735b16944ab14e650f6858c4c, type: 3}
   waitTime: 0.3
+  isRandom: 0
 --- !u!212 &588171759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1958,6 +1959,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4dfde7c9678720f48a5ff189bd2410db, type: 3}
   - {fileID: 21300000, guid: d2132179edd889f42bc85e980d94fd24, type: 3}
   waitTime: 0.2
+  isRandom: 0
 --- !u!212 &746393626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2382,6 +2384,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d61503dc079f8947a3b6ff2bbd545cb, type: 3}
   - {fileID: 21300000, guid: 08e36483820f8a24db859ddf9d46df55, type: 3}
   waitTime: 0.2
+  isRandom: 0
 --- !u!212 &899722765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7701,6 +7704,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0e847cb6a81188b4d80ebf1c52fee13d, type: 3}
   - {fileID: 21300000, guid: 64f4429c82a34ef448d3cc58e859dbab, type: 3}
   waitTime: 0.5
+  isRandom: 0
 --- !u!212 &1792517087
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7789,6 +7793,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d316f39236d09f744b685e7b11901ec4, type: 3}
   - {fileID: 21300000, guid: 0e847cb6a81188b4d80ebf1c52fee13d, type: 3}
   waitTime: 0.5
+  isRandom: 0
 --- !u!212 &1825110479
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class SetScene : MonoBehaviour {
         catch
         {
             Debug.LogError("Could not find PassedObject. Did you load through Menu?");
-            SetSceneObject("glitch");
+            //SetSceneObject("glitch");
         }
 	}
 
