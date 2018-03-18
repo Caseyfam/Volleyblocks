@@ -7,6 +7,7 @@ public class CutsceneLogic : MonoBehaviour
     public SpriteEmotes leftSprite, rightSprite;
     public UnityEngine.UI.Text mainText;
     public FadeSmart fadeSmart;
+    public Camera localCam;
 
     private float defaultLetterWait = 0.03f;
     private LoadBattle loadBattle;
@@ -16,7 +17,7 @@ public class CutsceneLogic : MonoBehaviour
     [System.Serializable]
     public class Scenes
     {
-        public GameObject beachScene, shrineScene, foyerScene, labScene;
+        public GameObject beachScene, shrineScene, foyerScene, labScene, voidScene;
     }
 
     [System.Serializable]
@@ -439,7 +440,7 @@ public class CutsceneLogic : MonoBehaviour
                     break;
                 case 89:
                     DisplayDialogue(". . . ", defaultLetterWait);
-                    leftSprite.EnterStageSide(1f);
+                    leftSprite.EnterStageSide(0.4f);
                     leftSprite.SetSprite(sprites.profLose);
                     break;
                 case 90:
@@ -484,7 +485,163 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue(". . .", defaultLetterWait);
                     break;
                 case 100:
-
+                    rightSprite.EnterStageSide(0.5f);
+                    rightSprite.SetSprite(sprites.senseiSide);
+                    DisplayDialogue("Who goes there?", defaultLetterWait);
+                    break;
+                case 101:
+                    leftSprite.SetSprite(sprites.girlSide);
+                    DisplayDialogue("You must be Master Flin! It's an honor sir.", defaultLetterWait);
+                    break;
+                case 102:
+                    rightSprite.SetSprite(sprites.senseiWin);
+                    DisplayDialogue("And what exactly are you doing here at a time like this, child?", defaultLetterWait);
+                    break;
+                case 103:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    DisplayDialogue("What do you mean?", defaultLetterWait);
+                    break;
+                case 104:
+                    rightSprite.SetSprite(sprites.senseiSide);
+                    DisplayDialogue("Can't you feel it? The aura of the blocks...", defaultLetterWait);
+                    break;
+                case 105:
+                    DisplayDialogue("It's not natural.", defaultLetterWait);
+                    break;
+                case 106:
+                    leftSprite.SetSprite(sprites.hattySide);
+                    rightSprite.SetSprite(sprites.buffSide);
+                    DisplayDialogue("PSH. What nonsense! Aura of the blocks?", defaultLetterWait);
+                    break;
+                case 107:
+                    DisplayDialogue("He's a sham of a shaman is what he is...", defaultLetterWait);
+                    break;
+                case 108:
+                    rightSprite.SetSprite(sprites.buffWin);
+                    DisplayDialogue("If you keep talking, you're going to be the next human sacrifice.", defaultLetterWait);
+                    break;
+                case 109:
+                    leftSprite.SetSprite(sprites.hattyLose);
+                    DisplayDialogue("EEK!", defaultLetterWait);
+                    break;
+                case 110:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    rightSprite.SetSprite(sprites.senseiSide);
+                    DisplayDialogue("Ridicule me all you want, the end is nigh.", defaultLetterWait);
+                    break;
+                case 111:
+                    DisplayDialogue("If you want to waste your time on your quest to be some sort of champion, I'll humor you.", defaultLetterWait);
+                    break;
+                case 112:
+                    rightSprite.SetSprite(sprites.senseiWin);
+                    DisplayDialogue("But you'd be better off preparing for what's to come...", defaultLetterWait);
+                    break;
+                case 113:
+                    StartCoroutine(FadeIntoScene(1f, "girl", "sensei", "shrine", "WISEDOWN", "WISEDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
+                    break;
+                case 114:
+                    scenes.shrineScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlSide);
+                    rightSprite.SetSprite(sprites.senseiSide);
+                    DisplayDialogue("I hope I could help you somewhat. It's all become very clear to me...", defaultLetterWait);
+                    break;
+                case 115:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    DisplayDialogue("What do you mean?", defaultLetterWait);
+                    break;
+                case 116:
+                    rightSprite.SetSprite(sprites.senseiWin);
+                    DisplayDialogue("It's all coming undone. The seams are showing and the end is in sight.", defaultLetterWait);
+                    break;
+                case 117:
+                    DisplayDialogue("I pray that peace awaits us.", defaultLetterWait);
+                    break;
+                case 118:
+                    DisplayDialogue("What do you mean?! What's happening?!", defaultLetterWait);
+                    break;
+                case 119:
+                    DisplayDialogue("AAAAAAAAAAAHHHHHHHHHHHHHH", defaultLetterWait);
+                    break;
+                case 120:
+                    scenes.shrineScene.SetActive(false);
+                    scenes.voidScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlDefeat);
+                    rightSprite.SetSprite(null);
+                    localCam.backgroundColor = Color.black;
+                    DisplayDialogue(". . . ", defaultLetterWait);
+                    break;
+                case 121:
+                    DisplayDialogue(". . . . .", defaultLetterWait);
+                    break;
+                case 122:
+                    DisplayDialogue(". . . . . . .", defaultLetterWait);
+                    break;
+                case 123:
+                    DisplayDialogue("Ohhhhhhhh.....", defaultLetterWait);
+                    break;
+                case 124:
+                    DisplayDialogue("Where am I?", defaultLetterWait);
+                    break;
+                case 125:
+                    rightSprite.SetSprite(sprites.rawBuffSide);
+                    DisplayDialogue("ARE YOU LOOKING TO BETTER YOURSELF?", defaultLetterWait);
+                    break;
+                case 126:
+                    leftSprite.SetSprite(sprites.girlLose);
+                    DisplayDialogue("What? Who are you?", defaultLetterWait);
+                    break;
+                case 127:
+                    StartCoroutine(FadeIntoScene(1f, "girl", "buffRaw", "black", "WISEDOWN", "WISEDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
+                    break;
+                case 128:
+                    scenes.voidScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlLose);
+                    rightSprite.SetSprite(sprites.rawHattySide);
+                    localCam.backgroundColor = Color.black;
+                    DisplayDialogue("DO YOU FEEL LIKE YOU ARE LACKING IN CERTAIN AREAS?", defaultLetterWait);
+                    break;
+                case 129:
+                    DisplayDialogue("Uh... I don't understand what's happening here.", defaultLetterWait);
+                    break;
+                case 130:
+                    StartCoroutine(FadeIntoScene(1f, "girl", "hattyRaw", "black", "WISEDOWN", "WISEDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
+                    break;
+                case 131:
+                    scenes.voidScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlLose);
+                    rightSprite.SetSprite(sprites.rawProfSide);
+                    localCam.backgroundColor = Color.black;
+                    DisplayDialogue("HAVE YOU EVER FELT LOST?", defaultLetterWait);
+                    break;
+                case 132:
+                    leftSprite.SetSprite(sprites.girlDefeat);
+                    DisplayDialogue("Please, what is happening here?", defaultLetterWait);
+                    break;
+                case 133:
+                    StartCoroutine(FadeIntoScene(1f, "girl", "profRaw", "black", "WISEDOWN", "WISEDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
+                    break;
+                case 134:
+                    scenes.voidScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlDefeat);
+                    rightSprite.SetSprite(sprites.rawSenseiSide);
+                    localCam.backgroundColor = Color.black;
+                    DisplayDialogue("DO YOU EVER FEAR THE FUTURE?", defaultLetterWait);
+                    break;
+                case 135:
+                    DisplayDialogue("Please stop...", defaultLetterWait);
+                    break;
+                case 136:
+                    StartCoroutine(FadeIntoScene(1f, "girl", "senseiRaw", "black", "WISEDOWN", "WISEDUDE", "Player VS CPU", 5f, 1, 1, globalSceneIndex, true));
+                    break;
+                case 137:
+                    scenes.voidScene.SetActive(true);
+                    leftSprite.SetSprite(sprites.girlDefeat);
+                    DisplayDialogue("No more, please...", defaultLetterWait);
+                    break;
+                case 138:
+                    DisplayDialogue("I have no idea what's happening... I just want to go home...", defaultLetterWait);
+                    break;
+                case 139:
                     break;
             }
         }

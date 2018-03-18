@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\BallAnimate.cs" />
     <Compile Include="Assets\Scripts\Block.cs" />
     <Compile Include="Assets\Scripts\BlockDestroyParticle.cs" />
+    <Compile Include="Assets\Scripts\BlockFloat.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\BoardsInPlay.cs" />
     <Compile Include="Assets\Scripts\ButtonGrowShrink.cs" />

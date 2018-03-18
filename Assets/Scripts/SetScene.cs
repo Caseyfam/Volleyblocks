@@ -55,6 +55,9 @@ public class SetScene : MonoBehaviour {
                 glitchAllObjects = StartCoroutine(WaitToGlitch(0.3f));
                 StartCoroutine(IncrementGlitch(5f));
                 break;
+            case "black":
+                newCamera.backgroundColor = Color.black;
+                break;
         }
     }
 
@@ -63,8 +66,8 @@ public class SetScene : MonoBehaviour {
     public Camera newCamera;
     private Color originalColor;
     public GameObject rotatingBackground, rotatingBackground2;
-    public GameObject glitchFallBlocks, glitchCharRotate, glitchMenuItems;
-    private int maxGlitchIndexes = 4;
+    public GameObject glitchFallBlocks, glitchCharRotate, glitchMenuItems, glitchVoidScene;
+    private int maxGlitchIndexes = 5;
 
     bool actionPerformed = false;
     bool isGlitchScene = false;
@@ -77,7 +80,7 @@ public class SetScene : MonoBehaviour {
             {
                 default:
                 case 0:
-                    glitchMenuItems.SetActive(false); // DEBUG
+                    glitchVoidScene.SetActive(false); // DEBUG
                     if (!actionPerformed)
                     {
                         actionPerformed = true;
@@ -116,6 +119,10 @@ public class SetScene : MonoBehaviour {
                 case 4:
                     glitchCharRotate.SetActive(false);
                     glitchMenuItems.SetActive(true);
+                    break;
+                case 5:
+                    glitchVoidScene.SetActive(true);
+                    glitchMenuItems.SetActive(false);
                     break;
             }
         }

@@ -118,7 +118,6 @@ public class Ball : MonoBehaviour {
                 }
             }
         }
-       
     }
 
     void SetBallPoints(Board attackedBoard)
@@ -193,57 +192,6 @@ public class Ball : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (serveDone)
-        {
-            if (currentDirection == "NONE")
-            {
-                if (randomServeRotation == 1)
-                {
-                    rotationSpeed = 10f;
-                }
-                else
-                {
-                    rotationSpeed = -10f;
-                }
-            }
-            else
-            {
-                if (currentDirection == "LEFT")
-                {
-                    rotationSpeed = currentPointLead * 1.2f;
-                }
-                else
-                {
-                    rotationSpeed = currentPointLead * -1.2f;
-                }
-            }
-            transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
-            transform.Rotate(0f, 0f, 20f * rotationSpeed * Time.deltaTime);
-        }
-        else
-        {
-            if (servePause)
-            {
-                if (randomServeRotation == 1)
-                {
-                    rotationSpeed = 10f;
-                }
-                else
-                {
-                    rotationSpeed = -10f;
-                }
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(0f, 0.63f, 10f), 0.07f);
-                transform.Rotate(0f, 0f, 20f * rotationSpeed * Time.deltaTime);
-                transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f), 0.2f);
-                if (transform.position == new Vector3(0f, 0.63f, 10f))
-                {
-                    leftBoard.gameObject.GetComponent<ActiveSet>().CreateActiveSet();
-                    rightBoard.gameObject.GetComponent<ActiveSet>().CreateActiveSet();
-                    serveDone = true;
-                }
-            }
-        }
-
         if (runningGame.runningGame)
         {
             if (currentDirection.Equals("RIGHT"))
@@ -272,9 +220,56 @@ public class Ball : MonoBehaviour {
                     transform.position += Vector3.left * Time.deltaTime * ballSpeed;
                 }
             }
+
+            if (serveDone)
+            {
+                if (currentDirection == "NONE")
+                {
+                    if (randomServeRotation == 1)
+                    {
+                        rotationSpeed = 10f;
+                    }
+                    else
+                    {
+                        rotationSpeed = -10f;
+                    }
+                }
+                else
+                {
+                    if (currentDirection == "LEFT")
+                    {
+                        rotationSpeed = currentPointLead * 1.2f;
+                    }
+                    else
+                    {
+                        rotationSpeed = currentPointLead * -1.2f;
+                    }
+                }
+                transform.localScale = new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f);
+                transform.Rotate(0f, 0f, 20f * rotationSpeed * Time.deltaTime);
+            }
             else
             {
-
+                if (servePause)
+                {
+                    if (randomServeRotation == 1)
+                    {
+                        rotationSpeed = 10f;
+                    }
+                    else
+                    {
+                        rotationSpeed = -10f;
+                    }
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(0f, 0.63f, 10f), 0.07f);
+                    transform.Rotate(0f, 0f, 20f * rotationSpeed * Time.deltaTime);
+                    transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(10 - Mathf.Abs(transform.position.x), 10 - Mathf.Abs(transform.position.x), 0f), 0.2f);
+                    if (transform.position == new Vector3(0f, 0.63f, 10f))
+                    {
+                        leftBoard.gameObject.GetComponent<ActiveSet>().CreateActiveSet();
+                        rightBoard.gameObject.GetComponent<ActiveSet>().CreateActiveSet();
+                        serveDone = true;
+                    }
+                }
             }
         }
     }
