@@ -108,6 +108,9 @@ public class ResultsScreen : MonoBehaviour {
                 case "sensei":
                     winningDialogue = "I can sense your anger. Patience and practice shall lead you to great rewards.";
                     break;
+                case "me":
+                    winningDialogue = "Thanks for sticking around.";
+                    break;
                 case "debug":
                 default:
                     winningDialogue = "This is DEBUG dialogue because PassedObject does not exist.";
@@ -147,6 +150,9 @@ public class ResultsScreen : MonoBehaviour {
                     break;
                 case "sensei":
                     winningDialogue = "Hm. The student surpasses the master.";
+                    break;
+                case "me":
+                    winningDialogue = "I can't believe it.";
                     break;
                 case "debug":
                 default:

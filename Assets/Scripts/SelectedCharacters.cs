@@ -19,6 +19,8 @@ public class SelectedCharacters : MonoBehaviour {
     public Sprite[] prof;
     public Sprite[] sensei;
 
+    public Sprite[] me;
+
     public void SetLeftBoard(string name)
     {
         leftBoardName = name;
@@ -64,6 +66,8 @@ public class SelectedCharacters : MonoBehaviour {
                 return prof;
             case "sensei":
                 return sensei;
+            case "me":
+                return me;
         }
     }
 	

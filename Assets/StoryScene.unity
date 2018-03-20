@@ -1955,6 +1955,7 @@ GameObject:
   - component: {fileID: 576435473}
   - component: {fileID: 576435472}
   - component: {fileID: 576435471}
+  - component: {fileID: 576435476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2032,6 +2033,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &576435476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 576435470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6818ac8e9faa34f9b5949a9202744e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addendum: 5
+  maxDistanceDelta: 0.01
 --- !u!1 &588171756
 GameObject:
   m_ObjectHideFlags: 0
@@ -9232,6 +9246,12 @@ MonoBehaviour:
     rawSenseiWin: {fileID: 21300000, guid: d04ae880ab5274c40afa7756af18643d, type: 3}
     rawSenseiLose: {fileID: 21300000, guid: d04ecd524799ec04b8c3cfc95f70c709, type: 3}
     rawSenseiDefeat: {fileID: 21300000, guid: a9ab01102b48f0346a55c4163d1c7e1d, type: 3}
+    meFrontRaw: {fileID: 21300000, guid: 8b25c8f26892bd4439146286819eb6bf, type: 3}
+    meFrontColor: {fileID: 21300000, guid: d15ce0c5b56cb7a418c24f4963130cfb, type: 3}
+    meSideRaw: {fileID: 21300000, guid: ed148abd0c7c0f74b94720b0422d3e84, type: 3}
+    meSideColor: {fileID: 21300000, guid: 5c3b2b5f9ac112b4da727a7aaaae8d9b, type: 3}
+    meGlitchRaw: {fileID: 21300000, guid: 92daa1e80cbcfa8439efc1ed554261cb, type: 3}
+    meGlitchColor: {fileID: 21300000, guid: 2bb477b0d27a78e4085139c072ea9bcd, type: 3}
   scenes:
     beachScene: {fileID: 788193781}
     shrineScene: {fileID: 120839420}

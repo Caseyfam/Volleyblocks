@@ -112,6 +112,7 @@
     <Compile Include="Assets\Scripts\Passed.cs" />
     <Compile Include="Assets\Scripts\PasswordLetter.cs" />
     <Compile Include="Assets\Scripts\PasswordSystem.cs" />
+    <Compile Include="Assets\Scripts\PerspectiveOscillate.cs" />
     <Compile Include="Assets\Scripts\PortraitEmote.cs" />
     <Compile Include="Assets\Scripts\PredeterminedBlocks.cs" />
     <Compile Include="Assets\Scripts\ReadySign.cs" />

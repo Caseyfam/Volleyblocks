@@ -73,17 +73,62 @@ public class PasswordSystem : MonoBehaviour {
                     ClearPassword();
                     isStory = false;
                     break;
+                case "BUFFDUDE":
+                    sceneIndex = 17;
+                    break;
                 case "BUFFDOWN":
                     sceneIndex = 20;
                     break;
-                case "BUFFDUDE":
-                    sceneIndex = 17;
+                case "RICHDUDE":
+                    sceneIndex = 48;
                     break;
                 case "RICHDOWN":
                     sceneIndex = 50;
                     break;
-                case "RICHDUDE":
-                    sceneIndex = 48;
+                case "PROFGIRL":
+                    sceneIndex = 78;
+                    break;
+                case "PROFDOWN":
+                    sceneIndex = 80;
+                    break;
+                case "GURUDUDE":
+                    sceneIndex = 112;
+                    break;
+                case "GURUDOWN":
+                    sceneIndex = 114;
+                    break;
+                case "ICANTWIN":
+                    sceneIndex = 125;
+                    break;
+                case "MAYBENOT":
+                    sceneIndex = 128;
+                    break;
+                case "HESEMPTY":
+                    sceneIndex = 128;
+                    break;
+                case "JUSTSTOP":
+                    sceneIndex = 131;
+                    break;
+                case "GUIDEHIM":
+                    sceneIndex = 131;
+                    break;
+                case "GUIDEDME":
+                    sceneIndex = 134;
+                    break;
+                case "IMAFRAID":
+                    sceneIndex = 134;
+                    break;
+                case "ICANWALK":
+                    sceneIndex = 137;
+                    break;
+                case "PLEASENO":
+                    sceneIndex = 137;
+                    break;
+                case "THANKYOU":
+                    sceneIndex = 186;
+                    break;
+                case "CYALATER":
+                    sceneIndex = 189;
                     break;
             }
 
