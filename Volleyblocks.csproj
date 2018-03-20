@@ -82,7 +82,10 @@
     <Compile Include="Assets\Scripts\ActiveSetInput.cs" />
     <Compile Include="Assets\Scripts\AI.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
+    <Compile Include="Assets\Scripts\BallAnimate.cs" />
     <Compile Include="Assets\Scripts\Block.cs" />
+    <Compile Include="Assets\Scripts\BlockDestroyParticle.cs" />
+    <Compile Include="Assets\Scripts\BlockFloat.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\BoardsInPlay.cs" />
     <Compile Include="Assets\Scripts\ButtonGrowShrink.cs" />
@@ -95,10 +98,13 @@
     <Compile Include="Assets\Scripts\DebugBoard.cs" />
     <Compile Include="Assets\Scripts\ExplodeOnLoss.cs" />
     <Compile Include="Assets\Scripts\FadeInToColor.cs" />
+    <Compile Include="Assets\Scripts\FadeOnLoad.cs" />
+    <Compile Include="Assets\Scripts\FadeSmart.cs" />
     <Compile Include="Assets\Scripts\FallHighlight.cs" />
     <Compile Include="Assets\Scripts\FireAnimate.cs" />
     <Compile Include="Assets\Scripts\FogRoll.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
+    <Compile Include="Assets\Scripts\GlitchFallBlock.cs" />
     <Compile Include="Assets\Scripts\LabTankBob.cs" />
     <Compile Include="Assets\Scripts\LoadBattle.cs" />
     <Compile Include="Assets\Scripts\LogoRotate.cs" />
@@ -111,8 +117,11 @@
     <Compile Include="Assets\Scripts\ReadySign.cs" />
     <Compile Include="Assets\Scripts\ResultsScreen.cs" />
     <Compile Include="Assets\Scripts\ResultsScreenButtons.cs" />
+    <Compile Include="Assets\Scripts\RotateEndless.cs" />
     <Compile Include="Assets\Scripts\RunningGame.cs" />
     <Compile Include="Assets\Scripts\ScaleUp.cs" />
+    <Compile Include="Assets\Scripts\Scoreboard.cs" />
+    <Compile Include="Assets\Scripts\ScoreboardLetterEffect.cs" />
     <Compile Include="Assets\Scripts\Scoring.cs" />
     <Compile Include="Assets\Scripts\SelectedCharacters.cs" />
     <Compile Include="Assets\Scripts\SelectedScene.cs" />

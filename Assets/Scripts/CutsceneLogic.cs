@@ -642,6 +642,151 @@ public class CutsceneLogic : MonoBehaviour
                     DisplayDialogue("I have no idea what's happening... I just want to go home...", defaultLetterWait);
                     break;
                 case 139:
+                    DisplayDialogue("What are you doing here?", defaultLetterWait);
+                    break;
+                case 140:
+                    DisplayDialogue("Honestly, I want to know.", defaultLetterWait);
+                    break;
+                case 141:
+                    DisplayDialogue("Well you see, I'm looking to be the volleybl-", defaultLetterWait);
+                    break;
+                case 142:
+                    DisplayDialogue("Not you.", defaultLetterWait);
+                    break;
+                case 143:
+                    DisplayDialogue("I don't care about your little adventure to become volleyblock champion or whatever dumb ideas you had.", defaultLetterWait);
+                    break;
+                case 144:
+                    DisplayDialogue("I'm talking to YOU.", defaultLetterWait);
+                    break;
+                case 145:
+                    DisplayDialogue("What are you even doing here, honestly?", defaultLetterWait);
+                    break;
+                case 146:
+                    DisplayDialogue("Can't you see that I've run out of patience here? Just look at the last few matches...", defaultLetterWait);
+                    break;
+                case 147:
+                    DisplayDialogue("Did you really enjoy the poorly constucted narrative I wove together?", defaultLetterWait);
+                    break;
+                case 148:
+                    DisplayDialogue("Did you enjoy looking at the childish art that I made simply because something needed to be there?", defaultLetterWait);
+                    break;
+                case 149:
+                    DisplayDialogue("Was it actually the gameplay, which I'm pretty sure has a bunch of bugs in terms of how combos are counted?", defaultLetterWait);
+                    break;
+                case 150:
+                    DisplayDialogue("I really wanted to make something here, you know. I believed in it at first.", defaultLetterWait);
+                    break;
+                case 151:
+                    DisplayDialogue("My mind's always racing with game ideas whenever I see other people's projects.", defaultLetterWait);
+                    break;
+                case 152:
+                    DisplayDialogue("I go into overdrive and try to think of how I could make a game like that, what kind of cool mechanics it would use...", defaultLetterWait);
+                    break;
+                case 153:
+                    DisplayDialogue("And the one thing they all have in common is that they're too ambitious. They're just fantasies, dreams.", defaultLetterWait);
+                    break;
+                case 154:
+                    DisplayDialogue("I'd never finish anything. I've hardly finished anything.", defaultLetterWait);
+                    break;
+                case 155:
+                    DisplayDialogue("So, one day, I simply told myself this: what's the smallest game idea you can come up with that's unique and that you could finish.", defaultLetterWait);
+                    break;
+                case 156:
+                    DisplayDialogue("And htat's what this is.", defaultLetterWait);
+                    break;
+                case 157:
+                    DisplayDialogue("It's a simple concept, but it can be fleshed out to multiple game modes.", defaultLetterWait);
+                    break;
+                case 158:
+                    DisplayDialogue("Heck, why do you think there's an arcade mode? This is the fleshed out part.", defaultLetterWait);
+                    break;
+                case 159:
+                    DisplayDialogue("But of course, I started going crazy with ideas that would never be implemented.", defaultLetterWait);
+                    break;
+                case 160:
+                    DisplayDialogue("I think I wanted to do a 3D overworld at one point, with 3D characters and cutscenes.", defaultLetterWait);
+                    break;
+                case 161:
+                    DisplayDialogue("But finishing even the smallest, crappiest game takes way longer than you expect.", defaultLetterWait);
+                    break;
+                case 162:
+                    DisplayDialogue("At the end of the day, you get burnt out. This is the best I could do", defaultLetterWait);
+                    break;
+                case 163:
+                    DisplayDialogue("But I did believe in it at first.", defaultLetterWait);
+                    break;
+                case 164:
+                    DisplayDialogue("I have dreams of making a big game, one that I'm proud of.", defaultLetterWait);
+                    break;
+                case 165:
+                    DisplayDialogue("Instead, I feel like I've been battling with imposter syndrome as of recently.", defaultLetterWait);
+                    break;
+                case 166:
+                    DisplayDialogue("I mean, how did everyone online get so good at making games?", defaultLetterWait);
+                    break;
+                case 167:
+                    DisplayDialogue("I tell myself that you just need to keep chugging along and that one day you'll get there.", defaultLetterWait);
+                    break;
+                case 168:
+                    DisplayDialogue("I think I'vem ade great progress and I learned a decent amount making this game.", defaultLetterWait);
+                    break;
+                case 169:
+                    DisplayDialogue("But it's still disheartening, you know?", defaultLetterWait);
+                    break;
+                case 170:
+                    DisplayDialogue("Like, I feel as if my life is going by so fast and this is all I have to show for it.", defaultLetterWait);
+                    break;
+                case 171:
+                    DisplayDialogue("Well, venting about my life problems is a story for another game, but I worry about my future as a game maker.", defaultLetterWait);
+                    break;
+                case 172:
+                    DisplayDialogue("Obviously, I'm not too satisfied with this one. I think I'm only releasing it because I've put way too much time into it.", defaultLetterWait);
+                    break;
+                case 173:
+                    DisplayDialogue("Putting it out there will let me move on, in a sense, no matter how much people like or dislike the final product.", defaultLetterWait);
+                    break;
+                case 174:
+                    DisplayDialogue("Maybe I can just move on.", defaultLetterWait);
+                    break;
+                case 175:
+                    DisplayDialogue("Again, and I'm so sorry that your final boss is literally just an angsty guy venting, but I'm not satisfied with the game.", defaultLetterWait);
+                    break;
+                case 176:
+                    DisplayDialogue("Kinda depressing since I tried so hard at one point.", defaultLetterWait);
+                    break;
+                case 177:
+                    DisplayDialogue("There's so much to this game that's hidden away from view, but in the end the game by itself still sucks.", defaultLetterWait);
+                    break;
+                case 178:
+                    DisplayDialogue("I realized that when I was playtesting my own game and found out that I wasn't having fun.", defaultLetterWait);
+                    break;
+                case 179:
+                    DisplayDialogue("But at that point, I Was too far in. What was I supposed to do?", defaultLetterWait);
+                    break;
+                case 180:
+                    DisplayDialogue("I wanted to finish something and this is the best I could do I guess.", defaultLetterWait);
+                    break;
+                case 181:
+                    DisplayDialogue("So that's why I'm asking you, why are you still here?", defaultLetterWait);
+                    break;
+                case 182:
+                    DisplayDialogue("Did you enjoy it that much? I can't imagine you did.", defaultLetterWait);
+                    break;
+                case 183:
+                    DisplayDialogue("So. Here I am as your last volleyblock master.", defaultLetterWait);
+                    break;
+                case 184:
+                    DisplayDialogue("I guess I'll have to give you what you're looking for if you beat me.", defaultLetterWait);
+                    break;
+                case 185:
+                    DisplayDialogue("Can't imagine it'll leave a lasting impression on you once you're done, but I take it you're not leaving.", defaultLetterWait);
+                    break;
+                case 186:
+                    DisplayDialogue("Sorry for the rant.", defaultLetterWait);
+                    break;
+                case 187:
+                    DisplayDialogue("Ready?", defaultLetterWait);
                     break;
             }
         }
